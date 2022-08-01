@@ -125,6 +125,9 @@ opacity:1;
 .tm-main {
     margin-left: 400px;
     padding: 80px 100px 25px;
+    align-items: center;
+    justify-items: center;
+    display: block;
 }
 
 .tm-post { max-width: 470px; }
@@ -212,7 +215,7 @@ ul {
 .tm-search-form {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .form-inline .form-control.tm-search-input {
