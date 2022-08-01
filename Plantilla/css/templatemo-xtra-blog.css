@@ -18,7 +18,7 @@ hr {
 }
 
 /*Index sections*/
-.card-container-img {
+.card-container-img-reading {
     width: 70%;
     height: 100%;
     object-fit:cover;
@@ -28,6 +28,32 @@ hr {
     transform-origin:center;
     transform:perspective(800px) rotateY(25deg);
     transition:0.5s;
+}
+.card-container-reading {
+max-width:1250px;
+max-height:1000px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+margin-bottom: 60px;
+
+}
+.card-container-reading:hover img {
+opacity:0.3;
+}
+.card-container-reading img:hover {
+transform:perspective(800px)       rotateY(0deg);
+opacity:1;
+}
+
+.card-container-img {
+    width: 70%;
+    height: 100%;
+    object-fit:cover;
+    
+    -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
 }
 .card-container {
 max-width:1250px;
