@@ -23,6 +23,40 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+/*Index sections*/
+.card-container-img {
+    width: 150%;
+    height: 200%;
+    object-fit:cover;
+    
+    -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
+    
+    transform-origin:center;
+    transform:perspective(800px) rotateY(25deg);
+    transition:0.5s;
+}
+.card-container {
+max-width:1250px;
+max-height:1000px;
+
+
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+margin-bottom: 60px;
+
+}
+.card-container:hover img {
+opacity:0.3;
+}
+.card-container img:hover {
+transform:perspective(800px)       rotateY(0deg);
+opacity:1;
+}
+
 .form-control::-webkit-input-placeholder { color: #999; }  
 .form-control:-ms-input-placeholder { color: #999; }  
 .form-control::placeholder { color: #999; }
