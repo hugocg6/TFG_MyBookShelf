@@ -1,34 +1,26 @@
-$(document).ready(function() {
-  
-    var animating = false,
-        submitPhase1 = 1100,
-        submitPhase2 = 400,
-        logoutPhase1 = 800,
-        $login = $(".login"),
-        $app = $(".app");
-    
-    function ripple(elem, e) {
-      $(".ripple").remove();
-      var elTop = elem.offset().top,
-          elLeft = elem.offset().left,
-          x = e.pageX - elLeft,
-          y = e.pageY - elTop;
-      var $ripple = $("<div class='ripple'></div>");
-      $ripple.css({top: y, left: x});
-      elem.append($ripple);
-    };
+jQuery(document).ready(function($){
+  var $form_modal = $('.user-modal'),
+    $form_login = $form_modal.find('#login'),
+    $form_signup = $form_modal.find('#signup'),
+    $form_forgot_password = $form_modal.find('#reset-password'),
+    $form_modal_tab = $('.switcher'),
+    $tab_login = $form_modal_tab.children('li').eq(0).children('a'),
+    $tab_signup = $form_modal_tab.children('li').eq(1).children('a'),
+    $forgot_password_link = $form_login.find('.form-bottom-message a'),
+    $back_to_login_link = $form_forgot_password.find('.form-bottom-message a'),
+    $main_nav = $('.main-nav');
 
-    function pic() {
-        var bgm = ['https://i.pinimg.com/originals/52/d8/39/52d83925edc943ef42cce83cac003645.jpg',
-        'https://cutewallpaper.org/25/anime-wallpaper-no-game-no-life-minimalist/shiro-b3e33-minimalist-21f71-wallpaper-f8fed-rnogamenolife.png',
-        'https://i.pinimg.com/originals/ee/b8/f6/eeb8f61c0d096977c8883436bb27f414.jpg',
-        'https://i.pinimg.com/originals/e3/e0/8c/e3e08cd203c41144832a91dc2c286a29.jpg',
-        'https://wallpaperaccess.com/full/1407671.png',
-        'https://cdna.artstation.com/p/assets/images/images/047/527/210/large/luiz-santos-luffy-prancheta-1.jpg?1647816858',
-        'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/944a540a-5068-4583-be10-4ba056c879b6/ddysx8q-af9ad00f-c406-4964-b8b9-f03c22af840f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk0NGE1NDBhLTUwNjgtNDU4My1iZTEwLTRiYTA1NmM4NzliNlwvZGR5c3g4cS1hZjlhZDAwZi1jNDA2LTQ5NjQtYjhiOS1mMDNjMjJhZjg0MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.R5wobbmBD2Q4PkDtLbL82gtCrIzGyYyQnlA94xd_rmQ',
-        'https://cutewallpaper.org/25/anime-minimalist-mobile-wallpaper-reddit/29-minimalist-anime-wallpaper-reddit-baka-wallpaper.png',
-        'https://images2.alphacoders.com/961/961300.png',
-        'https://preview.redd.it/j18zkr2ec5b11.png?auto=webp&s=e67224d47d8118ec5000f0d459721df1e599248a',
+
+function pic() {
+        var bgm = ['../../Logos_y_demás/login_wp/lw1.png',
+        '../../Logos_y_demás/login_wp/lw2.jpg',
+        '../../Logos_y_demás/login_wp/lw3.png',
+        '../../Logos_y_demás/login_wp/lw4.png',
+        '../../Logos_y_demás/login_wp/lw5.png',
+        '../../Logos_y_demás/login_wp/lw6.jpg',
+        '../../Logos_y_demás/login_wp/lw7.jpg',
+        '../../Logos_y_demás/login_wp/lw8.jpg',
+        '../../Logos_y_demás/login_wp/lw9.png',
     ];
      
         $('body').css({
@@ -36,46 +28,138 @@ $(document).ready(function() {
         });
     }
     pic();
-    
-    $(document).on("click", ".login__submit", function(e) {
-      if (animating) return;
-      animating = true;
-      var that = this;
-      ripple($(that), e);
-      $(that).addClass("processing");
-      setTimeout(function() {
-        $(that).addClass("success");
-        setTimeout(function() {
-          $app.show();
-          $app.css("top");
-          $app.addClass("active");
-        }, submitPhase2 - 70);
-        setTimeout(function() {
-          $login.hide();
-          $login.addClass("inactive");
-          animating = false;
-          $(that).removeClass("success processing");
-        }, submitPhase2);
-      }, submitPhase1);
-    });
-    
-    $(document).on("click", ".app__logout", function(e) {
-      if (animating) return;
-      $(".ripple").remove();
-      animating = true;
-      var that = this;
-      $(that).addClass("clicked");
-      setTimeout(function() {
-        $app.removeClass("active");
-        $login.show();
-        $login.css("top");
-        $login.removeClass("inactive");
-      }, logoutPhase1 - 120);
-      setTimeout(function() {
-        $app.hide();
-        animating = false;
-        $(that).removeClass("clicked");
-      }, logoutPhase1);
-    });
-    
+  //open modal
+  $main_nav.on('click', function(event){
+
+    if( $(event.target).is($main_nav) ) {
+      // on mobile open the submenu
+      $(this).children('ul').toggleClass('is-visible');
+    } else {
+      // on mobile close submenu
+      $main_nav.children('ul').removeClass('is-visible');
+      //show modal layer
+      $form_modal.addClass('is-visible'); 
+      //show the selected form
+      ( $(event.target).is('.signup') ) ? signup_selected() : login_selected();
+    }
+
   });
+
+  //close modal
+  $('.user-modal').on('click', function(event){
+    if( $(event.target).is($form_modal) || $(event.target).is('.close-form') ) {
+      $form_modal.removeClass('is-visible');
+    } 
+  });
+  //close modal when clicking the esc keyboard button
+  $(document).keyup(function(event){
+      if(event.which=='27'){
+        $form_modal.removeClass('is-visible');
+      }
+    });
+
+  //switch from a tab to another
+  $form_modal_tab.on('click', function(event) {
+    event.preventDefault();
+    ( $(event.target).is( $tab_login ) ) ? login_selected() : signup_selected();
+  });
+
+  //hide or show password
+  $('.hide-password').on('click', function(){
+    var $this= $(this),
+      $password_field = $this.prev('input');
+    
+    ( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
+    ( 'Show' == $this.text() ) ? $this.text('Hide') : $this.text('Show');
+    //focus and move cursor to the end of input field
+    $password_field.putCursorAtEnd();
+  });
+
+  //show forgot-password form 
+  $forgot_password_link.on('click', function(event){
+    event.preventDefault();
+    forgot_password_selected();
+  });
+
+  //back to login from the forgot-password form
+  $back_to_login_link.on('click', function(event){
+    event.preventDefault();
+    login_selected();
+  });
+
+  function login_selected(){
+    $form_login.addClass('is-selected');
+    $form_signup.removeClass('is-selected');
+    $form_forgot_password.removeClass('is-selected');
+    $tab_login.addClass('selected');
+    $tab_signup.removeClass('selected');
+  }
+
+  function signup_selected(){
+    $form_login.removeClass('is-selected');
+    $form_signup.addClass('is-selected');
+    $form_forgot_password.removeClass('is-selected');
+    $tab_login.removeClass('selected');
+    $tab_signup.addClass('selected');
+  }
+
+  function forgot_password_selected(){
+    $form_login.removeClass('is-selected');
+    $form_signup.removeClass('is-selected');
+    $form_forgot_password.addClass('is-selected');
+  }
+
+  //REMOVE THIS - it's just to show error messages 
+  $form_login.find('input[type="submit"]').on('click', function(event){
+    event.preventDefault();
+    $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+  });
+  $form_signup.find('input[type="submit"]').on('click', function(event){
+    event.preventDefault();
+    $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+  });
+
+
+  //IE9 placeholder fallback
+  //credits http://www.hagenburger.net/BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.html
+  if(!Modernizr.input.placeholder){
+    $('[placeholder]').focus(function() {
+      var input = $(this);
+      if (input.val() == input.attr('placeholder')) {
+        input.val('');
+        }
+    }).blur(function() {
+      var input = $(this);
+        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+        input.val(input.attr('placeholder'));
+        }
+    }).blur();
+    $('[placeholder]').parents('form').submit(function() {
+        $(this).find('[placeholder]').each(function() {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+          input.val('');
+        }
+        })
+    });
+  }
+
+});
+
+
+//credits https://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
+jQuery.fn.putCursorAtEnd = function() {
+  return this.each(function() {
+      // If this function exists...
+      if (this.setSelectionRange) {
+          // ... then use it (Doesn't work in IE)
+          // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
+          var len = $(this).val().length * 2;
+          this.setSelectionRange(len, len);
+      } else {
+        // ... otherwise replace the contents with itself
+        // (Doesn't work in Google Chrome)
+          $(this).val($(this).val());
+      }
+  });
+};
