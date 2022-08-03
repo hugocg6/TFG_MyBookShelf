@@ -23,7 +23,6 @@ function pic() {
         '../../Logos_y_demás/login_wp/lw9.png',
         '../../Logos_y_demás/login_wp/lw11.png',
         '../../Logos_y_demás/login_wp/lw12.png',
-        '../../Logos_y_demás/login_wp/lw14.jpg',
         '../../Logos_y_demás/login_wp/lw15.png',
         '../../Logos_y_demás/login_wp/lw16.png',
         '../../Logos_y_demás/login_wp/lw17.png',
