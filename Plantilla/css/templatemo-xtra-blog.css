@@ -74,6 +74,21 @@ transform:perspective(800px)       rotateY(0deg);
 opacity:1;
 }
 
+.img-about {
+    height: 10em;
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.center-img-about{
+    margin: 0;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 .form-control::-webkit-input-placeholder { color: #999; }  
 .form-control:-ms-input-placeholder { color: #999; }  
 .form-control::placeholder { color: #999; }
