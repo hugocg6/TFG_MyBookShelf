@@ -89,6 +89,73 @@ opacity:1;
     transform: translate(-50%, -50%);
 }
 
+  
+.user-list-container {
+    max-width:1250px;
+    max-height:1000px;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    margin-bottom: 40px;
+}
+
+.card-list {
+display: flex;
+height: 150px;
+width: 280px;
+background-color: #0CC;
+border-radius: 10px;
+box-shadow: -1rem 0 1rem #000;
+/*   margin-left: -50px; */
+transition: 0.4s ease-out;
+position: relative;
+left: 0px;
+}
+
+.card-list:not(:first-child) {
+    margin-left: -50px;
+}
+
+.card-list:hover {
+transform: translateY(-20px);
+transition: 0.4s ease-out;
+}
+
+.card-list:hover ~ .card-list {
+position: relative;
+left: 50px;
+transition: 0.4s ease-out;
+}
+
+.list-card-title {
+color: white;
+font-weight: 300;
+position: absolute;
+left: 30px;
+top: 25px;
+}
+
+.card-list-stroke {
+stroke: white;
+stroke-dasharray: 360;
+stroke-dashoffset: 360;
+transition: 0.6s ease-out;
+}
+
+.card-list:hover .card-list-stroke {max-width:1250px;
+    max-height:1000px;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    margin-bottom: 40px;
+stroke-dashoffset: 100;
+transition: 0.6s ease-out;
+}
+
 .form-control::-webkit-input-placeholder { color: #999; }  
 .form-control:-ms-input-placeholder { color: #999; }  
 .form-control::placeholder { color: #999; }
@@ -401,8 +468,7 @@ video {
 }
 
 .tm-comment-figure {
-    margin-top: 10px;
-    margin-right: 30px;
+    margin-bottom: 200px;
 }
 
 .tm-comment-reply { padding-left: 37px; }
@@ -416,7 +482,12 @@ video {
 .tm-comment-form { max-width: 360px; }
 .tm-category-list { list-style-type: none; }
 figure { margin: 0; }
-figcaption { line-height: 1.4; }
+figcaption { 
+    line-height: 1.5;
+    text-align: left;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
 
 .tm-post-full { max-width: 600px; }
 
