@@ -471,6 +471,10 @@ video {
     margin-bottom: 200px;
 }
 
+.tm-collection-figure {
+    margin-bottom: 300px;
+}
+
 .tm-comment-reply { padding-left: 37px; }
 
 .form-control {
