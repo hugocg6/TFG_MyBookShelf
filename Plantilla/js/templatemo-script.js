@@ -15,4 +15,5 @@ $(function() {
       $("#tm-nav .nav-link").click(function(e) {
         $(".tm-header").removeClass("show");
       });
+  
 });
