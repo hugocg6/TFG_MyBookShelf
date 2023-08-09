@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xtra-blog">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/xtra-blog.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
