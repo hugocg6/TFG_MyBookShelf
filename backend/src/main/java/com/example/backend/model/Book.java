@@ -23,6 +23,17 @@ public class Book {
 
     private String plot;
 
+    public Book() {}
+
+    public Book(Long id, String title, List<Author> author, Publisher publisher, int cover, String plot) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.cover = cover;
+        this.plot = plot;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
