@@ -1,11 +1,9 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "Publisher")
+@Table(name = "publisher_table")
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

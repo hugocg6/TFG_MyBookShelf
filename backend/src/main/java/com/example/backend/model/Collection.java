@@ -1,20 +1,31 @@
 package com.example.backend.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
 
 import java.sql.Blob;
 import java.util.List;
 
-@Entity
+@Entity(name = "Collection")
+@Table(name = "collection")
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NaturalId
     private String name;
 
     @OneToMany
     private List<Book> books;
+
+    @OneToMany(mappedBy = "collection")
+    private List<CollectionAuthor> author;
+
+    @OneToOne
+    private Publisher publisher;
+
+    private String plot;
 
     @Lob
     private Blob bookImage;

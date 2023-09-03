@@ -1,31 +1,37 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
 
-@Entity
+import java.util.List;
+
+@Entity(name = "Author")
+@Table(name = "author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    String name;
+    @NaturalId
+    private String name;
+
+    @OneToMany(mappedBy = "author")
+    private List<CollectionAuthor> collections;
 
     public Author() {}
 
-    public Author(Long id, String name) {
+    public Author(Long id, String name, List<CollectionAuthor> collections) {
         this.id = id;
         this.name = name;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.collections = collections;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,5 +40,13 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<CollectionAuthor> getCollections() {
+        return collections;
+    }
+
+    public void setCollections(List<CollectionAuthor> collections) {
+        this.collections = collections;
     }
 }

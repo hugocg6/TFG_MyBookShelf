@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import java.sql.Blob;
 import java.util.List;
 
-@Entity @Table(name="userTable")
+@Entity(name = "User")
+@Table(name="user_table")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

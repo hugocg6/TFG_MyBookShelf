@@ -1,45 +1,37 @@
 package com.example.backend.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
 
-import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "Book")
+@Table(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NaturalId
     private String title;
 
-    @ManyToMany
-    private List<Author> author;
-
-    @OneToOne
-    private Publisher publisher;
-
-    private int cover;
-
-    private String plot;
+    private Date publishDate;
 
     public Book() {}
 
-    public Book(Long id, String title, List<Author> author, Publisher publisher, int cover, String plot) {
+    public Book(Long id, String title, Date publishDate) {
         this.id = id;
         this.title = title;
-        this.author = author;
-        this.publisher = publisher;
-        this.cover = cover;
-        this.plot = plot;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.publishDate = publishDate;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -50,35 +42,11 @@ public class Book {
         this.title = title;
     }
 
-    public List<Author> getAuthor() {
-        return author;
+    public Date getPublishDate() {
+        return publishDate;
     }
 
-    public void setAuthor(List<Author> author) {
-        this.author = author;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
-
-    public int getCover() {
-        return cover;
-    }
-
-    public void setCover(int cover) {
-        this.cover = cover;
-    }
-
-    public String getPlot() {
-        return plot;
-    }
-
-    public void setPlot(String plot) {
-        this.plot = plot;
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 }
