@@ -13,3 +13,7 @@ u
 Ebackend/src/main/java/com/example/backend/model/CollectionAuthor.java,d\c\dc9e6703bbc9c590be2c43fbb0b7a4f7023b8f17
 i
 9backend/src/main/java/com/example/backend/model/User.java,d\8\d888492cb83ac23a730629245eda057482576974
+u
+Ebackend/src/main/java/com/example/backend/model/UserCollectionId.java,2\f\2f4c47b4d2cf14701d63c137c92469182c939183
+s
+Cbackend/src/main/java/com/example/backend/model/UserCollection.java,e\0\e06b4af9cbdbaddc2ed6ac93a74b8600ac1b92c6

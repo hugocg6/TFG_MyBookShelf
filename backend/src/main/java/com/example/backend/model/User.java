@@ -20,17 +20,18 @@ public class User {
     @Lob
     private Blob profileImg;
 
-    @ManyToMany
-    private List<Collection> collection;
+    @OneToMany (mappedBy = "user")
+    private List<UserCollection> collections;
 
     public User() {}
 
-    public User(Long id, String mail, String name, boolean admin, List<Collection> collection) {
+    public User(Long id, String mail, String name, boolean admin, Blob profileImg, List<UserCollection> collections) {
         this.id = id;
         this.mail = mail;
         this.name = name;
         this.admin = admin;
-        this.collection = collection;
+        this.profileImg = profileImg;
+        this.collections = collections;
     }
 
     public void setId(Long id) {
@@ -73,11 +74,11 @@ public class User {
         this.profileImg = profileImg;
     }
 
-    public List<Collection> getCollection() {
-        return collection;
+    public List<UserCollection> getCollections() {
+        return collections;
     }
 
-    public void setCollection(List<Collection> collection) {
-        this.collection = collection;
+    public void setCollections(List<UserCollection> collections) {
+        this.collections = collections;
     }
 }

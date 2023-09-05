@@ -27,15 +27,21 @@ public class Collection {
 
     private String plot;
 
+    @OneToMany(mappedBy = "collection")
+    private List<UserCollection> users;
+
     @Lob
     private Blob bookImage;
 
     public Collection() {}
 
-    public Collection(Long id, String name, List<Book> books, Blob bookImage) {
+    public Collection(Long id, String name, List<Book> books, List<CollectionAuthor> author, Publisher publisher, String plot, Blob bookImage) {
         this.id = id;
         this.name = name;
         this.books = books;
+        this.author = author;
+        this.publisher = publisher;
+        this.plot = plot;
         this.bookImage = bookImage;
     }
 
@@ -69,5 +75,37 @@ public class Collection {
 
     public void setBookImage(Blob bookImage) {
         this.bookImage = bookImage;
+    }
+
+    public List<CollectionAuthor> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(List<CollectionAuthor> author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getPlot() {
+        return plot;
+    }
+
+    public void setPlot(String plot) {
+        this.plot = plot;
+    }
+
+    public List<UserCollection> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserCollection> users) {
+        this.users = users;
     }
 }

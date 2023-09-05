@@ -20,8 +20,8 @@ public class CollectionAuthor {
     public CollectionAuthor() {
     }
 
-    public CollectionAuthor(CollectionAuthorId id, Collection collection, Author author) {
-        this.id = id;
+    public CollectionAuthor(Collection collection, Author author) {
+        this.id = new CollectionAuthorId(collection.getId(), author.getId());
         this.collection = collection;
         this.author = author;
     }

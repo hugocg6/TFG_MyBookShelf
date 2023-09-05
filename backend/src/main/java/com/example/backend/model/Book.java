@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity(name = "Book")
 @Table(name = "book")
