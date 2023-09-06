@@ -17,12 +17,18 @@ public class Book {
 
     private Date publishDate;
 
+    private boolean read;
+
+    private int pages;
+
     public Book() {}
 
-    public Book(Long id, String title, Date publishDate) {
+    public Book(Long id, String title, Date publishDate, boolean read, int pages) {
         this.id = id;
         this.title = title;
         this.publishDate = publishDate;
+        this.read = read;
+        this.pages = pages;
     }
 
     public Long getId() {
@@ -47,5 +53,21 @@ public class Book {
 
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }

@@ -17,6 +17,10 @@ public class UserCollection {
     @MapsId("collectionId")
     private Collection collection;
 
+    private boolean read;
+
+    private boolean added;
+
     public UserCollection() {
     }
 
@@ -48,5 +52,21 @@ public class UserCollection {
 
     public void setCollection(Collection collection) {
         this.collection = collection;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
+    public boolean isAdded() {
+        return added;
+    }
+
+    public void setAdded(boolean added) {
+        this.added = added;
     }
 }
