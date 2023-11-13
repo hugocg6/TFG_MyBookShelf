@@ -2,6 +2,8 @@ package com.example.backend.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity(name = "UserCollection")
 @Table(name = "user_collection")
 public class UserCollection {
@@ -18,6 +20,8 @@ public class UserCollection {
     private Collection collection;
 
     private boolean read;
+
+    private Date readDate;
 
     private boolean added;
 
@@ -68,5 +72,13 @@ public class UserCollection {
 
     public void setAdded(boolean added) {
         this.added = added;
+    }
+
+    public Date getReadDate() {
+        return readDate;
+    }
+
+    public void setReadDate(Date readDate) {
+        this.readDate = readDate;
     }
 }
