@@ -12,20 +12,24 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NaturalId
-    private String title;
-
     private Date publishDate;
 
     private boolean read;
 
     private int pages;
 
+    private int numeration;
+
     public Book() {}
 
-    public Book(Long id, String title, Date publishDate, boolean read, int pages) {
-        this.id = id;
-        this.title = title;
+    public Book(Date publishDate, boolean read, int pages, int numeration) {
+        this.publishDate = publishDate;
+        this.read = read;
+        this.pages = pages;
+        this.numeration = numeration;
+    }
+
+    public Book(Date publishDate, boolean read, int pages) {
         this.publishDate = publishDate;
         this.read = read;
         this.pages = pages;
@@ -37,14 +41,6 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Date getPublishDate() {

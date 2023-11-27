@@ -25,8 +25,7 @@ public class User {
 
     public User() {}
 
-    public User(Long id, String mail, String name, boolean admin, Blob profileImg, List<UserCollection> collections) {
-        this.id = id;
+    public User(String mail, String name, boolean admin, Blob profileImg, List<UserCollection> collections) {
         this.mail = mail;
         this.name = name;
         this.admin = admin;

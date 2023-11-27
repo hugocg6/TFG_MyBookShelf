@@ -35,8 +35,7 @@ public class Collection {
 
     public Collection() {}
 
-    public Collection(Long id, String name, List<Book> books, List<CollectionAuthor> author, Publisher publisher, String plot, Blob bookImage) {
-        this.id = id;
+    public Collection(String name, List<Book> books, List<CollectionAuthor> author, Publisher publisher, String plot, Blob bookImage) {
         this.name = name;
         this.books = books;
         this.author = author;

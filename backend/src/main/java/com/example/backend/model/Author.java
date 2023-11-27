@@ -20,8 +20,7 @@ public class Author {
 
     public Author() {}
 
-    public Author(Long id, String name, List<CollectionAuthor> collections) {
-        this.id = id;
+    public Author(String name, List<CollectionAuthor> collections) {
         this.name = name;
         this.collections = collections;
     }
