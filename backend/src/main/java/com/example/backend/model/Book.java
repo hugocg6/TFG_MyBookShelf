@@ -66,4 +66,12 @@ public class Book {
     public void setPages(int pages) {
         this.pages = pages;
     }
+
+    public int getNumeration() {
+        return numeration;
+    }
+
+    public void setNumeration(int numeration) {
+        this.numeration = numeration;
+    }
 }

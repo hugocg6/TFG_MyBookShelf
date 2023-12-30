@@ -215,7 +215,7 @@ transition: 0.6s ease-out;
 .tm-post { max-width: 470px; }
 
 .tm-row {
-    max-width: 980px;
+    max-width: 100%;
     justify-content: space-between;
 }
 
@@ -507,7 +507,7 @@ figcaption {
 .tm-pt-60 { padding-top: 60px; }
 .tm-mb-40 { margin-bottom: 40px; }
 .tm-mb-45 { margin-bottom: 45px; }
-.tm-mb-55 { margin-bottom: 55px; }
+.tm-mb-55 { margin-bottom: 10px; }
 .tm-mb-60 { margin-bottom: 60px; }
 .tm-mb-65 { margin-bottom: 65px; }
 .tm-mb-75 { margin-bottom: 75px; }

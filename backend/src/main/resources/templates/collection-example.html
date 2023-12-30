@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MyBookShelf</title>
-    <link rel="icon" href="../Logos_y_demás/favicon_io/favicon.ico">
-	<link rel="stylesheet" href="../static/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link rel="icon" href="/misc/favicon_io/favicon.ico">
+	<link rel="stylesheet" href="/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/templatemo-xtra-blog.css" rel="stylesheet">
-    <link href="../static/css/collection.css" rel="stylesheet">
-    <link href="../static/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="../static/fonts/icomoon/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/templatemo-xtra-blog.css" rel="stylesheet">
+    <link href="/css/collection.css" rel="stylesheet">
+    <link href="/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/fonts/icomoon/style.css" rel="stylesheet">
 <!--
     
 TemplateMo 553 Xtra Blog
@@ -28,7 +28,7 @@ https://templatemo.com/tm-553-xtra-blog
             </button>
             <div class="tm-site-header">
                 <a href="index.html">
-                    <img src="../Logos_y_demás/Logo-removebg-preview.png" alt="Image" class="img-fluid">
+                    <img src="/misc/Logo-removebg-preview.png" alt="Image" class="img-fluid">
                 </a>
             </div>
             <nav class="tm-nav" id="tm-nav">            
@@ -66,14 +66,20 @@ https://templatemo.com/tm-553-xtra-blog
                     </form>
                 </div>                
             </div>            
-            
+            <!--Cover image-->
             <div class="row tm-row">
                 <div class="col-12">
-                    <figure class="tm-collection-figure">
-                        <img style="height: 18rem; width: 12rem" src="../Logos_y_demás/Datos_de_ejemplo/3.jpg" alt="Image" class="img-thumbnail center-img-about">
-                    </figure>
+                    <article class="cta">
+                        <img style="width: 14rem" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
+                        <div class="cta__text-column">
+                            <h1 th:text="${collection.name}"></h1>
+                            <h5 th:text="${'Author: ' + collection.author}"></h5>
+                            <h6 th:text="${collection.plot}"></h6>
+                        </div>
+                    </article>
                 </div>
-            </div>       
+            </div>
+            <!--Book list-->       
             <div class="row tm-row">
                 <div class="col-12">
                     <hr class="tm-hr-primary tm-mb-55">
@@ -97,116 +103,21 @@ https://templatemo.com/tm-553-xtra-blog
                               <th scope="col">EDITORIAL</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr scope="row">
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              <td>
-                                #1
-                              </td>
-                              <td>BLAME! (Master Edition) 1</td>
-                              <td>
-                                JUNIO 2017
-                              </td>
-                              <td>416 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
+                            <tbody>
+                            <tr th:each="book : ${collection.books}">
+                                <th scope="row">
+                                    <label class="control control--checkbox">
+                                        <input type="checkbox"/>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </th>
+                                <td th:text="${'#' + book.num}"></td>
+                                <td th:text="${collection.name +' '+ book.num}"></td>
+                                <td th:text="${book.publishDate}"></td>
+                                <td th:text="${book.pages}"></td>
+                                <td th:text="${collection.publisher}"></td>
                             </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox" />
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#2</td>
-                              <td>BLAME! (Master Edition) 2</td>
-                              <td>
-                                JULIO 2017
-                              </td>
-                              <td>383 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#3</td>
-                              <td>BLAME! (Master Edition) 3</a></td>
-                              <td>
-                                SEPTIEMBRE 2017
-                              </td>
-                              <td>360 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#4</td>
-                              <td>BLAME! (Master Edition) 4</td>
-                              <td>
-                                NOVIEMBRE 2017
-                              </td>
-                              <td>370 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#5</td>
-                              <td>BLAME! (Master Edition) 5</td>
-                              <td>
-                                FEBRERO 2018
-                              </td>
-                              <td>352 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#6</td>
-                              <td>BLAME! (Master Edition) 6</td>
-                              <td>
-                                ABRIL 2018
-                              </td>
-                              <td>338 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-                            
-                          </tbody>
+                            </tbody>
                         </table>
                     </div>
                                 
@@ -223,10 +134,10 @@ https://templatemo.com/tm-553-xtra-blog
             </footer>
         </main>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/collection.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/templatemo-script.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/collection.js"></script>
 </body>
 </html>

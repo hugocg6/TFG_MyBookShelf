@@ -22,9 +22,10 @@ public class Collection {
     @OneToMany(mappedBy = "collection")
     private List<CollectionAuthor> author;
 
-    @OneToOne
+    @ManyToOne
     private Publisher publisher;
 
+    @Column(length = 1000)
     private String plot;
 
     @OneToMany(mappedBy = "collection")
