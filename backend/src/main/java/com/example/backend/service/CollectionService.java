@@ -36,7 +36,7 @@ public class CollectionService {
                             entityToDTO(collection.getBooks()),
                             authorService.getAuthorsNames(collection.getAuthor()),
                             collection.getPublisher().getName(),
-                            collection.getPlot());
+                            collection.getPlot(), collection.getDemography().getName());
                 })
                 .orElse(null);
     }

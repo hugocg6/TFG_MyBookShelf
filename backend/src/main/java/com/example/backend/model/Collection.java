@@ -31,17 +31,21 @@ public class Collection {
     @OneToMany(mappedBy = "collection")
     private List<UserCollection> users;
 
+    @ManyToOne
+    private Demography demography;
+
     @Lob
     private Blob bookImage;
 
     public Collection() {}
 
-    public Collection(String name, List<Book> books, List<CollectionAuthor> author, Publisher publisher, String plot, Blob bookImage) {
+    public Collection(String name, List<Book> books, List<CollectionAuthor> author, Publisher publisher, String plot, Demography demography, Blob bookImage) {
         this.name = name;
         this.books = books;
         this.author = author;
         this.publisher = publisher;
         this.plot = plot;
+        this.demography = demography;
         this.bookImage = bookImage;
     }
 
@@ -107,5 +111,13 @@ public class Collection {
 
     public void setUsers(List<UserCollection> users) {
         this.users = users;
+    }
+
+    public Demography getDemography() {
+        return demography;
+    }
+
+    public void setDemography(Demography demography) {
+        this.demography = demography;
     }
 }

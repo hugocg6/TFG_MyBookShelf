@@ -12,16 +12,19 @@ public class CollectionDTO {
     private String publisher;
     private String plot;
 
+    private String demography;
+
     public CollectionDTO() {
     }
 
-    public CollectionDTO(long id, String name, List<BookDTO> books, List<String> author, String publisher, String plot) {
+    public CollectionDTO(long id, String name, List<BookDTO> books, List<String> author, String publisher, String plot, String demography) {
         this.id = id;
         this.name = name;
         this.books = books;
         this.author = author;
         this.publisher = publisher;
         this.plot = plot;
+        this.demography = demography;
     }
 
     public long getId() {
@@ -70,5 +73,13 @@ public class CollectionDTO {
 
     public void setPlot(String plot) {
         this.plot = plot;
+    }
+
+    public String getDemography() {
+        return demography;
+    }
+
+    public void setDemography(String demography) {
+        this.demography = demography;
     }
 }

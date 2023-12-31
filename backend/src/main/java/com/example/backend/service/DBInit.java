@@ -20,16 +20,19 @@ public class DBInit {
     private final CollectionRepository collectionRepository;
     private final PublisherRepository publisherRepository;
     private final CollectionAuthorRepository collectionAuthorRepository;
+    private final DemographyRepository demographyRepository;
 
     @Autowired
     public DBInit(AuthorRepository authorRepository, BookRepository bookRepository,
                   CollectionRepository collectionRepository, PublisherRepository publisherRepository,
-                  CollectionAuthorRepository collectionAuthorRepository) {
+                  CollectionAuthorRepository collectionAuthorRepository,
+                  DemographyRepository demographyRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.collectionRepository = collectionRepository;
         this.publisherRepository = publisherRepository;
         this.collectionAuthorRepository = collectionAuthorRepository;
+        this.demographyRepository = demographyRepository;
     }
 
 
@@ -55,52 +58,66 @@ public class DBInit {
         Publisher milkyWayEdiciones = new Publisher("Milky Way Ediciones");
         publisherRepository.save(milkyWayEdiciones);
 
-        //Collection 1
+        //Demographies
+        Demography shonen = new Demography("Shonen");
+        demographyRepository.save(shonen);
 
-        List<Book> bookList1 = new ArrayList<>();
+        Demography seinen = new Demography("Seinen");
+        demographyRepository.save(seinen);
+
+        Demography shojo = new Demography("Shojo");
+        demographyRepository.save(shojo);
+
+        Demography josei = new Demography("Josei");
+        demographyRepository.save(josei);
+
+        Demography kodomo = new Demography("Kodomo");
+        demographyRepository.save(kodomo);
+
+
+        //Collection Ao no Flag
+
+        List<Book> aoNoFlagBookList = new ArrayList<>();
 
         Book book11 = new Book(new Date(1537394400000L), false, 224, 1);
-        bookList1.add(book11);
+        aoNoFlagBookList.add(book11);
         Book book12 = new Book(new Date(1544050800000L), false, 224, 2);
-        bookList1.add(book12);
+        aoNoFlagBookList.add(book12);
         Book book13 = new Book(new Date(1549494000000L), false, 208, 3);
-        bookList1.add(book13);
+        aoNoFlagBookList.add(book13);
         Book book14 = new Book(new Date(1556748000000L), false, 208, 4);
-        bookList1.add(book14);
+        aoNoFlagBookList.add(book14);
         Book book15 = new Book(new Date(1561586400000L), false, 208, 5);
-        bookList1.add(book15);
+        aoNoFlagBookList.add(book15);
         Book book16 = new Book(new Date(1568239200000L), false, 208, 6);
-        bookList1.add(book16);
+        aoNoFlagBookList.add(book16);
         Book book17 = new Book(new Date(1591826400000L), false, 208, 7);
-        bookList1.add(book17);
+        aoNoFlagBookList.add(book17);
         Book book18 = new Book(new Date(1599688800000L), false, 208, 8);
-        bookList1.add(book18);
+        aoNoFlagBookList.add(book18);
 
-        bookRepository.saveAll(bookList1);
+        bookRepository.saveAll(aoNoFlagBookList);
 
-        Collection collection1 = new Collection();
+        Collection aoNoFlagCollection = new Collection();
         Author kaito = new Author();
 
         List<CollectionAuthor> kaitoCollectionAuthorList = new ArrayList<>();
-        CollectionAuthor kaitoCollectionAuthor = new CollectionAuthor(collection1, kaito);
+        CollectionAuthor kaitoCollectionAuthor = new CollectionAuthor(aoNoFlagCollection, kaito);
         kaitoCollectionAuthorList.add(kaitoCollectionAuthor);
 
         kaito.setName("KAITO");
         kaito.setCollections(kaitoCollectionAuthorList);
 
-        collection1.setName("Ao no Flag");
-        collection1.setBooks(bookList1);
-        collection1.setAuthor(kaitoCollectionAuthorList);
-        collection1.setPublisher(ivrea);
-        collection1.setPlot("Tres amigos de tercero de bachillerato y los dilemas de la vida en ese momento crucial en el que el mundo adulto se va acercando y hay que tomar decisiones. El protagonista, Taichi Ichinose, es un chico bastante seco, que no suele exteriorizar lo que le ocurre, y que prefiere mantenerse alejado del resto." +
-                "\n" +
-                "Pero su compañera de clase, Futaba Kuze, acaba convenciéndolo para que la ayude a tener una cita con su amigo de la infancia, Touma Mita, uno de los chicos más populares del colegio. Esos que son simpáticos, alegres, buenos en todo lo que hacen y admirados. O sea, todo lo contrario a él." +
-                "\n" +
-                "Por supuesto que las cosas no serán tan sencillas, ni los sentimientos tan correspondidos, al menos en el sentido más tradicional y esperado en este tipo de mangas. Una especie de triángulo amoroso se va formando (en todo el sentido de la palabra), en el que inicialmente todos parecen perder.");
-        setCollectionImage(collection1, "covers/ao_no_flag.jpg");
+        aoNoFlagCollection.setName("Ao no Flag");
+        aoNoFlagCollection.setBooks(aoNoFlagBookList);
+        aoNoFlagCollection.setAuthor(kaitoCollectionAuthorList);
+        aoNoFlagCollection.setPublisher(ivrea);
+        aoNoFlagCollection.setDemography(shonen);
+        aoNoFlagCollection.setPlot("Three friends from the third year of high school and the dilemmas of life at that crucial moment when the adult world is approaching and decisions must be made. The protagonist, Taichi Ichinose, is a rather reserved boy who doesn't usually express what is happening to him and prefers to keep himself away from the rest.");
+        setCollectionImage(aoNoFlagCollection, "covers/ao_no_flag.jpg");
 
         authorRepository.save(kaito);
-        collectionRepository.save(collection1);
+        collectionRepository.save(aoNoFlagCollection);
         collectionAuthorRepository.save(kaitoCollectionAuthor);
 
         // Collection Akira
@@ -135,7 +152,8 @@ public class DBInit {
         akiraCollection.setBooks(akiraBookList);
         akiraCollection.setAuthor(katsuhitoOtomoCollectionAuthorList);
         akiraCollection.setPublisher(normaEditorial);
-        akiraCollection.setPlot("En el año 2019, después de una misteriosa explosión que destruyó Tokio, la ciudad se reconstruye como Neo-Tokio. Kaneda y Tetsuo, miembros de una pandilla de motociclistas, se ven involucrados en experimentos gubernamentales psíquicos que desatan poderes incontrolables.");
+        akiraCollection.setDemography(seinen);
+        akiraCollection.setPlot("In the year 2019, after a mysterious explosion that destroyed Tokyo, the city is rebuilt as Neo-Tokio. Kaneda and Tetsuo, members of a motorcycle gang, become involved in government psychic experiments that unleash uncontrollable powers.");
 
         setCollectionImage(akiraCollection, "covers/akira.jpeg");
 
@@ -175,7 +193,8 @@ public class DBInit {
         blameCollection.setBooks(blameBookList);
         blameCollection.setAuthor(tsutomuNiheiCollectionAuthorList);
         blameCollection.setPublisher(paniniManga);
-        blameCollection.setPlot("En un vasto mundo donde la Megaestructura se expande sin control, Killy, un hombre misterioso con un arma poderosa, busca la Terminal Genética para salvar a la humanidad de la extinción. En su camino, enfrenta peligros y descubre secretos oscuros en un entorno postapocalíptico.");
+        blameCollection.setDemography(seinen);
+        blameCollection.setPlot("In a vast world where the Megastructure expands uncontrollably, Killy, a mysterious man with a powerful weapon, seeks the Genetic Terminal to save humanity from extinction. Along his journey, he faces dangers and uncovers dark secrets in a post-apocalyptic environment.");
 
         setCollectionImage(blameCollection, "covers/blame.jpg");
 
@@ -206,13 +225,61 @@ public class DBInit {
         biomegaCollection.setBooks(biomegaBookList);
         biomegaCollection.setAuthor(tsutomuNiheiCollectionAuthorList);
         biomegaCollection.setPublisher(paniniManga);
-        biomegaCollection.setPlot("En un futuro postapocalíptico, Zouichi Kanoe, un agente de la Corporación de Salvaguardia Genética, debe proteger a una joven llamada Eon Green. Juntos, enfrentan a monstruos biotecnológicos y descubren conspiraciones relacionadas con la propagación del virus N5S que convierte a los humanos en criaturas aberrantes.");
+        biomegaCollection.setDemography(seinen);
+        biomegaCollection.setPlot("In a post-apocalyptic future, Zouichi Kanoe, an agent of the Genetic Preservation Corporation, must protect a young girl named Eon Green. Together, they face biotechnological monsters and uncover conspiracies related to the spread of the N5S virus, which transforms humans into aberrant creatures.");
 
         setCollectionImage(biomegaCollection, "covers/biomega.jpg");
 
         collectionRepository.save(biomegaCollection);
         collectionAuthorRepository.save(tsutomuNiheiCollectionAuthor1);
 
+        // Collection Death Note
+        List<Book> deathNoteBookList = new ArrayList<>();
+
+        Book deathNoteBook1 = new Book(new Date(1363906800000L), false, 384, 1);
+        deathNoteBookList.add(deathNoteBook1);
+        Book deathNoteBook2 = new Book(new Date(1369346400000L), false, 392, 2);
+        deathNoteBookList.add(deathNoteBook2);
+        Book deathNoteBook3 = new Book(new Date(1372370400000L), false, 408, 3);
+        deathNoteBookList.add(deathNoteBook3);
+        Book deathNoteBook4 = new Book(new Date(1374789600000L), false, 408, 4);
+        deathNoteBookList.add(deathNoteBook4);
+        Book deathNoteBook5 = new Book(new Date(1377208800000L), false, 376, 5);
+        deathNoteBookList.add(deathNoteBook5);
+        Book deathNoteBook6 = new Book(new Date(1380232800000L), false, 416, 6);
+        deathNoteBookList.add(deathNoteBook6);
+
+        bookRepository.saveAll(deathNoteBookList);
+
+        Collection deathNoteCollection = new Collection();
+        Author tsugumiOhba = new Author();
+        Author takeshiObata = new Author();
+
+        List<CollectionAuthor> deathNoteCollectionAuthorList = new ArrayList<>();
+        CollectionAuthor tsugumiOhbaCollectionAuthor = new CollectionAuthor(deathNoteCollection, tsugumiOhba);
+        deathNoteCollectionAuthorList.add(tsugumiOhbaCollectionAuthor);
+        CollectionAuthor takeshiObataCollectionAuthor = new CollectionAuthor(deathNoteCollection, takeshiObata);
+        deathNoteCollectionAuthorList.add(takeshiObataCollectionAuthor);
+
+        tsugumiOhba.setName("Tsugumi Ohba");
+        tsugumiOhba.setCollections(deathNoteCollectionAuthorList);
+        takeshiObata.setName("Takeshi Obata");
+        takeshiObata.setCollections(deathNoteCollectionAuthorList);
+
+        deathNoteCollection.setName("Death Note");
+        deathNoteCollection.setBooks(deathNoteBookList);
+        deathNoteCollection.setAuthor(deathNoteCollectionAuthorList);
+        deathNoteCollection.setPublisher(normaEditorial);
+        deathNoteCollection.setDemography(shonen);
+        deathNoteCollection.setPlot("Light Yagami, a high school student, discovers a mysterious notebook called the Death Note. Whoever's name is written in the notebook dies. With the power to control life and death, Light sets out to create a utopia free of criminals, but he faces opposition from the enigmatic detective L.");
+
+        setCollectionImage(deathNoteCollection, "covers/death_note.jpg");
+
+        authorRepository.save(tsugumiOhba);
+        authorRepository.save(takeshiObata);
+        collectionRepository.save(deathNoteCollection);
+        collectionAuthorRepository.save(tsugumiOhbaCollectionAuthor);
+        collectionAuthorRepository.save(takeshiObataCollectionAuthor);
 
     }
 
