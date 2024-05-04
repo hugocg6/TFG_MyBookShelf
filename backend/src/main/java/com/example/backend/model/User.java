@@ -15,6 +15,8 @@ public class User {
     private String mail;
     private String name;
 
+    private String password;
+
     private boolean admin;
 
     @Lob
@@ -25,9 +27,10 @@ public class User {
 
     public User() {}
 
-    public User(String mail, String name, boolean admin, Blob profileImg, List<UserCollection> collections) {
+    public User(String mail, String name, String password, boolean admin, Blob profileImg, List<UserCollection> collections) {
         this.mail = mail;
         this.name = name;
+        this.password = password;
         this.admin = admin;
         this.profileImg = profileImg;
         this.collections = collections;
@@ -55,6 +58,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean isAdmin() {

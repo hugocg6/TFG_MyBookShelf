@@ -28,6 +28,9 @@ public class CollectionService {
     public List<Collection> findAll(){return collectionRepository.findAll();}
 
     public Optional<Collection> findById(long id){return collectionRepository.findById(id);}
+
+    public List<Collection> findLastAddedCollection(){return collectionRepository.findLastAddedCollection();}
+
     public CollectionDTO findCollectionById(long id){
         return collectionRepository.findById(id)
                 .map(collection -> {

@@ -12,21 +12,26 @@ jQuery(document).ready(function($){
 
 
 function pic() {
-        var bgm = ['../Logos_y_demás/login_wp/lw1.png',
-        '../Logos_y_demás/login_wp/lw2.jpg',
-        '../Logos_y_demás/login_wp/lw3.png',
-        '../Logos_y_demás/login_wp/lw4.png',
-        '../Logos_y_demás/login_wp/lw5.png',
-        '../Logos_y_demás/login_wp/lw6.jpg',
-        '../Logos_y_demás/login_wp/lw7.jpg',
-        '../Logos_y_demás/login_wp/lw8.jpg',
-        '../Logos_y_demás/login_wp/lw9.png',
-        '../Logos_y_demás/login_wp/lw11.png',
-        '../Logos_y_demás/login_wp/lw12.png',
-        '../Logos_y_demás/login_wp/lw15.png',
-        '../Logos_y_demás/login_wp/lw16.png',
-        '../Logos_y_demás/login_wp/lw17.png',
-        '../Logos_y_demás/login_wp/lw18.jpg'
+        var bgm = ['/misc/login_wp/lw1.png',
+        '/misc/login_wp/lw2.jpg',
+        '/misc/login_wp/lw3.png',
+        '/misc/login_wp/lw4.png',
+        '/misc/login_wp/lw5.png',
+        '/misc/login_wp/lw6.jpg',
+        '/misc/login_wp/lw7.jpg',
+        '/misc/login_wp/lw8.jpg',
+        '/misc/login_wp/lw9.png',
+        '/misc/login_wp/lw11.png',
+        '/misc/login_wp/lw12.png',
+        '/misc/login_wp/lw15.png',
+        '/misc/login_wp/lw16.png',
+        '/misc/login_wp/lw17.png',
+        '/misc/login_wp/lw18.jpg',
+        '/misc/login_wp/lw19.jpg',
+        '/misc/login_wp/lw20.jpg',
+        '/misc/login_wp/lw21.png',
+        '/misc/login_wp/lw22.jpg',
+        '/misc/login_wp/lw23.jpg'
     ];
      
         $('body').css({
@@ -115,41 +120,20 @@ function pic() {
     $form_forgot_password.addClass('is-selected');
   }
 
-  //REMOVE THIS - it's just to show error messages 
-  $form_login.find('input[type="submit"]').on('click', function(event){
-    event.preventDefault();
-    $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
-  });
-  $form_signup.find('input[type="submit"]').on('click', function(event){
-    event.preventDefault();
-    $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
-  });
-
-
-  //IE9 placeholder fallback
-  //credits http://www.hagenburger.net/BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.html
-  if(!Modernizr.input.placeholder){
-    $('[placeholder]').focus(function() {
-      var input = $(this);
-      if (input.val() == input.attr('placeholder')) {
-        input.val('');
-        }
-    }).blur(function() {
-      var input = $(this);
-        if (input.val() == '' || input.val() == input.attr('placeholder')) {
-        input.val(input.attr('placeholder'));
-        }
-    }).blur();
-    $('[placeholder]').parents('form').submit(function() {
-        $(this).find('[placeholder]').each(function() {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-          input.val('');
-        }
+    function registerUser() {
+        fetch('/LogIn/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: document.getElementById('signup-username').value,
+                email: document.getElementById('signup-email').value,
+                password: document.getElementById('signup-password').value
+            })
         })
-    });
-  }
-
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
 });
 
 

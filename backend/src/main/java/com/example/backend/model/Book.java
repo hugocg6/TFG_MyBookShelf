@@ -20,13 +20,18 @@ public class Book {
 
     private int numeration;
 
+    @ManyToOne
+    @JoinColumn(name = "collection_id")
+    private Collection collection;
+
     public Book() {}
 
-    public Book(Date publishDate, boolean read, int pages, int numeration) {
+    public Book(Date publishDate, boolean read, int pages, int numeration, Collection collection) {
         this.publishDate = publishDate;
         this.read = read;
         this.pages = pages;
         this.numeration = numeration;
+        this.collection = collection;
     }
 
     public Book(Date publishDate, boolean read, int pages) {
@@ -74,4 +79,8 @@ public class Book {
     public void setNumeration(int numeration) {
         this.numeration = numeration;
     }
+
+    public Collection getCollection() {return collection;}
+
+    public void setCollection(Collection collection) {this.collection = collection;}
 }

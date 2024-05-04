@@ -4,56 +4,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MyBookShelf</title>
-  <link rel="icon" href="../Logos_y_demás/favicon_io/favicon.ico">
-	<link rel="stylesheet" href="../static/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+  <link rel="icon" href="/misc/favicon_io/favicon.ico">
+	<link rel="stylesheet" href="/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
-  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../static/css/templatemo-xtra-blog.css" rel="stylesheet">
-  <link href="../static/css/login.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/templatemo-xtra-blog.css" rel="stylesheet">
+  <link href="/css/login.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
-<!--
-    
-TemplateMo 553 Xtra Blog
 
-https://templatemo.com/tm-553-xtra-blog
-
--->
 </head>
 <body class="random_bg">
   <nav class="main-nav">
     <ul>
-      <li><a class="signin" href="#0">Sign in</a></li>
-      <li><a class="signup" href="#0">Sign up</a></li>
+      <li><a class="signin">Sign in</a></li>
+      <li><a class="signup">Sign up</a></li>
     </ul>
   </nav>
   
   <div class="user-modal">
       <div class="user-modal-container">
         <ul class="switcher">
-          <li><a href="#0">Sign in</a></li>
-          <li><a href="#0">New account</a></li>
+          <li><a>Sign in</a></li>
+          <li><a>New account</a></li>
         </ul>
   
         <div id="login">
-          <form class="form">
+          <form class="form" action="/LogIn/processLogin" method="post">
             <p class="fieldset">
               <label class="image-replace email" for="signin-email">E-mail</label>
-              <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+              <input class="full-width has-padding has-border" id="signin-email" type="email" name="email" placeholder="E-mail">
               <span class="error-message">An account with this email address does not exist!</span>
             </p>
   
             <p class="fieldset">
               <label class="image-replace password" for="signin-password">Password</label>
-              <input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password">
+              <input class="full-width has-padding has-border" id="signin-password" type="password"  name="password" placeholder="Password">
               <a href="#0" class="hide-password">Show</a>
               <span class="error-message">Wrong password! Try again.</span>
             </p>
-  
-            <p class="fieldset">
-              <input type="checkbox" id="remember-me" checked>
-              <label for="remember-me">Remember me</label>
-            </p>
+
+            <input type="hidden" name="_csrf" th:value="${token}"/>
   
             <p class="fieldset">
               <input class="full-width" type="submit" value="Login">
@@ -63,31 +54,28 @@ https://templatemo.com/tm-553-xtra-blog
         </div>
   
         <div id="signup">
-          <form class="form">
+          <form class="form" action="/profile/register" method="post">
             <p class="fieldset">
               <label class="image-replace username" for="signup-username">Username</label>
-              <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+              <input class="full-width has-padding has-border" id="signup-username" type="text" name="username" placeholder="Username">
               <span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
             </p>
   
             <p class="fieldset">
               <label class="image-replace email" for="signup-email">E-mail</label>
-              <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+              <input class="full-width has-padding has-border" id="signup-email" type="email" name="email" placeholder="E-mail">
               <span class="error-message">Enter a valid email address!</span>
             </p>
   
             <p class="fieldset">
               <label class="image-replace password" for="signup-password">Password</label>
-              <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Password">
+              <input class="full-width has-padding has-border" id="signup-password" type="password" name="password" placeholder="Password">
               <a href="#0" class="hide-password">Show</a>
               <span class="error-message">Your password has to be at least 6 characters long!</span>
             </p>
-  
-            <p class="fieldset">
-              <input type="checkbox" id="accept-terms">
-              <label for="accept-terms">I agree to the <a class="accept-terms" href="#0">Terms</a></label>
-            </p>
-  
+
+            <input type="hidden" name="_csrf" th:value="${token}"/>
+
             <p class="fieldset">
               <input class="full-width has-padding" type="submit" value="Create account">
             </p>
@@ -118,6 +106,6 @@ https://templatemo.com/tm-553-xtra-blog
     </div>
   <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src='../static/js/login.js'></script>
+  <script th:src="@{/js/login.js}"></script>
 </body>
 </html>

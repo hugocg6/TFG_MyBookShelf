@@ -3,9 +3,8 @@ package com.example.backend.controller;
 import com.example.backend.dto.CollectionDTO;
 import com.example.backend.model.Collection;
 import com.example.backend.service.CollectionService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,29 +12,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/collection")
 public class CollectionController {
 
     @Autowired
     private CollectionService collectionService;
 
-    @GetMapping("/collection/{id}")
+    @ModelAttribute
+    public void addAttributes(Model model, HttpSession session) {
+        if (session.getAttribute("logged")==null
+                || session.getAttribute("user")==null
+                || !session.getAttribute("logged").equals(true)) {
+            model.addAttribute("logged", false);
+        }else
+            model.addAttribute("logged", true);
+    }
+
+    @GetMapping("/{id}")
     public String getCollection(Model model, @PathVariable long id) {
         CollectionDTO collection = collectionService.findCollectionById(id);
         model.addAttribute("collection", collection);
         return "collection-example";
     }
 
-    @GetMapping("/collection/{id}/image")
+    @GetMapping("/{id}/image")
     @Transactional
     public ResponseEntity<byte[]> downloadImage(@PathVariable long id) throws SQLException, IOException {
         Optional<Collection> optionalCollection = collectionService.findById(id);

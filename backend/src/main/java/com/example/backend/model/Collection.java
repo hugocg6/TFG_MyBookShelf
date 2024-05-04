@@ -16,7 +16,7 @@ public class Collection {
     @NaturalId
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "collection")
     private List<Book> books;
 
     @OneToMany(mappedBy = "collection")
