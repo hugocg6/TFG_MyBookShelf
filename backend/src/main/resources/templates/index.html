@@ -72,7 +72,7 @@
                     <div class="card-container">
                         <div th:each="collection : ${recentlyAdded}">
                             <a th:href="@{/collection/{id}(id=${collection.id})}">
-                                <img style="height: 16rem; width: 12rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
+                                <img style="height: 16rem; width: 11rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
                             </a>
                         </div>
                     </div>

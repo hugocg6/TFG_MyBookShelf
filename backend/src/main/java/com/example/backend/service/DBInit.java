@@ -528,6 +528,321 @@ public class DBInit {
         bookRepository.saveAll(soloistBookList);
         collectionAuthorRepository.save(soloistCollectionAuthor);
 
+
+        // Collection Look Back
+
+        Collection lookBackCollection = new Collection();
+        Author tatsukiFujimoto = new Author();
+
+        List<CollectionAuthor> tatsukiFujimotoCollectionAuthorList = new ArrayList<>();
+        CollectionAuthor tatsukiFujimotoCollectionAuthor = new CollectionAuthor(lookBackCollection, tatsukiFujimoto);
+        tatsukiFujimotoCollectionAuthorList.add(tatsukiFujimotoCollectionAuthor);
+
+        tatsukiFujimoto.setName("Tatsuki Fujimoto");
+        tatsukiFujimoto.setCollections(tatsukiFujimotoCollectionAuthorList);
+
+        lookBackCollection.setName("Look Back");
+        lookBackCollection.setAuthor(tatsukiFujimotoCollectionAuthorList);
+        lookBackCollection.setPublisher(normaEditorial);
+        lookBackCollection.setDemography(shonen);
+        lookBackCollection.setPlot("The story follows Fujino and Kyomoto, two girls with very different artistic abilities, but whose paths cross in their childhood and develop a strong relationship over the years. As they grow, their choices and dreams take them on different paths, but their emotional connection remains deep and meaningful.");
+        setCollectionImage(lookBackCollection, "static/misc/covers/look_back.jpg");
+
+        List<Book> lookBackBookList = new ArrayList<>();
+
+        Book lookBackBook1 = new Book(new Date(1649368800000L), false, 160, 1, lookBackCollection);
+        lookBackBookList.add(lookBackBook1);
+
+        lookBackCollection.setBooks(lookBackBookList);
+
+        authorRepository.save(tatsukiFujimoto);
+        collectionRepository.save(lookBackCollection);
+        bookRepository.saveAll(lookBackBookList);
+        collectionAuthorRepository.save(tatsukiFujimotoCollectionAuthor);
+
+        // Collection Fire Punch
+
+        Collection firePunchCollection = new Collection();
+
+        CollectionAuthor tatsukiFujimotoCollectionAuthor1 = new CollectionAuthor(firePunchCollection, tatsukiFujimoto);
+        tatsukiFujimotoCollectionAuthorList.add(tatsukiFujimotoCollectionAuthor1);
+
+        tatsukiFujimoto.setCollections(tatsukiFujimotoCollectionAuthorList);
+
+        firePunchCollection.setName("Fire Punch");
+        firePunchCollection.setAuthor(tatsukiFujimotoCollectionAuthorList);
+        firePunchCollection.setPublisher(normaEditorial);
+        firePunchCollection.setDemography(shonen);
+        firePunchCollection.setPlot("In a world frozen by a witch, people with special abilities are known as 'Blessed'. Agni, one of them, is able to regenerate his body despite being enveloped in flames that do not go out. After a tragedy caused by another Blessed One, Agni seeks revenge in a story of pain, redemption and hope.");
+        setCollectionImage(firePunchCollection, "static/misc/covers/fire_punch.jpg");
+
+        List<Book> firePunchBookList = new ArrayList<>();
+
+        Book firePunchBook1 = new Book(new Date(1481846400000L), false, 200, 1, firePunchCollection);
+        firePunchBookList.add(firePunchBook1);
+        Book firePunchBook2 = new Book(new Date(1489612800000L), false, 200, 2, firePunchCollection);
+        firePunchBookList.add(firePunchBook2);
+        Book firePunchBook3 = new Book(new Date(1497379200000L), false, 200, 3, firePunchCollection);
+        firePunchBookList.add(firePunchBook3);
+        Book firePunchBook4 = new Book(new Date(1505145600000L), false, 200, 4, firePunchCollection);
+        firePunchBookList.add(firePunchBook4);
+        Book firePunchBook5 = new Book(new Date(1512912000000L), false, 200, 5, firePunchCollection);
+        firePunchBookList.add(firePunchBook5);
+        Book firePunchBook6 = new Book(new Date(1520678400000L), false, 200, 6, firePunchCollection);
+        firePunchBookList.add(firePunchBook6);
+        Book firePunchBook7 = new Book(new Date(1528444800000L), false, 200, 7, firePunchCollection);
+        firePunchBookList.add(firePunchBook7);
+        Book firePunchBook8 = new Book(new Date(1536211200000L), false, 200, 8, firePunchCollection);
+        firePunchBookList.add(firePunchBook8);
+
+        firePunchCollection.setBooks(firePunchBookList);
+
+        collectionRepository.save(firePunchCollection);
+        bookRepository.saveAll(firePunchBookList);
+        collectionAuthorRepository.save(tatsukiFujimotoCollectionAuthor1);
+
+        //Collection Jigokuraku
+
+        Collection jigokurakuCollection = new Collection();
+        Author yujiKaku = new Author();
+
+        CollectionAuthor yujiKakuCollectionAuthor = new CollectionAuthor(jigokurakuCollection, yujiKaku);
+        List<CollectionAuthor> yujiKakuCollectionAuthorList = new ArrayList<>();
+        yujiKakuCollectionAuthorList.add(yujiKakuCollectionAuthor);
+
+        yujiKaku.setName("Yûji Kaku");
+        yujiKaku.setCollections(yujiKakuCollectionAuthorList);
+
+        jigokurakuCollection.setName("Jigokuraku");
+        jigokurakuCollection.setAuthor(yujiKakuCollectionAuthorList);
+        jigokurakuCollection.setPublisher(normaEditorial);
+        jigokurakuCollection.setDemography(shonen);
+        jigokurakuCollection.setPlot("In a world frozen by a witch, people with special abilities are known as 'Blessed'. Agni, one of them, is able to regenerate his body despite being enveloped in flames that do not go out. After a tragedy caused by another Blessed One, Agni seeks revenge in a story of pain, redemption and hope.");
+        setCollectionImage(jigokurakuCollection, "static/misc/covers/jigokuraku.jpg");
+
+        List<Book> jigokurakuBookList = new ArrayList<>();
+
+        Book jigokurakuBook1 = new Book(new Date(1546300800000L), false, 200, 1, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook1);
+        Book jigokurakuBook2 = new Book(new Date(1554076800000L), false, 200, 2, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook2);
+        Book jigokurakuBook3 = new Book(new Date(1561843200000L), false, 200, 3, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook3);
+        Book jigokurakuBook4 = new Book(new Date(1569614400000L), false, 200, 4, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook4);
+        Book jigokurakuBook5 = new Book(new Date(1577385600000L), false, 200, 5, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook5);
+        Book jigokurakuBook6 = new Book(new Date(1585156800000L), false, 200, 6, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook6);
+        Book jigokurakuBook7 = new Book(new Date(1592928000000L), false, 200, 7, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook7);
+        Book jigokurakuBook8 = new Book(new Date(1600699200000L), false, 200, 8, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook8);
+        Book jigokurakuBook9 = new Book(new Date(1608470400000L), false, 200, 9, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook9);
+        Book jigokurakuBook10 = new Book(new Date(1616241600000L), false, 200, 10, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook10);
+        Book jigokurakuBook11 = new Book(new Date(1626241600000L), false, 200, 11, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook11);
+        Book jigokurakuBook12 = new Book(new Date(1636241600000L), false, 200, 12, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook12);
+        Book jigokurakuBook13 = new Book(new Date(1646241600000L), false, 200, 13, jigokurakuCollection);
+        jigokurakuBookList.add(jigokurakuBook13);
+
+        jigokurakuCollection.setBooks(jigokurakuBookList);
+
+        authorRepository.save(yujiKaku);
+        collectionRepository.save(jigokurakuCollection);
+        bookRepository.saveAll(jigokurakuBookList);
+        collectionAuthorRepository.save(yujiKakuCollectionAuthor);
+
+        Collection ayashimonCollection = new Collection();
+
+        //Collection Ayashimon
+
+        CollectionAuthor yujiKakuCollectionAuthor1 = new CollectionAuthor(ayashimonCollection, yujiKaku);
+        yujiKakuCollectionAuthorList.add(yujiKakuCollectionAuthor1);
+
+        yujiKaku.setCollections(yujiKakuCollectionAuthorList);
+
+        ayashimonCollection.setName("Ayashimon");
+        ayashimonCollection.setAuthor(yujiKakuCollectionAuthorList);
+        ayashimonCollection.setPublisher(normaEditorial);
+        ayashimonCollection.setDemography(shonen);
+        ayashimonCollection.setPlot("Maruo Kaido is a young man with extraordinary strength and a passion for fighting. When he crosses paths with Urara, a member of the supernatural 'Ayashimon' gang, he finds himself caught in the middle of a battle between yokai and human factions. With Urara's guidance, Maruo discovers a world filled with mythical creatures and begins a journey that will test his strength and resolve.");
+        setCollectionImage(ayashimonCollection, "static/misc/covers/ayashimon.jpg");
+
+        List<Book> ayashimonBookList = new ArrayList<>();
+
+        Book ayashimonBook1 = new Book(new Date(1633046400000L), false, 200, 1, ayashimonCollection);
+        ayashimonBookList.add(ayashimonBook1);
+        Book ayashimonBook2 = new Book(new Date(1640812800000L), false, 200, 2, ayashimonCollection);
+        ayashimonBookList.add(ayashimonBook2);
+        Book ayashimonBook3 = new Book(new Date(1648579200000L), false, 200, 3, ayashimonCollection);
+        ayashimonBookList.add(ayashimonBook3);
+
+        ayashimonCollection.setBooks(ayashimonBookList);
+
+        collectionRepository.save(ayashimonCollection);
+        bookRepository.saveAll(ayashimonBookList);
+        collectionAuthorRepository.save(yujiKakuCollectionAuthor1);
+
+        //Collection Kimetsu no Yaiba
+
+        Collection kimetsuCollection = new Collection();
+        Author koyoharuGotouge = new Author();
+
+        CollectionAuthor koyoharuGotougeCollectionAuthor = new CollectionAuthor(kimetsuCollection, koyoharuGotouge);
+        List<CollectionAuthor> koyoharuGotougeCollectionAuthorList = new ArrayList<>();
+        koyoharuGotougeCollectionAuthorList.add(koyoharuGotougeCollectionAuthor);
+
+        koyoharuGotouge.setName("Koyoharu Gotouge");
+        koyoharuGotouge.setCollections(koyoharuGotougeCollectionAuthorList);
+
+        kimetsuCollection.setName("Kimetsu no Yaiba");
+        kimetsuCollection.setAuthor(koyoharuGotougeCollectionAuthorList);
+        kimetsuCollection.setPublisher(normaEditorial);
+        kimetsuCollection.setDemography(shonen);
+        kimetsuCollection.setPlot("Tanjiro Kamado is a kind-hearted boy whose family is slaughtered by demons. When his sister Nezuko is turned into a demon, Tanjiro joins the Demon Slayer Corps to find a cure and avenge his family. Alongside other Demon Slayers, he battles powerful demons and learns the secrets of the Breath styles to become a formidable fighter.");
+        setCollectionImage(kimetsuCollection, "static/misc/covers/kimetsu_no_yaiba.jpg");
+
+        List<Book> kimetsuBookList = new ArrayList<>();
+
+        long[] publicationDates = {
+                1443657600000L, 1451606400000L, 1459363200000L, 1466976000000L,
+                1474646400000L, 1482268800000L, 1489948800000L, 1497542400000L,
+                1505212800000L, 1512835200000L, 1520467200000L, 1528089600000L,
+                1535760000000L, 1543382400000L, 1550956800000L, 1558636800000L,
+                1566268800000L, 1573852800000L, 1581523200000L, 1589145600000L,
+                1596758400000L, 1604371200000L, 1612041600000L
+        };
+
+        for (int i = 1; i <= 23; i++) {
+            Book book = new Book(new Date(publicationDates[i - 1]), false, 192, i, kimetsuCollection);
+            kimetsuBookList.add(book);
+        }
+
+        kimetsuCollection.setBooks(kimetsuBookList);
+
+        authorRepository.save(koyoharuGotouge);
+        collectionRepository.save(kimetsuCollection);
+        bookRepository.saveAll(kimetsuBookList);
+        collectionAuthorRepository.save(koyoharuGotougeCollectionAuthor);
+
+        //Collection Gyo
+
+        Collection gyoCollection = new Collection();
+        Author junjiIto = new Author();
+
+        CollectionAuthor junjiItoCollectionAuthor = new CollectionAuthor(gyoCollection, junjiIto);
+        List<CollectionAuthor> junjiItoCollectionAuthorList = new ArrayList<>();
+        junjiItoCollectionAuthorList.add(junjiItoCollectionAuthor);
+
+        junjiIto.setName("Junji Ito");
+        junjiIto.setCollections(junjiItoCollectionAuthorList);
+
+        gyoCollection.setName("Gyo");
+        gyoCollection.setAuthor(junjiItoCollectionAuthorList);
+        gyoCollection.setPublisher(eccEdiciones);
+        gyoCollection.setDemography(seinen);
+        gyoCollection.setPlot("A bizarre and deadly phenomenon occurs when fish with mechanical legs start emerging from the sea, spreading disease and death. Tadashi and his girlfriend Kaori are caught in this horrific event, fighting to survive as the world around them is plunged into chaos and decay.");
+        setCollectionImage(gyoCollection, "static/misc/covers/gyo.jpg");
+
+        List<Book> gyoBookList = new ArrayList<>();
+
+        Book gyoBook1 = new Book(new Date(1009756800000L), false, 400, 1, gyoCollection);
+        gyoBookList.add(gyoBook1);
+
+        gyoCollection.setBooks(gyoBookList);
+
+        authorRepository.save(junjiIto);
+        collectionRepository.save(gyoCollection);
+        bookRepository.saveAll(gyoBookList);
+        collectionAuthorRepository.save(junjiItoCollectionAuthor);
+
+        // Collection Uzumaki
+        Collection uzumakiCollection = new Collection();
+
+        CollectionAuthor junjiItoCollectionAuthor1 = new CollectionAuthor(uzumakiCollection, junjiIto);
+        junjiItoCollectionAuthorList.add(junjiItoCollectionAuthor1);
+
+        junjiIto.setCollections(junjiItoCollectionAuthorList);
+
+        uzumakiCollection.setName("Uzumaki");
+        uzumakiCollection.setAuthor(junjiItoCollectionAuthorList);
+        uzumakiCollection.setPublisher(planetaComic);
+        uzumakiCollection.setDemography(seinen);
+        uzumakiCollection.setPlot("In the small town of Kurouzu-cho, strange spirals begin appearing in various forms, driving residents to madness and death. Kirie Goshima and her boyfriend Shuichi Saito attempt to understand and escape the spiral curse as it engulfs their town.");
+        setCollectionImage(uzumakiCollection, "static/misc/covers/uzumaki.jpg");
+
+        List<Book> uzumakiBookList = new ArrayList<>();
+
+        Book uzumakiBook1 = new Book(new Date(902352000000L), false, 644, 1, uzumakiCollection);
+        uzumakiBookList.add(uzumakiBook1);
+
+        uzumakiCollection.setBooks(uzumakiBookList);
+
+        collectionRepository.save(uzumakiCollection);
+        bookRepository.saveAll(uzumakiBookList);
+        collectionAuthorRepository.save(junjiItoCollectionAuthor1);
+
+
+        // Collection Tomie
+        Collection tomieCollection = new Collection();
+
+        CollectionAuthor junjiItoCollectionAuthor2 = new CollectionAuthor(tomieCollection, junjiIto);
+        List<CollectionAuthor> junjiItoCollectionAuthorList2 = new ArrayList<>();
+        junjiItoCollectionAuthorList2.add(junjiItoCollectionAuthor2);
+
+        junjiIto.setCollections(junjiItoCollectionAuthorList2);
+
+        tomieCollection.setName("Tomie");
+        tomieCollection.setAuthor(junjiItoCollectionAuthorList2);
+        tomieCollection.setPublisher(eccEdiciones);
+        tomieCollection.setDemography(seinen);
+        tomieCollection.setPlot("Tomie is a beautiful girl with the uncanny ability to regenerate from any injury, even death. Her presence drives those around her to madness, jealousy, and murder. Each story in the series explores the chaos and terror she brings to those who encounter her.");
+        setCollectionImage(tomieCollection, "static/misc/covers/tomie.jpg");
+
+        List<Book> tomieBookList = new ArrayList<>();
+
+        Book tomieBook1 = new Book(new Date(780480000000L), false, 752, 1, tomieCollection);
+        tomieBookList.add(tomieBook1);
+
+        tomieCollection.setBooks(tomieBookList);
+
+        collectionRepository.save(tomieCollection);
+        bookRepository.saveAll(tomieBookList);
+        collectionAuthorRepository.save(junjiItoCollectionAuthor2);
+
+        //Collection Hellstar Remina
+
+        Collection reminaCollection = new Collection();
+
+        CollectionAuthor junjiItoCollectionAuthor3 = new CollectionAuthor(reminaCollection, junjiIto);
+        List<CollectionAuthor> junjiItoCollectionAuthorList3 = new ArrayList<>();
+        junjiItoCollectionAuthorList3.add(junjiItoCollectionAuthor3);
+
+        junjiIto.setCollections(junjiItoCollectionAuthorList3);
+
+        reminaCollection.setName("Hellstar Remina");
+        reminaCollection.setAuthor(junjiItoCollectionAuthorList3);
+        reminaCollection.setPublisher(eccEdiciones);
+        reminaCollection.setDemography(seinen);
+        reminaCollection.setPlot("A mysterious planet appears from another dimension, heading toward Earth. As it moves through space, it devours everything in its path. The planet is named 'Remina' after the scientist's daughter who discovered it. But as the cosmic horror approaches Earth, the public turns against the girl, blaming her for the impending doom.");
+        setCollectionImage(reminaCollection, "static/misc/covers/hellstar_remina.jpg");
+
+        List<Book> reminaBookList = new ArrayList<>();
+
+        Book reminaBook1 = new Book(new Date(1080777600000L), false, 296, 1, reminaCollection);
+        reminaBookList.add(reminaBook1);
+
+        reminaCollection.setBooks(reminaBookList);
+
+        collectionRepository.save(reminaCollection);
+        bookRepository.saveAll(reminaBookList);
+        collectionAuthorRepository.save(junjiItoCollectionAuthor3);
+
+
     }
 
     private void setCollectionImage(Collection collection, String classPathResource) throws IOException {
