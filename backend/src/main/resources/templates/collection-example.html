@@ -41,11 +41,15 @@
             <div class="row tm-row">
                 <div class="col-12">
                     <article class="cta">
-                        <img style="width: 14rem" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
+                        <img style="width: 14rem ; height: 20rem" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
                         <div class="cta__text-column">
                             <h1 th:text="${collection.name}"></h1>
-                            <h5 th:text="${'Author: ' + #strings.listJoin(collection.author, ', ')}"></h5>
-                            <h5 th:text="${'Demography: ' + collection.demography}"></h5>
+                            <a th:href="@{/search/author/{author}(author=${collection.author})}" style="color: inherit; text-decoration: none">
+                                <h5 th:text="${'Author: ' + #strings.listJoin(collection.author, ', ')}"></h5>
+                            </a>
+                            <a th:href="@{/search/demography/{demography}(demography=${collection.demography})}" style="color: inherit; text-decoration: none">
+                                <h5 th:text="${'Demography: ' + collection.demography}"></h5>
+                            </a>
                             <h6 th:text="${collection.plot}"></h6>
                         </div>
                     </article>
@@ -59,10 +63,9 @@
 
                         <table class="table custom-table">
                           <thead>
-                            <tr>  
-                
+                            <tr>
                               <th scope="col">
-                                <label class="control control--checkbox">
+                                <label th:if="${logged}" class="control control--checkbox">
                                   <input type="checkbox"  class="js-check-all"/>
                                   <div class="control__indicator"></div>
                                 </label>
@@ -78,7 +81,7 @@
                             <tbody>
                             <tr th:each="book : ${collection.books}">
                                 <th scope="row">
-                                    <label class="control control--checkbox">
+                                    <label th:if="${logged}" class="control control--checkbox">
                                         <input type="checkbox"/>
                                         <div class="control__indicator"></div>
                                     </label>

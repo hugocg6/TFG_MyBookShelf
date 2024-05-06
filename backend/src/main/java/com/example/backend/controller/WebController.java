@@ -32,9 +32,6 @@ public class WebController {
             model.addAttribute("logged", true);
     }
 
-    @Autowired
-    private UserRepository userRepository;
-
     @GetMapping("/home")
     public String init(Model model, HttpSession session) {
         List<Collection> recentlyAdded = collectionService.findLastAddedCollection();

@@ -173,7 +173,7 @@ hr {
   margin: min(1.5rem, 2.5vw) 0 0 0;
 }
 
-.cta a {
+/*.cta a {
   display: inline-block;
   color: black;
   padding: 0.5rem 1rem;
@@ -182,5 +182,5 @@ hr {
   border-radius: 0.6rem;
   font-weight: 700;
   border: 0.35rem solid;
-}
+}/*
   

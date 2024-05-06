@@ -25,11 +25,15 @@ public class CollectionService {
         this.authorService = authorService;
     }
 
-    public List<Collection> findAll(){return collectionRepository.findAll();}
+    public List<Collection> findAll(){return collectionRepository.findAllByOrderByNameAsc();}
 
     public Optional<Collection> findById(long id){return collectionRepository.findById(id);}
 
     public List<Collection> findLastAddedCollection(){return collectionRepository.findLastAddedCollection();}
+
+    public List<Collection> findCollectionByAuthorName(String authorName){return collectionRepository.findCollectionByAuthorName(authorName);}
+
+    public List<Collection> findCollectionByDemography(String demography){return collectionRepository.findCollectionByDemography(demography);}
 
     public CollectionDTO findCollectionById(long id){
         return collectionRepository.findById(id)
