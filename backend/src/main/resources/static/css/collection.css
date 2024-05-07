@@ -159,7 +159,7 @@ hr {
 }
 
 .cta img {
-  object-fit: cover;
+  object-fit: fill;
   outline: 0.1rem solid;
   border-radius: 0;
 }

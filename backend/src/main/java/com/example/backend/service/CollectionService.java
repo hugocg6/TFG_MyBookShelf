@@ -8,10 +8,7 @@ import com.example.backend.repository.CollectionRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +31,19 @@ public class CollectionService {
     public List<Collection> findCollectionByAuthorName(String authorName){return collectionRepository.findCollectionByAuthorName(authorName);}
 
     public List<Collection> findCollectionByDemography(String demography){return collectionRepository.findCollectionByDemography(demography);}
+
+    public List<Collection> findSimilarCollection(Long collectionId){
+        List<Collection> sameAuthorCollections = collectionRepository.findCollectionsWithSameAuthor(collectionId);
+
+        // Fetch collections with the same demography
+        List<Collection> sameDemographyCollections = collectionRepository.findCollectionsWithSameDemography(collectionId);
+
+        HashSet<Collection> combinedCollections = new HashSet<>(sameAuthorCollections);
+        combinedCollections.addAll(sameDemographyCollections);
+
+        // Return the first 6 collections
+        return combinedCollections.stream().limit(6).collect(Collectors.toList());
+    }
 
     public CollectionDTO findCollectionById(long id){
         return collectionRepository.findById(id)

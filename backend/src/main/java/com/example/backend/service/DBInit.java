@@ -366,17 +366,17 @@ public class DBInit {
         // Collection Innocent
 
         Collection innocentCollection = new Collection();
-        Author innocentAuthor = new Author();
+        Author shinichiSakamoto = new Author();
 
-        List<CollectionAuthor> innocentCollectionAuthorList = new ArrayList<>();
-        CollectionAuthor innocentCollectionAuthor = new CollectionAuthor(innocentCollection, innocentAuthor);
-        innocentCollectionAuthorList.add(innocentCollectionAuthor);
+        List<CollectionAuthor> shinichiSakamotoCollectionAuthorList = new ArrayList<>();
+        CollectionAuthor innocentCollectionAuthor = new CollectionAuthor(innocentCollection, shinichiSakamoto);
+        shinichiSakamotoCollectionAuthorList.add(innocentCollectionAuthor);
 
-        innocentAuthor.setName("Shin'ichi Sakamoto");
-        innocentAuthor.setCollections(innocentCollectionAuthorList);
+        shinichiSakamoto.setName("Shin'ichi Sakamoto");
+        shinichiSakamoto.setCollections(shinichiSakamotoCollectionAuthorList);
 
         innocentCollection.setName("Innocent");
-        innocentCollection.setAuthor(innocentCollectionAuthorList);
+        innocentCollection.setAuthor(shinichiSakamotoCollectionAuthorList);
         innocentCollection.setPublisher(milkyWayEdiciones);
         innocentCollection.setDemography(seinen);
         innocentCollection.setPlot("The story follows Charles-Henri Sanson, who, as France's royal executioner, is destined to execute people for their crimes. However, Sanson struggles with the moral dilemma of his work and the events surrounding the French Revolution.");
@@ -405,10 +405,44 @@ public class DBInit {
 
         innocentCollection.setBooks(innocentBookList);
 
-        authorRepository.save(innocentAuthor);
+        authorRepository.save(shinichiSakamoto);
         collectionRepository.save(innocentCollection);
         bookRepository.saveAll(innocentBookList);
         collectionAuthorRepository.save(innocentCollectionAuthor);
+
+        //Collection The Climber
+
+        Collection climberCollection = new Collection();
+
+        CollectionAuthor shinichiSakamotoCollectionAuthor1 = new CollectionAuthor(climberCollection, shinichiSakamoto);
+        shinichiSakamotoCollectionAuthorList.add(shinichiSakamotoCollectionAuthor1);
+
+        shinichiSakamoto.setCollections(shinichiSakamotoCollectionAuthorList);
+
+        climberCollection.setName("The Climber");
+        climberCollection.setAuthor(shinichiSakamotoCollectionAuthorList);
+        climberCollection.setPublisher(milkyWayEdiciones);
+        climberCollection.setDemography(seinen);
+        climberCollection.setPlot("Mori Buntarou is a solitary high school student who discovers a passion for mountain climbing. As he ascends to greater heights, he learns about perseverance, friendship, and the harsh realities of the mountains. 'The Climber' explores the internal and external struggles faced by those who pursue their dreams, no matter the risk.");
+        setCollectionImage(climberCollection, "static/misc/covers/the_climber.jpg");
+
+        List<Book> climberBookList = new ArrayList<>();
+
+        int climberVolumeCount = 17; // "The Climber" has 17 volumes
+        long climberStartPublicationDate = 1201824000000L; // First volume's publication date (example)
+        long climberInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= climberVolumeCount; i++) {
+            Book book = new Book(new Date(climberStartPublicationDate + (i - 1) * climberInterval), false, 200, i, climberCollection);
+            climberBookList.add(book);
+        }
+
+        climberCollection.setBooks(climberBookList);
+
+        collectionRepository.save(climberCollection);
+        bookRepository.saveAll(climberBookList);
+        collectionAuthorRepository.save(shinichiSakamotoCollectionAuthor1);
+
 
         //Collection Nijigahara Holograph
 
@@ -600,6 +634,32 @@ public class DBInit {
         collectionRepository.save(firePunchCollection);
         bookRepository.saveAll(firePunchBookList);
         collectionAuthorRepository.save(tatsukiFujimotoCollectionAuthor1);
+
+        //Collection Goodbye Eri
+        Collection goodbyeEriCollection = new Collection();
+
+        CollectionAuthor tatsukiFujimotoCollectionAuthor2 = new CollectionAuthor(goodbyeEriCollection, tatsukiFujimoto);
+        tatsukiFujimotoCollectionAuthorList.add(tatsukiFujimotoCollectionAuthor2);
+
+        tatsukiFujimoto.setCollections(tatsukiFujimotoCollectionAuthorList);
+
+        goodbyeEriCollection.setName("Goodbye, Eri");
+        goodbyeEriCollection.setAuthor(tatsukiFujimotoCollectionAuthorList);
+        goodbyeEriCollection.setPublisher(normaEditorial);
+        goodbyeEriCollection.setDemography(shonen);
+        goodbyeEriCollection.setPlot("Yuta Ito films his mother's final days as part of her wish to create a documentary of her life. After her death, Yuta's film creates controversy, leading him to meet Eri, a mysterious girl who shares his love of movies. Together, they explore the boundaries of storytelling and reality, uncovering profound truths about memory, loss, and acceptance.");
+        setCollectionImage(goodbyeEriCollection, "static/misc/covers/goodbye_eri.jpg");
+
+        List<Book> goodbyeEriBookList = new ArrayList<>();
+
+        Book goodbyeEriBook1 = new Book(new Date(1649462400000L), false, 200, 1, goodbyeEriCollection); // single volume
+        goodbyeEriBookList.add(goodbyeEriBook1);
+
+        goodbyeEriCollection.setBooks(goodbyeEriBookList);
+
+        collectionRepository.save(goodbyeEriCollection);
+        bookRepository.saveAll(goodbyeEriBookList);
+        collectionAuthorRepository.save(tatsukiFujimotoCollectionAuthor2);
 
         //Collection Jigokuraku
 
@@ -842,7 +902,603 @@ public class DBInit {
         bookRepository.saveAll(reminaBookList);
         collectionAuthorRepository.save(junjiItoCollectionAuthor3);
 
+        //Collection Homunculus
 
+        Collection homunculusCollection = new Collection();
+        Author hideoYamamoto = new Author();
+
+        CollectionAuthor hideoYamamotoCollectionAuthor1 = new CollectionAuthor(homunculusCollection, hideoYamamoto);
+        List<CollectionAuthor> hideoYamamotoCollectionAuthorList = new ArrayList<>();
+        hideoYamamotoCollectionAuthorList.add(hideoYamamotoCollectionAuthor1);
+
+        hideoYamamoto.setName("Hideo Yamomoto");
+        hideoYamamoto.setCollections(hideoYamamotoCollectionAuthorList);
+
+        homunculusCollection.setName("Homunculus");
+        homunculusCollection.setAuthor(hideoYamamotoCollectionAuthorList);
+        homunculusCollection.setPublisher(ivrea);
+        homunculusCollection.setDemography(seinen);
+        homunculusCollection.setPlot("Susumu Nakoshi, a homeless man living in his car, agrees to undergo a controversial surgical procedure called trepanation, which involves drilling a hole in his skull. The surgery awakens strange and horrifying visions of 'homunculi'—representations of people's psychological trauma. As Nakoshi navigates these visions, he is drawn into a dark and unsettling journey.");
+        setCollectionImage(homunculusCollection, "static/misc/covers/homunculus.jpg");
+
+        List<Book> homunculusBookList = new ArrayList<>();
+
+        int homunculusVolumeCount = 15; // "Homunculus" has 15 volumes
+        long homunculusStartPublicationDate = 1030838400000L; // First volume's publication date (example)
+        long homunculusInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between each volume
+
+        for (int i = 1; i <= homunculusVolumeCount; i++) {
+            Book book = new Book(new Date(homunculusStartPublicationDate + (i - 1) * homunculusInterval), false, 200, i, homunculusCollection);
+            homunculusBookList.add(book);
+        }
+
+        homunculusCollection.setBooks(homunculusBookList);
+
+        authorRepository.save(hideoYamamoto);
+        collectionRepository.save(homunculusCollection);
+        bookRepository.saveAll(homunculusBookList);
+        collectionAuthorRepository.save(hideoYamamotoCollectionAuthor1);
+
+        //Naruto Collection
+
+        Collection narutoCollection = new Collection();
+        Author masashiKishimoto = new Author();
+
+        CollectionAuthor masashiKishimotoCollectionAuthor1 = new CollectionAuthor(narutoCollection, masashiKishimoto);
+        List<CollectionAuthor> masashiKishimotoCollectionAuthorList = new ArrayList<>();
+        masashiKishimotoCollectionAuthorList.add(masashiKishimotoCollectionAuthor1);
+
+        masashiKishimoto.setName("Masashi Kishimoto");
+        masashiKishimoto.setCollections(masashiKishimotoCollectionAuthorList);
+
+        narutoCollection.setName("Naruto");
+        narutoCollection.setAuthor(masashiKishimotoCollectionAuthorList);
+        narutoCollection.setPublisher(planetaComic);
+        narutoCollection.setDemography(shonen);
+        narutoCollection.setPlot("Naruto Uzumaki is a young ninja with a dream to become the Hokage, the strongest ninja and leader of his village. However, he carries the burden of having the Nine-Tails, a powerful demon fox, sealed within him. Along with his friends and mentors, Naruto embarks on a journey of growth, friendship, and determination, facing numerous challenges and enemies.");
+        setCollectionImage(narutoCollection, "static/misc/covers/naruto.jpg");
+
+        List<Book> narutoBookList = new ArrayList<>();
+
+        int narutoVolumeCount = 72; // "Naruto" has 72 volumes
+        long narutoStartPublicationDate = 963072000000L; // First volume's publication date (example)
+        long narutoInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between each volume
+
+        for (int i = 1; i <= narutoVolumeCount; i++) {
+            Book book = new Book(new Date(narutoStartPublicationDate + (i - 1) * narutoInterval), false, 200, i, narutoCollection);
+            narutoBookList.add(book);
+        }
+
+        narutoCollection.setBooks(narutoBookList);
+
+        authorRepository.save(masashiKishimoto);
+        collectionRepository.save(narutoCollection);
+        bookRepository.saveAll(narutoBookList);
+        collectionAuthorRepository.save(masashiKishimotoCollectionAuthor1);
+
+        //Collection 20th Century Boys
+
+        Collection centuryBoysCollection = new Collection();
+        Author naokiUrasawa = new Author();
+
+        CollectionAuthor naokiUrasawaCollectionAuthor = new CollectionAuthor(centuryBoysCollection, naokiUrasawa);
+        List<CollectionAuthor> naokiUrasawaCollectionAuthorList = new ArrayList<>();
+        naokiUrasawaCollectionAuthorList.add(naokiUrasawaCollectionAuthor);
+
+        naokiUrasawa.setName("Naoki Urasawa");
+        naokiUrasawa.setCollections(naokiUrasawaCollectionAuthorList);
+
+        centuryBoysCollection.setName("20th Century Boys");
+        centuryBoysCollection.setAuthor(naokiUrasawaCollectionAuthorList);
+        centuryBoysCollection.setPublisher(planetaComic);
+        centuryBoysCollection.setDemography(seinen);
+        centuryBoysCollection.setPlot("Kenji Endo and his childhood friends realize that a series of catastrophic events, including a mysterious cult and its leader known as 'Friend,' are connected to a story they created as kids. As they unravel the secrets of 'Friend,' they must confront their past and prevent a terrifying apocalypse.");
+        setCollectionImage(centuryBoysCollection, "static/misc/covers/20th_century_boys.jpg");
+
+        List<Book> centuryBoysBookList = new ArrayList<>();
+
+        int centuryVolumeCount = 22; // "20th Century Boys" has 22 volumes
+        long centuryStartPublicationDate = 899971200000L; // First volume's publication date (example)
+        long centuryInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between each volume
+
+        for (int i = 1; i <= centuryVolumeCount; i++) {
+            Book book = new Book(new Date(centuryStartPublicationDate + (i - 1) * centuryInterval), false, 200, i, centuryBoysCollection);
+            centuryBoysBookList.add(book);
+        }
+
+        centuryBoysCollection.setBooks(centuryBoysBookList);
+
+        authorRepository.save(naokiUrasawa);
+        collectionRepository.save(centuryBoysCollection);
+        bookRepository.saveAll(centuryBoysBookList);
+        collectionAuthorRepository.save(naokiUrasawaCollectionAuthor);
+
+        // Collection Master Keaton
+        Collection masterKeatonCollection = new Collection();
+
+        CollectionAuthor naokiUrasawaCollectionAuthor1 = new CollectionAuthor(masterKeatonCollection, naokiUrasawa);
+        naokiUrasawaCollectionAuthorList.add(naokiUrasawaCollectionAuthor1);
+
+        naokiUrasawa.setCollections(naokiUrasawaCollectionAuthorList);
+
+        masterKeatonCollection.setName("Master Keaton");
+        masterKeatonCollection.setAuthor(naokiUrasawaCollectionAuthorList);
+        masterKeatonCollection.setPublisher(planetaComic);
+        masterKeatonCollection.setDemography(seinen);
+        masterKeatonCollection.setPlot("Taichi Hiraga Keaton, a former SAS operative and insurance investigator, uses his skills and knowledge to solve complex cases around the world. Each story combines Keaton's archaeological expertise with his military training, creating a mix of mystery, adventure, and suspense.");
+        setCollectionImage(masterKeatonCollection, "static/misc/covers/master_keaton.jpg");
+
+        List<Book> masterKeatonBookList = new ArrayList<>();
+
+        int masterKeatonVolumeCount = 18; // Master Keaton has 18 volumes
+        long masterKeatonStartPublicationDate = 696384000000L; // First volume's publication date (example)
+        long masterKeatonInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= masterKeatonVolumeCount; i++) {
+            Book book = new Book(new Date(masterKeatonStartPublicationDate + (i - 1) * masterKeatonInterval), false, 200, i, masterKeatonCollection);
+            masterKeatonBookList.add(book);
+        }
+
+        masterKeatonCollection.setBooks(masterKeatonBookList);
+
+        collectionRepository.save(masterKeatonCollection);
+        bookRepository.saveAll(masterKeatonBookList);
+        collectionAuthorRepository.save(naokiUrasawaCollectionAuthor1);
+
+
+        // Collection Monster
+        Collection monsterCollection = new Collection();
+
+        CollectionAuthor naokiUrasawaCollectionAuthor2 = new CollectionAuthor(monsterCollection, naokiUrasawa);
+        naokiUrasawaCollectionAuthorList.add(naokiUrasawaCollectionAuthor2);
+
+        naokiUrasawa.setCollections(naokiUrasawaCollectionAuthorList);
+
+        monsterCollection.setName("Monster");
+        monsterCollection.setAuthor(naokiUrasawaCollectionAuthorList);
+        monsterCollection.setPublisher(planetaComic);
+        monsterCollection.setDemography(seinen);
+        monsterCollection.setPlot("Dr. Kenzo Tenma, a skilled neurosurgeon, saves the life of a young boy named Johan Liebert, only to discover that Johan grows up to be a brilliant yet twisted psychopath. As Tenma chases Johan across Europe to stop his reign of terror, he uncovers a tangled web of mystery, ethics, and morality.");
+        setCollectionImage(monsterCollection, "static/misc/covers/monster.jpg");
+
+        List<Book> monsterBookList = new ArrayList<>();
+
+        int monsterVolumeCount = 18; // Monster has 18 volumes
+        long monsterStartPublicationDate = 765072000000L; // First volume's publication date (example)
+        long monsterInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= monsterVolumeCount; i++) {
+            Book book = new Book(new Date(monsterStartPublicationDate + (i - 1) * monsterInterval), false, 200, i, monsterCollection);
+            monsterBookList.add(book);
+        }
+
+        monsterCollection.setBooks(monsterBookList);
+
+        collectionRepository.save(monsterCollection);
+        bookRepository.saveAll(monsterBookList);
+        collectionAuthorRepository.save(naokiUrasawaCollectionAuthor2);
+
+
+        // Collection Billy Bat
+        Collection billyBatCollection = new Collection();
+
+        CollectionAuthor naokiUrasawaCollectionAuthor3 = new CollectionAuthor(billyBatCollection, naokiUrasawa);
+        naokiUrasawaCollectionAuthorList.add(naokiUrasawaCollectionAuthor3);
+
+        naokiUrasawa.setCollections(naokiUrasawaCollectionAuthorList);
+
+        billyBatCollection.setName("Billy Bat");
+        billyBatCollection.setAuthor(naokiUrasawaCollectionAuthorList);
+        billyBatCollection.setPublisher(planetaComic);
+        billyBatCollection.setDemography(seinen);
+        billyBatCollection.setPlot("Kevin Yamagata, a Japanese-American comic book artist, discovers that his character Billy Bat may not be his own creation. As he digs deeper into the mystery of Billy Bat, he unravels a conspiracy that spans centuries and leads him into a complex world of espionage, secret societies, and alternate histories.");
+        setCollectionImage(billyBatCollection, "static/misc/covers/billy_bat.jpg");
+
+        List<Book> billyBatBookList = new ArrayList<>();
+
+        int billyBatVolumeCount = 20; // Billy Bat has 20 volumes
+        long billyBatStartPublicationDate = 1262304000000L; // First volume's publication date (example)
+        long billyBatInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= billyBatVolumeCount; i++) {
+            Book book = new Book(new Date(billyBatStartPublicationDate + (i - 1) * billyBatInterval), false, 200, i, billyBatCollection);
+            billyBatBookList.add(book);
+        }
+
+        billyBatCollection.setBooks(billyBatBookList);
+
+        collectionRepository.save(billyBatCollection);
+        bookRepository.saveAll(billyBatBookList);
+        collectionAuthorRepository.save(naokiUrasawaCollectionAuthor3);
+
+        //Collection Parasyte
+
+        Collection parasyteCollection = new Collection();
+        Author hitoshiIwaaki = new Author();
+
+        CollectionAuthor hitoshiIwaakiCollectionAuthor1 = new CollectionAuthor(parasyteCollection, hitoshiIwaaki);
+        List<CollectionAuthor> hitoshiIwaakiCollectionAuthorList = new ArrayList<>();
+        hitoshiIwaakiCollectionAuthorList.add(hitoshiIwaakiCollectionAuthor1);
+
+        hitoshiIwaaki.setName("Hitoshi Iwaaki");
+        hitoshiIwaaki.setCollections(hitoshiIwaakiCollectionAuthorList);
+
+        parasyteCollection.setName("Parasyte");
+        parasyteCollection.setAuthor(hitoshiIwaakiCollectionAuthorList);
+        parasyteCollection.setPublisher(planetaComic);
+        parasyteCollection.setDemography(seinen);
+        parasyteCollection.setPlot("Shinichi Izumi, a high school student, becomes the host to a parasitic alien named Migi. While most parasites aim to take over their hosts' brains, Migi is limited to Shinichi's right hand. Together, they must navigate a world where other parasites seek to eliminate humans, balancing survival, ethics, and the struggle for humanity.");
+        setCollectionImage(parasyteCollection, "static/misc/covers/parasyte.jpg");
+
+        List<Book> parasyteBookList = new ArrayList<>();
+
+        int parasyteVolumeCount = 10; // "Parasyte" has 10 volumes
+        long parasyteStartPublicationDate = 592416000000L; // First volume's publication date (example)
+        long parasyteInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= parasyteVolumeCount; i++) {
+            Book book = new Book(new Date(parasyteStartPublicationDate + (i - 1) * parasyteInterval), false, 200, i, parasyteCollection);
+            parasyteBookList.add(book);
+        }
+
+        parasyteCollection.setBooks(parasyteBookList);
+
+        authorRepository.save(hitoshiIwaaki);
+        collectionRepository.save(parasyteCollection);
+        bookRepository.saveAll(parasyteBookList);
+        collectionAuthorRepository.save(hitoshiIwaakiCollectionAuthor1);
+
+        //Collection Haikyuu
+
+        Collection haikyuuCollection = new Collection();
+        Author haruichiFurudate = new Author();
+
+        CollectionAuthor haruichiFurudateCollectionAuthor1 = new CollectionAuthor(haikyuuCollection, haruichiFurudate);
+        List<CollectionAuthor> haruichiFurudateCollectionAuthorList = new ArrayList<>();
+        haruichiFurudateCollectionAuthorList.add(haruichiFurudateCollectionAuthor1);
+
+        haruichiFurudate.setName("Haruichi Furudate");
+        haruichiFurudate.setCollections(haruichiFurudateCollectionAuthorList);
+
+        haikyuuCollection.setName("Haikyuu!!");
+        haikyuuCollection.setAuthor(haruichiFurudateCollectionAuthorList);
+        haikyuuCollection.setPublisher(planetaComic);
+        haikyuuCollection.setDemography(shonen);
+        haikyuuCollection.setPlot("Shoyo Hinata, a high school student with a passion for volleyball, dreams of becoming a top player despite his short stature. He joins the Karasuno High School volleyball team, where he forms a unique partnership with the talented but temperamental Kageyama. Together, they face rival teams, build teamwork, and aim to reach the national championships.");
+        setCollectionImage(haikyuuCollection, "static/misc/covers/haikyuu.jpg");
+
+        List<Book> haikyuuBookList = new ArrayList<>();
+
+        int volumeCount = 45; // "Haikyuu!!" has 45 volumes
+        long startPublicationDate = 1338508800000L; // First volume's publication date (example)
+        long interval = 3 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
+
+        for (int i = 1; i <= volumeCount; i++) {
+            Book book = new Book(new Date(startPublicationDate + (i - 1) * interval), false, 200, i, haikyuuCollection);
+            haikyuuBookList.add(book);
+        }
+
+        haikyuuCollection.setBooks(haikyuuBookList);
+
+        authorRepository.save(haruichiFurudate);
+        collectionRepository.save(haikyuuCollection);
+        bookRepository.saveAll(haikyuuBookList);
+        collectionAuthorRepository.save(haruichiFurudateCollectionAuthor1);
+
+        //Collection SNK
+        Collection shingekiCollection = new Collection();
+        Author hajimeIsayama = new Author();
+
+// Author setup
+        CollectionAuthor hajimeIsayamaCollectionAuthor1 = new CollectionAuthor(shingekiCollection, hajimeIsayama);
+        List<CollectionAuthor> hajimeIsayamaCollectionAuthorList = new ArrayList<>();
+        hajimeIsayamaCollectionAuthorList.add(hajimeIsayamaCollectionAuthor1);
+
+        hajimeIsayama.setName("Hajime Isayama");
+        hajimeIsayama.setCollections(hajimeIsayamaCollectionAuthorList);
+
+        shingekiCollection.setName("Attack on Titan");
+        shingekiCollection.setAuthor(hajimeIsayamaCollectionAuthorList);
+        shingekiCollection.setPublisher(normaEditorial);
+        shingekiCollection.setDemography(shonen);
+        shingekiCollection.setPlot("Eren Yeager lives in a world where humanity is confined within enormous walls to protect themselves from Titans, massive humanoid creatures that devour people. After a Titan attack destroys his home and kills his mother, Eren vows to exterminate all Titans. Along with his friends Mikasa and Armin, he joins the Survey Corps to uncover the truth about the Titans and reclaim freedom for humanity.");
+        setCollectionImage(shingekiCollection, "static/misc/covers/shingeki_no_kyojin.jpg");
+
+        List<Book> shingekiBookList = new ArrayList<>();
+
+        int snkVolumeCount = 34; // "Shingeki no Kyojin" has 34 volumes
+        long snkStartPublicationDate = 1266278400000L; // First volume's publication date (example)
+        long snkInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
+
+        for (int i = 1; i <= snkVolumeCount; i++) {
+            Book book = new Book(new Date(snkStartPublicationDate + (i - 1) * snkInterval), false, 200, i, shingekiCollection);
+            shingekiBookList.add(book);
+        }
+
+        shingekiCollection.setBooks(shingekiBookList);
+
+        authorRepository.save(hajimeIsayama);
+        collectionRepository.save(shingekiCollection);
+        bookRepository.saveAll(shingekiBookList);
+        collectionAuthorRepository.save(hajimeIsayamaCollectionAuthor1);
+
+        //Collection FMA
+        Collection fmaCollection = new Collection();
+        Author hiromuArakawa =  new Author();
+
+        CollectionAuthor hiromuArakawaCollectionAuthor1 = new CollectionAuthor(fmaCollection, hiromuArakawa);
+        List<CollectionAuthor> hiromuArakawaCollectionAuthorList = new ArrayList<>();
+        hiromuArakawaCollectionAuthorList.add(hiromuArakawaCollectionAuthor1);
+
+        hiromuArakawa.setName("Hiromu Arakawa");
+        hiromuArakawa.setCollections(hiromuArakawaCollectionAuthorList);
+
+        fmaCollection.setName("Fullmetal Alchemist");
+        fmaCollection.setAuthor(hiromuArakawaCollectionAuthorList);
+        fmaCollection.setPublisher(normaEditorial);
+        fmaCollection.setDemography(shonen);
+        fmaCollection.setPlot("Edward and Alphonse Elric are two brothers who practice alchemy. After a failed attempt to bring their mother back to life using alchemy, they suffer tragic consequences: Edward loses a leg, while Alphonse loses his entire body, his soul bound to a suit of armor. To regain what they've lost, they seek the Philosopher's Stone, a legendary artifact with immense power.");
+        setCollectionImage(fmaCollection, "static/misc/covers/fullmetal_alchemist.jpg");
+
+        List<Book> fmaBookList = new ArrayList<>();
+
+        int fmaVolumeCount = 27; // "Fullmetal Alchemist" has 27 volumes
+        long fmaStartPublicationDate = 1017638400000L; // First volume's publication date (example)
+        long fmaInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
+
+        for (int i = 1; i <= fmaVolumeCount; i++) {
+            Book book = new Book(new Date(fmaStartPublicationDate + (i - 1) * fmaInterval), false, 200, i, fmaCollection);
+            fmaBookList.add(book);
+        }
+
+        fmaCollection.setBooks(fmaBookList);
+
+        authorRepository.save(hiromuArakawa);
+        collectionRepository.save(fmaCollection);
+        bookRepository.saveAll(fmaBookList);
+        collectionAuthorRepository.save(hiromuArakawaCollectionAuthor1);
+
+        //Collection Soul Eater
+        Collection soulEaterCollection = new Collection();
+        Author atsushiOhkubo = new Author();
+
+        CollectionAuthor atsushiOhkuboCollectionAuthor1 = new CollectionAuthor(soulEaterCollection, atsushiOhkubo);
+        List<CollectionAuthor> atsushiOhkuboCollectionAuthorList = new ArrayList<>();
+        atsushiOhkuboCollectionAuthorList.add(atsushiOhkuboCollectionAuthor1);
+
+        atsushiOhkubo.setName("Atsushi Ohkubo");
+        atsushiOhkubo.setCollections(atsushiOhkuboCollectionAuthorList);
+
+        soulEaterCollection.setName("Soul Eater");
+        soulEaterCollection.setAuthor(atsushiOhkuboCollectionAuthorList);
+        soulEaterCollection.setPublisher(normaEditorial);
+        soulEaterCollection.setDemography(shonen);
+        soulEaterCollection.setPlot("In the Death Weapon Meister Academy, students train to become Death Scythes—powerful weapons for Death, the Shinigami himself. The story follows Maka Albarn, a meister, and her partner Soul Eater, a living scythe. Together, they work to collect the souls of evil beings and prevent the resurrection of a dangerous witch. The series explores the relationships between meisters and their weapons, as well as the challenges they face in their journey to become Death Scythes.");
+        setCollectionImage(soulEaterCollection, "static/misc/covers/soul_eater.jpg");
+
+        List<Book> soulEaterBookList = new ArrayList<>();
+
+        int seVolumeCount = 25; // "Soul Eater" has 25 volumes
+        long seStartPublicationDate = 1057017600000L; // First volume's publication date (example)
+        long seInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= seVolumeCount; i++) {
+            Book book = new Book(new Date(seStartPublicationDate + (i - 1) * seInterval), false, 200, i, soulEaterCollection);
+            soulEaterBookList.add(book);
+        }
+
+        soulEaterCollection.setBooks(soulEaterBookList);
+
+        authorRepository.save(atsushiOhkubo);
+        collectionRepository.save(soulEaterCollection);
+        bookRepository.saveAll(soulEaterBookList);
+        collectionAuthorRepository.save(atsushiOhkuboCollectionAuthor1);
+
+        //Collection The Promised Neverland
+        Collection promisedNeverlandCollection = new Collection();
+        Author kaiuShirai = new Author();
+        Author posukaDemizu = new Author();
+
+        List<CollectionAuthor> promisedNeverlandCollectionAuthorList = new ArrayList<>();
+        CollectionAuthor kaiuShiraiCollectionAuthor = new CollectionAuthor(promisedNeverlandCollection, kaiuShirai);
+        promisedNeverlandCollectionAuthorList.add(kaiuShiraiCollectionAuthor);
+        CollectionAuthor posukaDemizuCollectionAuthor = new CollectionAuthor(promisedNeverlandCollection, posukaDemizu);
+        promisedNeverlandCollectionAuthorList.add(posukaDemizuCollectionAuthor);
+
+        kaiuShirai.setName("Kaiu Shirai");
+        kaiuShirai.setCollections(promisedNeverlandCollectionAuthorList);
+        posukaDemizu.setName("Posuka Demizu");
+        posukaDemizu.setCollections(promisedNeverlandCollectionAuthorList);
+
+        promisedNeverlandCollection.setName("The Promised Neverland");
+        promisedNeverlandCollection.setAuthor(promisedNeverlandCollectionAuthorList);
+        promisedNeverlandCollection.setPublisher(normaEditorial);
+        promisedNeverlandCollection.setDemography(shonen);
+        promisedNeverlandCollection.setPlot("Emma, Ray, and Norman are the brightest children in Grace Field House, an orphanage run by the kind and caring 'Mom' Isabella. However, they discover a horrifying secret: the orphanage is a front for raising children as livestock for demons. Determined to escape, the trio devises a plan to free themselves and their friends, leading to a tense and gripping story of survival and bravery.");
+        setCollectionImage(promisedNeverlandCollection, "static/misc/covers/the_promised_neverland.jpg");
+
+        List<Book> promisedNeverlandBookList = new ArrayList<>();
+
+        int pnVolumeCount = 20; // "The Promised Neverland" has 20 volumes
+        long pnStartPublicationDate = 1477872000000L; // First volume's publication date (example)
+        long pnInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
+
+        for (int i = 1; i <= pnVolumeCount; i++) {
+            Book book = new Book(new Date(pnStartPublicationDate + (i - 1) * pnInterval), false, 200, i, promisedNeverlandCollection);
+            promisedNeverlandBookList.add(book);
+        }
+
+        promisedNeverlandCollection.setBooks(promisedNeverlandBookList);
+
+        authorRepository.save(kaiuShirai);
+        authorRepository.save(posukaDemizu);
+        collectionRepository.save(promisedNeverlandCollection);
+        bookRepository.saveAll(promisedNeverlandBookList);
+        collectionAuthorRepository.save(kaiuShiraiCollectionAuthor);
+        collectionAuthorRepository.save(posukaDemizuCollectionAuthor);
+
+        //Collection Dorohedoro
+        Collection dorohedoroCollection = new Collection();
+        Author qHayashida = new Author();
+
+        CollectionAuthor qHayashidaCollectionAuthor1 = new CollectionAuthor(dorohedoroCollection, qHayashida);
+        List<CollectionAuthor> qHayashidaCollectionAuthorList = new ArrayList<>();
+        qHayashidaCollectionAuthorList.add(qHayashidaCollectionAuthor1);
+
+        qHayashida.setName("Q-Hayashida");
+        qHayashida.setCollections(qHayashidaCollectionAuthorList);
+
+        dorohedoroCollection.setName("Dorohedoro");
+        dorohedoroCollection.setAuthor(qHayashidaCollectionAuthorList);
+        dorohedoroCollection.setPublisher(eccEdiciones);
+        dorohedoroCollection.setDemography(seinen);
+        dorohedoroCollection.setPlot("Caiman, a man with a lizard head and no memory of his past, searches for the sorcerer responsible for his transformation. With his friend Nikaido, he navigates a violent world where sorcerers and humans coexist. As Caiman uncovers secrets about his identity, he faces powerful foes, dark conspiracies, and unexpected alliances.");
+        setCollectionImage(dorohedoroCollection, "static/misc/covers/dorohedoro.jpg");
+
+        List<Book> dorohedoroBookList = new ArrayList<>();
+
+        int dorohedoroVolumeCount = 23; // "Dorohedoro" has 23 volumes
+        long dorohedoroStartPublicationDate = 993427200000L; // First volume's publication date (example)
+        long dorohedoroInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= dorohedoroVolumeCount; i++) {
+            Book book = new Book(new Date(dorohedoroStartPublicationDate + (i - 1) * dorohedoroInterval), false, 200, i, dorohedoroCollection);
+            dorohedoroBookList.add(book);
+        }
+
+        dorohedoroCollection.setBooks(dorohedoroBookList);
+
+        authorRepository.save(qHayashida);
+        collectionRepository.save(dorohedoroCollection);
+        bookRepository.saveAll(dorohedoroBookList);
+        collectionAuthorRepository.save(qHayashidaCollectionAuthor1);
+
+        //Collection The Girl From The Other Side
+        Collection girlFromTheOtherSideCollection = new Collection();
+        Author nagabe = new Author();
+
+        CollectionAuthor nagabeCollectionAuthor1 = new CollectionAuthor(girlFromTheOtherSideCollection, nagabe);
+        List<CollectionAuthor> nagabeCollectionAuthorList = new ArrayList<>();
+        nagabeCollectionAuthorList.add(nagabeCollectionAuthor1);
+
+        nagabe.setName("Nagabe");
+        nagabe.setCollections(nagabeCollectionAuthorList);
+
+        girlFromTheOtherSideCollection.setName("The Girl from the Other Side");
+        girlFromTheOtherSideCollection.setAuthor(nagabeCollectionAuthorList);
+        girlFromTheOtherSideCollection.setPublisher(eccEdiciones);
+        girlFromTheOtherSideCollection.setDemography(seinen);
+        girlFromTheOtherSideCollection.setPlot("Shiva is a little girl living on the 'outside,' where mysterious and cursed creatures roam. One such creature, Teacher, takes care of her, despite the danger of contact between humans and outsiders. Their relationship grows as they navigate a world divided by fear and prejudice.");
+        setCollectionImage(girlFromTheOtherSideCollection, "static/misc/covers/the_girl_from_the_other_side.jpg");
+
+        List<Book> girlFromTheOtherSideBookList = new ArrayList<>();
+
+        int girlFromTheOtherSideVolumeCount = 11; // The Girl from the Other Side has 11 volumes
+        long girlFromTheOtherSideStartPublicationDate = 1420070400000L; // First volume's publication date (example)
+        long girlFromTheOtherSideInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= girlFromTheOtherSideVolumeCount; i++) {
+            Book book = new Book(new Date(girlFromTheOtherSideStartPublicationDate + (i - 1) * girlFromTheOtherSideInterval), false, 200, i, girlFromTheOtherSideCollection);
+            girlFromTheOtherSideBookList.add(book);
+        }
+
+        girlFromTheOtherSideCollection.setBooks(girlFromTheOtherSideBookList);
+
+        authorRepository.save(nagabe);
+        collectionRepository.save(girlFromTheOtherSideCollection);
+        bookRepository.saveAll(girlFromTheOtherSideBookList);
+        collectionAuthorRepository.save(nagabeCollectionAuthor1);
+
+
+        // Collection Wizdoms no Kemonotachi
+        Collection wizdomsCollection = new Collection();
+
+        CollectionAuthor nagabeCollectionAuthor2 = new CollectionAuthor(wizdomsCollection, nagabe);
+        nagabeCollectionAuthorList.add(nagabeCollectionAuthor2);
+
+        wizdomsCollection.setName("The Wize Wize Beasts of the Wizarding Wizdoms");
+        wizdomsCollection.setAuthor(nagabeCollectionAuthorList);
+        wizdomsCollection.setPublisher(eccEdiciones);
+        wizdomsCollection.setDemography(seinen);
+        wizdomsCollection.setPlot("The story explores a world where human-animal hybrids coexist, focusing on the struggles, discrimination, and relationships they experience. Through the eyes of these characters, we learn about the complex dynamics and challenges of a society with deeply ingrained prejudice.");
+        setCollectionImage(wizdomsCollection, "static/misc/covers/wizdoms.jpg");
+
+        List<Book> wizdomsBookList = new ArrayList<>();
+
+        int wizdomsVolumeCount = 3; // Wizdoms no Kemonotachi has 3 volumes
+        long wizdomsStartPublicationDate = 1535760000000L; // First volume's publication date (example)
+        long wizdomsInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
+
+        for (int i = 1; i <= wizdomsVolumeCount; i++) {
+            Book book = new Book(new Date(wizdomsStartPublicationDate + (i - 1) * wizdomsInterval), false, 200, i, wizdomsCollection);
+            wizdomsBookList.add(book);
+        }
+
+        wizdomsCollection.setBooks(wizdomsBookList);
+
+        collectionRepository.save(wizdomsCollection);
+        bookRepository.saveAll(wizdomsBookList);
+        collectionAuthorRepository.save(nagabeCollectionAuthor2);
+
+        // Collection Monotone Blue
+        Collection monotoneBlueCollection = new Collection();
+
+        CollectionAuthor nagabeCollectionAuthor3 = new CollectionAuthor(monotoneBlueCollection, nagabe);
+        nagabeCollectionAuthorList.add(nagabeCollectionAuthor3);
+
+        monotoneBlueCollection.setName("Monotone Blue");
+        monotoneBlueCollection.setAuthor(nagabeCollectionAuthorList);
+        monotoneBlueCollection.setPublisher(milkyWayEdiciones);
+        monotoneBlueCollection.setDemography(seinen);
+        monotoneBlueCollection.setPlot("The story revolves around an unexpected friendship between a quiet cat and a curious lizard in a world where animal characters represent various aspects of society. Through their interactions, themes of identity, acceptance, and personal growth are explored, creating a heartfelt narrative.");
+        setCollectionImage(monotoneBlueCollection, "static/misc/covers/monotone_blue.jpg");
+
+        List<Book> monotoneBlueBookList = new ArrayList<>();
+
+        Book monotoneBlueBook1 = new Book(new Date(1623715200000L), false, 200, 1, monotoneBlueCollection); // Single volume
+        monotoneBlueBookList.add(monotoneBlueBook1);
+
+        monotoneBlueCollection.setBooks(monotoneBlueBookList);
+
+        collectionRepository.save(monotoneBlueCollection);
+        bookRepository.saveAll(monotoneBlueBookList);
+        collectionAuthorRepository.save(nagabeCollectionAuthor3);
+
+        //Collection Bleach
+        Collection bleachCollection = new Collection();
+        Author titeKubo = new Author();
+
+        CollectionAuthor titeKuboCollectionAuthor1 = new CollectionAuthor(bleachCollection, titeKubo);
+        List<CollectionAuthor> titeKuboCollectionAuthorList = new ArrayList<>();
+        titeKuboCollectionAuthorList.add(titeKuboCollectionAuthor1);
+
+        titeKubo.setName("Tite Kubo");
+        titeKubo.setCollections(titeKuboCollectionAuthorList);
+
+        bleachCollection.setName("Bleach");
+        bleachCollection.setAuthor(titeKuboCollectionAuthorList);
+        bleachCollection.setPublisher(paniniManga);
+        bleachCollection.setDemography(shonen);
+        bleachCollection.setPlot("Ichigo Kurosaki is a high school student with the ability to see ghosts. When he gains the powers of a Soul Reaper from Rukia Kuchiki, he must protect the living world from malevolent spirits known as Hollows. As he navigates the spirit world, Ichigo learns about soul reapers, friendship, and his own role in the battle between good and evil.");
+        setCollectionImage(bleachCollection, "static/misc/covers/bleach.jpg");
+
+        List<Book> bleachBookList = new ArrayList<>();
+
+        int bleachVolumeCount = 74; // "Bleach" has 74 volumes
+        long bleachStartPublicationDate = 1066348800000L; // First volume's publication date (example)
+        long bleachInterval = 3 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
+
+        for (int i = 1; i <= bleachVolumeCount; i++) {
+            Book book = new Book(new Date(bleachStartPublicationDate + (i - 1) * bleachInterval), false, 200, i, bleachCollection);
+            bleachBookList.add(book);
+        }
+
+        bleachCollection.setBooks(bleachBookList);
+
+        authorRepository.save(titeKubo);
+        collectionRepository.save(bleachCollection);
+        bookRepository.saveAll(bleachBookList);
+        collectionAuthorRepository.save(titeKuboCollectionAuthor1);
     }
 
     private void setCollectionImage(Collection collection, String classPathResource) throws IOException {

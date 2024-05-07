@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -42,7 +43,9 @@ public class CollectionController {
     @GetMapping("/{id}")
     public String getCollection(Model model, @PathVariable long id) {
         CollectionDTO collection = collectionService.findCollectionById(id);
+        List<Collection> similarCollection = collectionService.findSimilarCollection(id);
         model.addAttribute("collection", collection);
+        model.addAttribute("similarCollection", similarCollection);
         return "collection-example";
     }
 

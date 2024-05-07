@@ -98,6 +98,19 @@
                                 
                 </div>
             </div>
+            <div class="row tm-row">
+                <div class="col-12">
+                    <h4 class="pt-2 tm-color-primary tm-post-title">More like this</h4>
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <div class="card-container">
+                        <div th:each="collection : ${similarCollection}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img style="height: 16rem; width: 11rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <footer class="row tm-row">
                 <hr class="col-12">
                 <div class="col-md-6 col-12 tm-color-gray">
