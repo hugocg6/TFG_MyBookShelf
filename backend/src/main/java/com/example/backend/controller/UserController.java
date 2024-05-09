@@ -20,6 +20,16 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @ModelAttribute
+    public void addAttributes(Model model, HttpSession session) {
+        if (session.getAttribute("logged")==null
+                || session.getAttribute("user")==null
+                || !session.getAttribute("logged").equals(true)) {
+            model.addAttribute("logged", false);
+        }else
+            model.addAttribute("logged", true);
+    }
+
     @PostMapping("/profile/register")
     public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password,
                                @RequestParam("email") String email, HttpSession session) {
@@ -28,7 +38,7 @@ public class UserController {
                 false, null, new ArrayList<>());
 
         userRepository.save(user);
-        session.setAttribute("user", user);
+        session.setAttribute("user", user.getId());
         session.setAttribute("logged", true);
         return "redirect:/home";
     }

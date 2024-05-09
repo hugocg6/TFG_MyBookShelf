@@ -4,7 +4,10 @@ import com.example.backend.dto.BookDTO;
 import com.example.backend.dto.CollectionDTO;
 import com.example.backend.model.Book;
 import com.example.backend.model.Collection;
+import com.example.backend.model.UserCollection;
 import com.example.backend.repository.CollectionRepository;
+import com.example.backend.repository.UserCollectionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -16,6 +19,9 @@ public class CollectionService {
 
     private final AuthorService authorService;
     private final CollectionRepository collectionRepository;
+
+    @Autowired
+    private UserCollectionRepository userCollectionRepository;
 
     public CollectionService(CollectionRepository collectionRepository, AuthorService authorService) {
         this.collectionRepository = collectionRepository;
@@ -31,6 +37,8 @@ public class CollectionService {
     public List<Collection> findCollectionByAuthorName(String authorName){return collectionRepository.findCollectionByAuthorName(authorName);}
 
     public List<Collection> findCollectionByDemography(String demography){return collectionRepository.findCollectionByDemography(demography);}
+
+    public UserCollection save(UserCollection userCollection){return userCollectionRepository.save(userCollection);}
 
     public List<Collection> findSimilarCollection(Long collectionId){
         List<Collection> sameAuthorCollections = collectionRepository.findCollectionsWithSameAuthor(collectionId);

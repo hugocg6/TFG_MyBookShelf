@@ -185,8 +185,8 @@ stroke-dashoffset: 100;
 transition: 0.6s ease-out;
 }
 
-.form-control::-webkit-input-placeholder { color: #999; }  
-.form-control:-ms-input-placeholder { color: #999; }  
+.form-control::-webkit-input-placeholder { color: #999; }
+.form-control:-ms-input-placeholder { color: #999; }
 .form-control::placeholder { color: #999; }
 
 .tm-header {

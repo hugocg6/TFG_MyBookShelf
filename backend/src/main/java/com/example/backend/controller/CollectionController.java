@@ -2,7 +2,12 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.CollectionDTO;
 import com.example.backend.model.Collection;
+import com.example.backend.model.User;
+import com.example.backend.model.UserCollection;
+import com.example.backend.model.UserCollectionId;
+import com.example.backend.repository.UserCollectionRepository;
 import com.example.backend.service.CollectionService;
+import com.example.backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -11,10 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,6 +32,12 @@ public class CollectionController {
     @Autowired
     private CollectionService collectionService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserCollectionRepository userCollectionRepository;
+
     @ModelAttribute
     public void addAttributes(Model model, HttpSession session) {
         if (session.getAttribute("logged")==null
@@ -41,7 +49,11 @@ public class CollectionController {
     }
 
     @GetMapping("/{id}")
-    public String getCollection(Model model, @PathVariable long id) {
+    public String getCollection(HttpSession session, Model model, @PathVariable long id) {
+        if (session.getAttribute("user")!= null) {
+            boolean added = userService.isCollectionAdded((Long) session.getAttribute("user"), id);
+            model.addAttribute("added", added);
+        }
         CollectionDTO collection = collectionService.findCollectionById(id);
         List<Collection> similarCollection = collectionService.findSimilarCollection(id);
         model.addAttribute("collection", collection);
@@ -75,4 +87,33 @@ public class CollectionController {
         }
     }
 
+    @PostMapping("/{id}/addCollection")
+    public String addCollection(HttpSession session, Model model, @PathVariable long id) {
+        Optional<Collection> collection = collectionService.findById(id);
+        Long currentUserId = (Long) session.getAttribute("user");
+
+        Optional<User> optionalUser = userService.findById(currentUserId);
+
+        UserCollectionId userCollectionId = new UserCollectionId(id, optionalUser.get().getId());
+
+        UserCollection userCollection = new UserCollection();
+        userCollection.setId(userCollectionId);
+        userCollection.setUser(optionalUser.get());
+        userCollection.setCollection(collection.get());
+        userCollection.setAdded(true);
+
+        optionalUser.get().getCollections().add(userCollection);
+
+        collectionService.save(userCollection);
+        userService.save(optionalUser.get());
+
+        return "redirect:/collection/" + id;
+    }
+
+    @PostMapping("/{id}/removeCollection")
+    public String removeCollection(HttpSession session, Model model, @PathVariable long id) {
+        userService.deleteCollectionFromUser((Long) session.getAttribute("user"), id);
+        model.addAttribute("added", false);
+        return "redirect:/collection/" + id;
+    }
 }

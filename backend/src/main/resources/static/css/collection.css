@@ -169,18 +169,55 @@ hr {
   flex: 1 0 50%;
 }
 
-.cta__text-column > * + * {
-  margin: min(1.5rem, 2.5vw) 0 0 0;
+.c-button {
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 0.6em 1.3em;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
 }
 
-/*.cta a {
-  display: inline-block;
-  color: black;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  background: hsl(187 75% 64%);
-  border-radius: 0.6rem;
-  font-weight: 700;
-  border: 0.35rem solid;
-}/*
-  
+.c-button--gooey {
+  color: #0CC;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid #0CC;
+  border-radius: 0;
+  position: relative;
+  transition: all 700ms ease;
+  background-color: white;
+}
+
+.c-button--gooey-remove {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid white;
+  border-radius: 0;
+  position: relative;
+  transition: all 700ms ease;
+  background-color: #0CC;
+}
+
+.c-button--gooey:hover {
+  color: white;
+  background-color: #0CC;
+  border: 3px solid white;
+}
+
+.c-button--added {
+  color: white;
+  background-color: #0CC; /* Match hover color */
+  border: 3px solid white;
+}
+
+.c-button--gooey-remove:hover {
+  color: #0CC;
+  background-color: white;
+  border: 3px solid #0CC;
+}

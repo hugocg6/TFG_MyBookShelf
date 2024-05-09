@@ -4,9 +4,6 @@ import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +29,7 @@ public class LogInController {
     public String processForm(HttpSession session, @RequestParam String email, @RequestParam String password){
         Optional<User> tryUser = userRepository.findByMail(email);
         if (tryUser.isPresent() && passwordEncoder.matches(password, tryUser.get().getPassword())) {
-                session.setAttribute("user", tryUser.get());
+                session.setAttribute("user", tryUser.get().getId());
                 session.setAttribute("logged", true);
                 return "redirect:/home";
         }

@@ -41,7 +41,7 @@
             <div class="row tm-row">
                 <div class="col-12">
                     <article class="cta">
-                        <img style="width: 14rem ; height: 20rem" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
+                        <img style="width: 14rem ; height: auto" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
                         <div class="cta__text-column">
                             <h1 th:text="${collection.name}"></h1>
                             <a th:href="@{/search/author/{author}(author=${collection.author})}" style="color: inherit; text-decoration: none">
@@ -51,6 +51,20 @@
                                 <h5 th:text="${'Demography: ' + collection.demography}"></h5>
                             </a>
                             <h6 th:text="${collection.plot}"></h6>
+                            <form th:if="${logged and !added}" id="add-collection-form" method="post" th:action="@{${collection.id}+'/addCollection'}" style="display: inline;">
+                                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                                <input type="hidden" name="collectionId" th:value="${collection.id}">
+                                <button id="add-collection-button" class="c-button c-button--gooey" type="submit" style="margin-top:1.5rem">
+                                    + Add
+                                </button>
+                            </form>
+                            <form th:if="${logged and added}" id="remove-collection-form" method="post" th:action="@{${collection.id}+'/removeCollection'}" style="display: inline;">
+                                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                                <input type="hidden" name="collectionId" th:value="${collection.id}">
+                                <button id="remove-collection-button" class="c-button c-button--gooey-remove" type="submit" style="margin-top:1.5rem">
+                                    - Remove
+                                </button>
+                            </form>
                         </div>
                     </article>
                 </div>

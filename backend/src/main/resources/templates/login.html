@@ -44,7 +44,7 @@
               <span class="error-message">Wrong password! Try again.</span>
             </p>
 
-            <input type="hidden" name="_csrf" th:value="${token}"/>
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
   
             <p class="fieldset">
               <input class="full-width" type="submit" value="Login">
@@ -74,7 +74,7 @@
               <span class="error-message">Your password has to be at least 6 characters long!</span>
             </p>
 
-            <input type="hidden" name="_csrf" th:value="${token}"/>
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
 
             <p class="fieldset">
               <input class="full-width has-padding" type="submit" value="Create account">
