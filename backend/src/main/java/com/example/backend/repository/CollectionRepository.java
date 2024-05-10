@@ -47,36 +47,6 @@ public interface CollectionRepository extends JpaRepository<Collection, Long> {
             "AND c.id <> :collectionId")
     List<Collection> findCollectionsWithSameDemography(@Param("collectionId") Long collectionId);
 
-
-    /*@Query(value = "WITH collections_with_same_author AS ("
-            + "    SELECT DISTINCT c.*"
-            + "    FROM collection c"
-            + "    JOIN collection_author ca ON c.id = ca.collection_id"
-            + "    WHERE ca.author_id IN ("
-            + "        SELECT ca2.author_id"
-            + "        FROM collection_author ca2"
-            + "        WHERE ca2.collection_id = :collectionId"
-            + "    )"
-            + "    AND c.id <> :collectionId"
-            + "),"
-            + "collections_with_same_demography AS ("
-            + "    SELECT DISTINCT c.*"
-            + "    FROM collection c"
-            + "    WHERE c.demography_id = ("
-            + "        SELECT demography_id"
-            + "        FROM collection"
-            + "        WHERE id = :collectionId"
-            + "    )"
-            + "    AND c.id <> :collectionId"
-            + ")"
-            + "SELECT * "
-            + "FROM ("
-            + "    SELECT * FROM collections_with_same_author"
-            + "    UNION"
-            + "    SELECT * FROM collections_with_same_demography"
-            + ") AS similar_collections "
-            + "LIMIT 6",
-            nativeQuery = true)
-    List<Collection> findSimilarCollections(@Param("collectionId") Long collectionId);*/
-
+    @Query("SELECT c from Collection c where c.id in :collectionIds order by c.name asc ")
+    List<Collection> findCollectionsByIdIs(@Param("collectionIds") List<Long> collectionIds);
 }

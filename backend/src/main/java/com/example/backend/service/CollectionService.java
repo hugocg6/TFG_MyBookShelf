@@ -40,6 +40,8 @@ public class CollectionService {
 
     public UserCollection save(UserCollection userCollection){return userCollectionRepository.save(userCollection);}
 
+    public List<Collection> findCollectionsByIds(List<Long> collectionsIds){return collectionRepository.findCollectionsByIdIs(collectionsIds);}
+
     public List<Collection> findSimilarCollection(Long collectionId){
         List<Collection> sameAuthorCollections = collectionRepository.findCollectionsWithSameAuthor(collectionId);
 

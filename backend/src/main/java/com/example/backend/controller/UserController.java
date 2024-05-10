@@ -1,7 +1,11 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.Collection;
 import com.example.backend.model.User;
+import com.example.backend.model.UserCollection;
 import com.example.backend.repository.UserRepository;
+import com.example.backend.service.CollectionService;
+import com.example.backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,12 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
+
+    @Autowired
+    private CollectionService collectionService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -37,12 +47,21 @@ public class UserController {
         User user = new User(email, username, passwordEncoder.encode(password),
                 false, null, new ArrayList<>());
 
-        userRepository.save(user);
+        userService.save(user);
         session.setAttribute("user", user.getId());
         session.setAttribute("logged", true);
         return "redirect:/home";
     }
 
     @GetMapping("/profile")
-    public String getProfile(Model model){return ("profile");}
+    public String getProfile(Model model, HttpSession session){
+        Optional<User> user = userService.findById((Long) session.getAttribute("user"));
+        List<Long> collectionIds = user.get().getCollections()
+                        .stream()
+                        .map(userCollection -> userCollection.getCollection().getId())
+                        .toList();
+        List<Collection> addedCollections = collectionService.findCollectionsByIds(collectionIds);
+        model.addAttribute("addedCollections", addedCollections);
+        return "profile";
+    }
 }
