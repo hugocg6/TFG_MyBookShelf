@@ -17,16 +17,14 @@ import java.util.stream.Collectors;
 @Service
 public class CollectionService {
 
-    private final AuthorService authorService;
-    private final CollectionRepository collectionRepository;
+    @Autowired
+    private AuthorService authorService;
+
+    @Autowired
+    private CollectionRepository collectionRepository;
 
     @Autowired
     private UserCollectionRepository userCollectionRepository;
-
-    public CollectionService(CollectionRepository collectionRepository, AuthorService authorService) {
-        this.collectionRepository = collectionRepository;
-        this.authorService = authorService;
-    }
 
     public List<Collection> findAll(){return collectionRepository.findAllByOrderByNameAsc();}
 

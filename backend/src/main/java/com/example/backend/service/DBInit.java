@@ -96,21 +96,21 @@ public class DBInit {
 
         List<Book> aoNoFlagBookList = new ArrayList<>();
 
-        Book book11 = new Book(new Date(1537394400000L), false, 224, 1, aoNoFlagCollection);
+        Book book11 = new Book(new Date(1537394400000L), 224, 1, aoNoFlagCollection);
         aoNoFlagBookList.add(book11);
-        Book book12 = new Book(new Date(1544050800000L), false, 224, 2, aoNoFlagCollection);
+        Book book12 = new Book(new Date(1544050800000L), 224, 2, aoNoFlagCollection);
         aoNoFlagBookList.add(book12);
-        Book book13 = new Book(new Date(1549494000000L), false, 208, 3, aoNoFlagCollection);
+        Book book13 = new Book(new Date(1549494000000L), 208, 3, aoNoFlagCollection);
         aoNoFlagBookList.add(book13);
-        Book book14 = new Book(new Date(1556748000000L), false, 208, 4, aoNoFlagCollection);
+        Book book14 = new Book(new Date(1556748000000L), 208, 4, aoNoFlagCollection);
         aoNoFlagBookList.add(book14);
-        Book book15 = new Book(new Date(1561586400000L), false, 208, 5, aoNoFlagCollection);
+        Book book15 = new Book(new Date(1561586400000L), 208, 5, aoNoFlagCollection);
         aoNoFlagBookList.add(book15);
-        Book book16 = new Book(new Date(1568239200000L), false, 208, 6, aoNoFlagCollection);
+        Book book16 = new Book(new Date(1568239200000L), 208, 6, aoNoFlagCollection);
         aoNoFlagBookList.add(book16);
-        Book book17 = new Book(new Date(1591826400000L), false, 208, 7, aoNoFlagCollection);
+        Book book17 = new Book(new Date(1591826400000L), 208, 7, aoNoFlagCollection);
         aoNoFlagBookList.add(book17);
-        Book book18 = new Book(new Date(1599688800000L), false, 208, 8, aoNoFlagCollection);
+        Book book18 = new Book(new Date(1599688800000L), 208, 8, aoNoFlagCollection);
         aoNoFlagBookList.add(book18);
 
         aoNoFlagCollection.setBooks(aoNoFlagBookList);
@@ -141,17 +141,17 @@ public class DBInit {
 
         List<Book> akiraBookList = new ArrayList<>();
 
-        Book akiraBook1 = new Book(new Date(1572476400000L), false, 350, 1, akiraCollection);
+        Book akiraBook1 = new Book(new Date(1572476400000L), 350, 1, akiraCollection);
         akiraBookList.add(akiraBook1);
-        Book akiraBook2 = new Book(new Date(1599170400000L), false, 296, 2, akiraCollection);
+        Book akiraBook2 = new Book(new Date(1599170400000L), 296, 2, akiraCollection);
         akiraBookList.add(akiraBook2);
-        Book akiraBook3 = new Book(new Date(1607641200000L), false, 280, 3, akiraCollection);
+        Book akiraBook3 = new Book(new Date(1607641200000L), 280, 3, akiraCollection);
         akiraBookList.add(akiraBook3);
-        Book akiraBook4 = new Book(new Date(1612479600000L), false, 392, 4, akiraCollection);
+        Book akiraBook4 = new Book(new Date(1612479600000L), 392, 4, akiraCollection);
         akiraBookList.add(akiraBook4);
-        Book akiraBook5 = new Book(new Date(1617919200000L), false, 408, 5, akiraCollection);
+        Book akiraBook5 = new Book(new Date(1617919200000L), 408, 5, akiraCollection);
         akiraBookList.add(akiraBook5);
-        Book akiraBook6 = new Book(new Date(1623362400000L), false, 432, 6, akiraCollection);
+        Book akiraBook6 = new Book(new Date(1623362400000L), 432, 6, akiraCollection);
         akiraBookList.add(akiraBook6);
 
         akiraCollection.setBooks(akiraBookList);
@@ -182,17 +182,17 @@ public class DBInit {
 
         List<Book> blameBookList = new ArrayList<>();
 
-        Book blameBook1 = new Book(new Date(1497132000000L), false, 416, 1, blameCollection);
+        Book blameBook1 = new Book(new Date(1497132000000L), 416, 1, blameCollection);
         blameBookList.add(blameBook1);
-        Book blameBook2 = new Book(new Date(1499724000000L), false, 383, 2, blameCollection);
+        Book blameBook2 = new Book(new Date(1499724000000L), 383, 2, blameCollection);
         blameBookList.add(blameBook2);
-        Book blameBook3 = new Book(new Date(1505080800000L), false, 360, 3, blameCollection);
+        Book blameBook3 = new Book(new Date(1505080800000L), 360, 3, blameCollection);
         blameBookList.add(blameBook3);
-        Book blameBook4 = new Book(new Date(1510354800000L), false, 370, 4, blameCollection);
+        Book blameBook4 = new Book(new Date(1510354800000L), 370, 4, blameCollection);
         blameBookList.add(blameBook4);
-        Book blameBook5 = new Book(new Date(1518303600000L), false, 352, 5, blameCollection);
+        Book blameBook5 = new Book(new Date(1518303600000L), 352, 5, blameCollection);
         blameBookList.add(blameBook5);
-        Book blameBook6 = new Book(new Date(1523397600000L), false, 338, 6, blameCollection);
+        Book blameBook6 = new Book(new Date(1523397600000L), 338, 6, blameCollection);
         blameBookList.add(blameBook6);
 
         blameCollection.setBooks(blameBookList);
@@ -220,11 +220,11 @@ public class DBInit {
 
         List<Book> biomegaBookList = new ArrayList<>();
 
-        Book biomegaBook1 = new Book(new Date(1669244400000L), false, 432, 1, biomegaCollection);
+        Book biomegaBook1 = new Book(new Date(1669244400000L), 432, 1, biomegaCollection);
         biomegaBookList.add(biomegaBook1);
-        Book biomegaBook2 = new Book(new Date(1674687600000L), false, 392, 2, biomegaCollection);
+        Book biomegaBook2 = new Book(new Date(1674687600000L), 392, 2, biomegaCollection);
         biomegaBookList.add(biomegaBook2);
-        Book biomegaBook3 = new Book(new Date(1682546400000L), false, 392, 3, biomegaCollection);
+        Book biomegaBook3 = new Book(new Date(1682546400000L), 392, 3, biomegaCollection);
         biomegaBookList.add(biomegaBook3);
 
         biomegaCollection.setBooks(biomegaBookList);
@@ -251,7 +251,7 @@ public class DBInit {
 
         List<Book> abaraBookList = new ArrayList<>();
 
-        Book abaraBook1 = new Book(new Date(1666821600000L), false, 404, 1, abaraCollection);
+        Book abaraBook1 = new Book(new Date(1666821600000L), 404, 1, abaraCollection);
         abaraBookList.add(abaraBook1);
 
         abaraCollection.setBooks(abaraBookList);
@@ -286,17 +286,17 @@ public class DBInit {
 
         List<Book> deathNoteBookList = new ArrayList<>();
 
-        Book deathNoteBook1 = new Book(new Date(1363906800000L), false, 384, 1, deathNoteCollection);
+        Book deathNoteBook1 = new Book(new Date(1363906800000L), 384, 1, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook1);
-        Book deathNoteBook2 = new Book(new Date(1369346400000L), false, 392, 2, deathNoteCollection);
+        Book deathNoteBook2 = new Book(new Date(1369346400000L), 392, 2, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook2);
-        Book deathNoteBook3 = new Book(new Date(1372370400000L), false, 408, 3, deathNoteCollection);
+        Book deathNoteBook3 = new Book(new Date(1372370400000L), 408, 3, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook3);
-        Book deathNoteBook4 = new Book(new Date(1374789600000L), false, 408, 4, deathNoteCollection);
+        Book deathNoteBook4 = new Book(new Date(1374789600000L), 408, 4, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook4);
-        Book deathNoteBook5 = new Book(new Date(1377208800000L), false, 376, 5, deathNoteCollection);
+        Book deathNoteBook5 = new Book(new Date(1377208800000L), 376, 5, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook5);
-        Book deathNoteBook6 = new Book(new Date(1380232800000L), false, 416, 6, deathNoteCollection);
+        Book deathNoteBook6 = new Book(new Date(1380232800000L), 416, 6, deathNoteCollection);
         deathNoteBookList.add(deathNoteBook6);
 
         deathNoteCollection.setBooks(deathNoteBookList);
@@ -329,31 +329,31 @@ public class DBInit {
 
         List<Book> punpunBookList = new ArrayList<>();
 
-        Book punpunBook1 = new Book(new Date(1446073200000L), false, 224, 1, punpunCollection);
+        Book punpunBook1 = new Book(new Date(1446073200000L), 224, 1, punpunCollection);
         punpunBookList.add(punpunBook1);
-        Book punpunBook2 = new Book(new Date(1449183600000L), false, 208, 2, punpunCollection);
+        Book punpunBook2 = new Book(new Date(1449183600000L), 208, 2, punpunCollection);
         punpunBookList.add(punpunBook2);
-        Book punpunBook3 = new Book(new Date(1453417200000L), false, 208, 3, punpunCollection);
+        Book punpunBook3 = new Book(new Date(1453417200000L), 208, 3, punpunCollection);
         punpunBookList.add(punpunBook3);
-        Book punpunBook4 = new Book(new Date(1455836400000L), false, 224, 4, punpunCollection);
+        Book punpunBook4 = new Book(new Date(1455836400000L), 224, 4, punpunCollection);
         punpunBookList.add(punpunBook4);
-        Book punpunBook5 = new Book(new Date(1458255600000L), false, 224, 5, punpunCollection);
+        Book punpunBook5 = new Book(new Date(1458255600000L), 224, 5, punpunCollection);
         punpunBookList.add(punpunBook5);
-        Book punpunBook6 = new Book(new Date(1460325600000L), false, 224, 6, punpunCollection);
+        Book punpunBook6 = new Book(new Date(1460325600000L), 224, 6, punpunCollection);
         punpunBookList.add(punpunBook6);
-        Book punpunBook7 = new Book(new Date(1462399200000L), false, 224, 7, punpunCollection);
+        Book punpunBook7 = new Book(new Date(1462399200000L), 224, 7, punpunCollection);
         punpunBookList.add(punpunBook7);
-        Book punpunBook8 = new Book(new Date(1466632800000L), false, 224, 8, punpunCollection);
+        Book punpunBook8 = new Book(new Date(1466632800000L), 224, 8, punpunCollection);
         punpunBookList.add(punpunBook8);
-        Book punpunBook9 = new Book(new Date(1469138400000L), false, 224, 9, punpunCollection);
+        Book punpunBook9 = new Book(new Date(1469138400000L), 224, 9, punpunCollection);
         punpunBookList.add(punpunBook9);
-        Book punpunBook10 = new Book(new Date(1472162400000L), false, 224, 10, punpunCollection);
+        Book punpunBook10 = new Book(new Date(1472162400000L), 224, 10, punpunCollection);
         punpunBookList.add(punpunBook10);
-        Book punpunBook11 = new Book(new Date(1475186400000L), false, 224, 11, punpunCollection);
+        Book punpunBook11 = new Book(new Date(1475186400000L), 224, 11, punpunCollection);
         punpunBookList.add(punpunBook11);
-        Book punpunBook12 = new Book(new Date(1477692000000L), false, 256, 12, punpunCollection);
+        Book punpunBook12 = new Book(new Date(1477692000000L), 256, 12, punpunCollection);
         punpunBookList.add(punpunBook12);
-        Book punpunBook13 = new Book(new Date(1477692000000L), false, 272, 13, punpunCollection);
+        Book punpunBook13 = new Book(new Date(1477692000000L), 272, 13, punpunCollection);
         punpunBookList.add(punpunBook13);
 
         punpunCollection.setBooks(punpunBookList);
@@ -384,23 +384,23 @@ public class DBInit {
 
         List<Book> innocentBookList = new ArrayList<>();
 
-        Book innocentBook1 = new Book(new Date(1477346400000L), false, 204, 1, innocentCollection);
+        Book innocentBook1 = new Book(new Date(1477346400000L), 204, 1, innocentCollection);
         innocentBookList.add(innocentBook1);
-        Book innocentBook2 = new Book(new Date(1481842800000L), false, 208, 2, innocentCollection);
+        Book innocentBook2 = new Book(new Date(1481842800000L), 208, 2, innocentCollection);
         innocentBookList.add(innocentBook2);
-        Book innocentBook3 = new Book(new Date(1488150000000L), false, 210, 3, innocentCollection);
+        Book innocentBook3 = new Book(new Date(1488150000000L), 210, 3, innocentCollection);
         innocentBookList.add(innocentBook3);
-        Book innocentBook4 = new Book(new Date(1493244000000L), false, 210, 4, innocentCollection);
+        Book innocentBook4 = new Book(new Date(1493244000000L), 210, 4, innocentCollection);
         innocentBookList.add(innocentBook4);
-        Book innocentBook5 = new Book(new Date(1498514400000L), false, 226, 5, innocentCollection);
+        Book innocentBook5 = new Book(new Date(1498514400000L), 226, 5, innocentCollection);
         innocentBookList.add(innocentBook5);
-        Book innocentBook6 = new Book(new Date(1503957600000L), false, 210, 6, innocentCollection);
+        Book innocentBook6 = new Book(new Date(1503957600000L), 210, 6, innocentCollection);
         innocentBookList.add(innocentBook6);
-        Book innocentBook7 = new Book(new Date(1508882400000L), false, 210, 7, innocentCollection);
+        Book innocentBook7 = new Book(new Date(1508882400000L), 210, 7, innocentCollection);
         innocentBookList.add(innocentBook7);
-        Book innocentBook8 = new Book(new Date(1514415600000L), false, 226, 8, innocentCollection);
+        Book innocentBook8 = new Book(new Date(1514415600000L), 226, 8, innocentCollection);
         innocentBookList.add(innocentBook8);
-        Book innocentBook9 = new Book(new Date(1519772400000L), false, 226, 9, innocentCollection);
+        Book innocentBook9 = new Book(new Date(1519772400000L), 226, 9, innocentCollection);
         innocentBookList.add(innocentBook9);
 
         innocentCollection.setBooks(innocentBookList);
@@ -433,7 +433,7 @@ public class DBInit {
         long climberInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= climberVolumeCount; i++) {
-            Book book = new Book(new Date(climberStartPublicationDate + (i - 1) * climberInterval), false, 200, i, climberCollection);
+            Book book = new Book(new Date(climberStartPublicationDate + (i - 1) * climberInterval), 200, i, climberCollection);
             climberBookList.add(book);
         }
 
@@ -462,7 +462,7 @@ public class DBInit {
 
         List<Book> nijigahraBookList = new ArrayList<>();
 
-        Book nijigahraBook1 = new Book(new Date(1411423200000L), false, 300, 1, nijigahraCollection);
+        Book nijigahraBook1 = new Book(new Date(1411423200000L), 300, 1, nijigahraCollection);
         nijigahraBookList.add(nijigahraBook1);
 
         nijigahraCollection.setBooks(nijigahraBookList);
@@ -489,9 +489,9 @@ public class DBInit {
 
         List<Book> shoreBookList = new ArrayList<>();
 
-        Book shoreBook1 = new Book(new Date(1390518000000L), false, 194, 1, shoreCollection);
+        Book shoreBook1 = new Book(new Date(1390518000000L), 194, 1, shoreCollection);
         shoreBookList.add(shoreBook1);
-        Book shoreBook2 = new Book(new Date(1395183600000L), false, 216, 2, shoreCollection);
+        Book shoreBook2 = new Book(new Date(1395183600000L), 216, 2, shoreCollection);
         shoreBookList.add(shoreBook2);
 
         shoreCollection.setBooks(shoreBookList);
@@ -518,7 +518,7 @@ public class DBInit {
 
         List<Book> solaninBookList = new ArrayList<>();
 
-        Book solaninBook1 = new Book(new Date(1548370800000L), false, 468, 1, solaninCollection);
+        Book solaninBook1 = new Book(new Date(1548370800000L), 468, 1, solaninCollection);
         solaninBookList.add(solaninBook1);
 
         solaninCollection.setBooks(solaninBookList);
@@ -548,11 +548,11 @@ public class DBInit {
 
         List<Book> soloistBookList = new ArrayList<>();
 
-        Book soloistBook1 = new Book(new Date(1670194800000L), false, 248, 1, soloistCollection);
+        Book soloistBook1 = new Book(new Date(1670194800000L), 248, 1, soloistCollection);
         soloistBookList.add(soloistBook1);
-        Book soloistBook2 = new Book(new Date(1677538800000L), false, 240, 2, soloistCollection);
+        Book soloistBook2 = new Book(new Date(1677538800000L), 240, 2, soloistCollection);
         soloistBookList.add(soloistBook2);
-        Book soloistBook3 = new Book(new Date(1682546400000L), false, 240, 3, soloistCollection);
+        Book soloistBook3 = new Book(new Date(1682546400000L), 240, 3, soloistCollection);
         soloistBookList.add(soloistBook3);
 
         soloistCollection.setBooks(soloistBookList);
@@ -584,7 +584,7 @@ public class DBInit {
 
         List<Book> lookBackBookList = new ArrayList<>();
 
-        Book lookBackBook1 = new Book(new Date(1649368800000L), false, 160, 1, lookBackCollection);
+        Book lookBackBook1 = new Book(new Date(1649368800000L), 160, 1, lookBackCollection);
         lookBackBookList.add(lookBackBook1);
 
         lookBackCollection.setBooks(lookBackBookList);
@@ -612,21 +612,21 @@ public class DBInit {
 
         List<Book> firePunchBookList = new ArrayList<>();
 
-        Book firePunchBook1 = new Book(new Date(1481846400000L), false, 200, 1, firePunchCollection);
+        Book firePunchBook1 = new Book(new Date(1481846400000L), 200, 1, firePunchCollection);
         firePunchBookList.add(firePunchBook1);
-        Book firePunchBook2 = new Book(new Date(1489612800000L), false, 200, 2, firePunchCollection);
+        Book firePunchBook2 = new Book(new Date(1489612800000L), 200, 2, firePunchCollection);
         firePunchBookList.add(firePunchBook2);
-        Book firePunchBook3 = new Book(new Date(1497379200000L), false, 200, 3, firePunchCollection);
+        Book firePunchBook3 = new Book(new Date(1497379200000L), 200, 3, firePunchCollection);
         firePunchBookList.add(firePunchBook3);
-        Book firePunchBook4 = new Book(new Date(1505145600000L), false, 200, 4, firePunchCollection);
+        Book firePunchBook4 = new Book(new Date(1505145600000L), 200, 4, firePunchCollection);
         firePunchBookList.add(firePunchBook4);
-        Book firePunchBook5 = new Book(new Date(1512912000000L), false, 200, 5, firePunchCollection);
+        Book firePunchBook5 = new Book(new Date(1512912000000L), 200, 5, firePunchCollection);
         firePunchBookList.add(firePunchBook5);
-        Book firePunchBook6 = new Book(new Date(1520678400000L), false, 200, 6, firePunchCollection);
+        Book firePunchBook6 = new Book(new Date(1520678400000L), 200, 6, firePunchCollection);
         firePunchBookList.add(firePunchBook6);
-        Book firePunchBook7 = new Book(new Date(1528444800000L), false, 200, 7, firePunchCollection);
+        Book firePunchBook7 = new Book(new Date(1528444800000L), 200, 7, firePunchCollection);
         firePunchBookList.add(firePunchBook7);
-        Book firePunchBook8 = new Book(new Date(1536211200000L), false, 200, 8, firePunchCollection);
+        Book firePunchBook8 = new Book(new Date(1536211200000L), 200, 8, firePunchCollection);
         firePunchBookList.add(firePunchBook8);
 
         firePunchCollection.setBooks(firePunchBookList);
@@ -652,7 +652,7 @@ public class DBInit {
 
         List<Book> goodbyeEriBookList = new ArrayList<>();
 
-        Book goodbyeEriBook1 = new Book(new Date(1649462400000L), false, 200, 1, goodbyeEriCollection); // single volume
+        Book goodbyeEriBook1 = new Book(new Date(1649462400000L), 200, 1, goodbyeEriCollection); // single volume
         goodbyeEriBookList.add(goodbyeEriBook1);
 
         goodbyeEriCollection.setBooks(goodbyeEriBookList);
@@ -682,31 +682,31 @@ public class DBInit {
 
         List<Book> jigokurakuBookList = new ArrayList<>();
 
-        Book jigokurakuBook1 = new Book(new Date(1546300800000L), false, 200, 1, jigokurakuCollection);
+        Book jigokurakuBook1 = new Book(new Date(1546300800000L), 200, 1, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook1);
-        Book jigokurakuBook2 = new Book(new Date(1554076800000L), false, 200, 2, jigokurakuCollection);
+        Book jigokurakuBook2 = new Book(new Date(1554076800000L), 200, 2, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook2);
-        Book jigokurakuBook3 = new Book(new Date(1561843200000L), false, 200, 3, jigokurakuCollection);
+        Book jigokurakuBook3 = new Book(new Date(1561843200000L), 200, 3, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook3);
-        Book jigokurakuBook4 = new Book(new Date(1569614400000L), false, 200, 4, jigokurakuCollection);
+        Book jigokurakuBook4 = new Book(new Date(1569614400000L), 200, 4, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook4);
-        Book jigokurakuBook5 = new Book(new Date(1577385600000L), false, 200, 5, jigokurakuCollection);
+        Book jigokurakuBook5 = new Book(new Date(1577385600000L), 200, 5, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook5);
-        Book jigokurakuBook6 = new Book(new Date(1585156800000L), false, 200, 6, jigokurakuCollection);
+        Book jigokurakuBook6 = new Book(new Date(1585156800000L), 200, 6, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook6);
-        Book jigokurakuBook7 = new Book(new Date(1592928000000L), false, 200, 7, jigokurakuCollection);
+        Book jigokurakuBook7 = new Book(new Date(1592928000000L), 200, 7, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook7);
-        Book jigokurakuBook8 = new Book(new Date(1600699200000L), false, 200, 8, jigokurakuCollection);
+        Book jigokurakuBook8 = new Book(new Date(1600699200000L), 200, 8, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook8);
-        Book jigokurakuBook9 = new Book(new Date(1608470400000L), false, 200, 9, jigokurakuCollection);
+        Book jigokurakuBook9 = new Book(new Date(1608470400000L), 200, 9, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook9);
-        Book jigokurakuBook10 = new Book(new Date(1616241600000L), false, 200, 10, jigokurakuCollection);
+        Book jigokurakuBook10 = new Book(new Date(1616241600000L), 200, 10, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook10);
-        Book jigokurakuBook11 = new Book(new Date(1626241600000L), false, 200, 11, jigokurakuCollection);
+        Book jigokurakuBook11 = new Book(new Date(1626241600000L), 200, 11, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook11);
-        Book jigokurakuBook12 = new Book(new Date(1636241600000L), false, 200, 12, jigokurakuCollection);
+        Book jigokurakuBook12 = new Book(new Date(1636241600000L), 200, 12, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook12);
-        Book jigokurakuBook13 = new Book(new Date(1646241600000L), false, 200, 13, jigokurakuCollection);
+        Book jigokurakuBook13 = new Book(new Date(1646241600000L), 200, 13, jigokurakuCollection);
         jigokurakuBookList.add(jigokurakuBook13);
 
         jigokurakuCollection.setBooks(jigokurakuBookList);
@@ -734,11 +734,11 @@ public class DBInit {
 
         List<Book> ayashimonBookList = new ArrayList<>();
 
-        Book ayashimonBook1 = new Book(new Date(1633046400000L), false, 200, 1, ayashimonCollection);
+        Book ayashimonBook1 = new Book(new Date(1633046400000L), 200, 1, ayashimonCollection);
         ayashimonBookList.add(ayashimonBook1);
-        Book ayashimonBook2 = new Book(new Date(1640812800000L), false, 200, 2, ayashimonCollection);
+        Book ayashimonBook2 = new Book(new Date(1640812800000L), 200, 2, ayashimonCollection);
         ayashimonBookList.add(ayashimonBook2);
-        Book ayashimonBook3 = new Book(new Date(1648579200000L), false, 200, 3, ayashimonCollection);
+        Book ayashimonBook3 = new Book(new Date(1648579200000L), 200, 3, ayashimonCollection);
         ayashimonBookList.add(ayashimonBook3);
 
         ayashimonCollection.setBooks(ayashimonBookList);
@@ -778,7 +778,7 @@ public class DBInit {
         };
 
         for (int i = 1; i <= 23; i++) {
-            Book book = new Book(new Date(publicationDates[i - 1]), false, 192, i, kimetsuCollection);
+            Book book = new Book(new Date(publicationDates[i - 1]), 192, i, kimetsuCollection);
             kimetsuBookList.add(book);
         }
 
@@ -810,7 +810,7 @@ public class DBInit {
 
         List<Book> gyoBookList = new ArrayList<>();
 
-        Book gyoBook1 = new Book(new Date(1009756800000L), false, 400, 1, gyoCollection);
+        Book gyoBook1 = new Book(new Date(1009756800000L), 400, 1, gyoCollection);
         gyoBookList.add(gyoBook1);
 
         gyoCollection.setBooks(gyoBookList);
@@ -837,7 +837,7 @@ public class DBInit {
 
         List<Book> uzumakiBookList = new ArrayList<>();
 
-        Book uzumakiBook1 = new Book(new Date(902352000000L), false, 644, 1, uzumakiCollection);
+        Book uzumakiBook1 = new Book(new Date(902352000000L), 644, 1, uzumakiCollection);
         uzumakiBookList.add(uzumakiBook1);
 
         uzumakiCollection.setBooks(uzumakiBookList);
@@ -865,7 +865,7 @@ public class DBInit {
 
         List<Book> tomieBookList = new ArrayList<>();
 
-        Book tomieBook1 = new Book(new Date(780480000000L), false, 752, 1, tomieCollection);
+        Book tomieBook1 = new Book(new Date(780480000000L), 752, 1, tomieCollection);
         tomieBookList.add(tomieBook1);
 
         tomieCollection.setBooks(tomieBookList);
@@ -893,7 +893,7 @@ public class DBInit {
 
         List<Book> reminaBookList = new ArrayList<>();
 
-        Book reminaBook1 = new Book(new Date(1080777600000L), false, 296, 1, reminaCollection);
+        Book reminaBook1 = new Book(new Date(1080777600000L), 296, 1, reminaCollection);
         reminaBookList.add(reminaBook1);
 
         reminaCollection.setBooks(reminaBookList);
@@ -928,7 +928,7 @@ public class DBInit {
         long homunculusInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between each volume
 
         for (int i = 1; i <= homunculusVolumeCount; i++) {
-            Book book = new Book(new Date(homunculusStartPublicationDate + (i - 1) * homunculusInterval), false, 200, i, homunculusCollection);
+            Book book = new Book(new Date(homunculusStartPublicationDate + (i - 1) * homunculusInterval), 200, i, homunculusCollection);
             homunculusBookList.add(book);
         }
 
@@ -965,7 +965,7 @@ public class DBInit {
         long narutoInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between each volume
 
         for (int i = 1; i <= narutoVolumeCount; i++) {
-            Book book = new Book(new Date(narutoStartPublicationDate + (i - 1) * narutoInterval), false, 200, i, narutoCollection);
+            Book book = new Book(new Date(narutoStartPublicationDate + (i - 1) * narutoInterval), 200, i, narutoCollection);
             narutoBookList.add(book);
         }
 
@@ -1002,7 +1002,7 @@ public class DBInit {
         long centuryInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between each volume
 
         for (int i = 1; i <= centuryVolumeCount; i++) {
-            Book book = new Book(new Date(centuryStartPublicationDate + (i - 1) * centuryInterval), false, 200, i, centuryBoysCollection);
+            Book book = new Book(new Date(centuryStartPublicationDate + (i - 1) * centuryInterval), 200, i, centuryBoysCollection);
             centuryBoysBookList.add(book);
         }
 
@@ -1035,7 +1035,7 @@ public class DBInit {
         long masterKeatonInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= masterKeatonVolumeCount; i++) {
-            Book book = new Book(new Date(masterKeatonStartPublicationDate + (i - 1) * masterKeatonInterval), false, 200, i, masterKeatonCollection);
+            Book book = new Book(new Date(masterKeatonStartPublicationDate + (i - 1) * masterKeatonInterval), 200, i, masterKeatonCollection);
             masterKeatonBookList.add(book);
         }
 
@@ -1068,7 +1068,7 @@ public class DBInit {
         long monsterInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= monsterVolumeCount; i++) {
-            Book book = new Book(new Date(monsterStartPublicationDate + (i - 1) * monsterInterval), false, 200, i, monsterCollection);
+            Book book = new Book(new Date(monsterStartPublicationDate + (i - 1) * monsterInterval), 200, i, monsterCollection);
             monsterBookList.add(book);
         }
 
@@ -1101,7 +1101,7 @@ public class DBInit {
         long billyBatInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= billyBatVolumeCount; i++) {
-            Book book = new Book(new Date(billyBatStartPublicationDate + (i - 1) * billyBatInterval), false, 200, i, billyBatCollection);
+            Book book = new Book(new Date(billyBatStartPublicationDate + (i - 1) * billyBatInterval), 200, i, billyBatCollection);
             billyBatBookList.add(book);
         }
 
@@ -1137,7 +1137,7 @@ public class DBInit {
         long parasyteInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= parasyteVolumeCount; i++) {
-            Book book = new Book(new Date(parasyteStartPublicationDate + (i - 1) * parasyteInterval), false, 200, i, parasyteCollection);
+            Book book = new Book(new Date(parasyteStartPublicationDate + (i - 1) * parasyteInterval), 200, i, parasyteCollection);
             parasyteBookList.add(book);
         }
 
@@ -1174,7 +1174,7 @@ public class DBInit {
         long interval = 3 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
 
         for (int i = 1; i <= volumeCount; i++) {
-            Book book = new Book(new Date(startPublicationDate + (i - 1) * interval), false, 200, i, haikyuuCollection);
+            Book book = new Book(new Date(startPublicationDate + (i - 1) * interval), 200, i, haikyuuCollection);
             haikyuuBookList.add(book);
         }
 
@@ -1211,7 +1211,7 @@ public class DBInit {
         long snkInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
 
         for (int i = 1; i <= snkVolumeCount; i++) {
-            Book book = new Book(new Date(snkStartPublicationDate + (i - 1) * snkInterval), false, 200, i, shingekiCollection);
+            Book book = new Book(new Date(snkStartPublicationDate + (i - 1) * snkInterval), 200, i, shingekiCollection);
             shingekiBookList.add(book);
         }
 
@@ -1247,7 +1247,7 @@ public class DBInit {
         long fmaInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
 
         for (int i = 1; i <= fmaVolumeCount; i++) {
-            Book book = new Book(new Date(fmaStartPublicationDate + (i - 1) * fmaInterval), false, 200, i, fmaCollection);
+            Book book = new Book(new Date(fmaStartPublicationDate + (i - 1) * fmaInterval), 200, i, fmaCollection);
             fmaBookList.add(book);
         }
 
@@ -1283,7 +1283,7 @@ public class DBInit {
         long seInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= seVolumeCount; i++) {
-            Book book = new Book(new Date(seStartPublicationDate + (i - 1) * seInterval), false, 200, i, soulEaterCollection);
+            Book book = new Book(new Date(seStartPublicationDate + (i - 1) * seInterval), 200, i, soulEaterCollection);
             soulEaterBookList.add(book);
         }
 
@@ -1324,7 +1324,7 @@ public class DBInit {
         long pnInterval = 4 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
 
         for (int i = 1; i <= pnVolumeCount; i++) {
-            Book book = new Book(new Date(pnStartPublicationDate + (i - 1) * pnInterval), false, 200, i, promisedNeverlandCollection);
+            Book book = new Book(new Date(pnStartPublicationDate + (i - 1) * pnInterval), 200, i, promisedNeverlandCollection);
             promisedNeverlandBookList.add(book);
         }
 
@@ -1362,7 +1362,7 @@ public class DBInit {
         long dorohedoroInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= dorohedoroVolumeCount; i++) {
-            Book book = new Book(new Date(dorohedoroStartPublicationDate + (i - 1) * dorohedoroInterval), false, 200, i, dorohedoroCollection);
+            Book book = new Book(new Date(dorohedoroStartPublicationDate + (i - 1) * dorohedoroInterval), 200, i, dorohedoroCollection);
             dorohedoroBookList.add(book);
         }
 
@@ -1398,7 +1398,7 @@ public class DBInit {
         long girlFromTheOtherSideInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= girlFromTheOtherSideVolumeCount; i++) {
-            Book book = new Book(new Date(girlFromTheOtherSideStartPublicationDate + (i - 1) * girlFromTheOtherSideInterval), false, 200, i, girlFromTheOtherSideCollection);
+            Book book = new Book(new Date(girlFromTheOtherSideStartPublicationDate + (i - 1) * girlFromTheOtherSideInterval), 200, i, girlFromTheOtherSideCollection);
             girlFromTheOtherSideBookList.add(book);
         }
 
@@ -1430,7 +1430,7 @@ public class DBInit {
         long wizdomsInterval = 6 * 30 * 24 * 60 * 60 * 1000L; // Roughly six months between volumes
 
         for (int i = 1; i <= wizdomsVolumeCount; i++) {
-            Book book = new Book(new Date(wizdomsStartPublicationDate + (i - 1) * wizdomsInterval), false, 200, i, wizdomsCollection);
+            Book book = new Book(new Date(wizdomsStartPublicationDate + (i - 1) * wizdomsInterval), 200, i, wizdomsCollection);
             wizdomsBookList.add(book);
         }
 
@@ -1455,7 +1455,7 @@ public class DBInit {
 
         List<Book> monotoneBlueBookList = new ArrayList<>();
 
-        Book monotoneBlueBook1 = new Book(new Date(1623715200000L), false, 200, 1, monotoneBlueCollection); // Single volume
+        Book monotoneBlueBook1 = new Book(new Date(1623715200000L), 200, 1, monotoneBlueCollection); // Single volume
         monotoneBlueBookList.add(monotoneBlueBook1);
 
         monotoneBlueCollection.setBooks(monotoneBlueBookList);
@@ -1489,7 +1489,7 @@ public class DBInit {
         long bleachInterval = 3 * 30 * 24 * 60 * 60 * 1000L; // Roughly four months between volumes
 
         for (int i = 1; i <= bleachVolumeCount; i++) {
-            Book book = new Book(new Date(bleachStartPublicationDate + (i - 1) * bleachInterval), false, 200, i, bleachCollection);
+            Book book = new Book(new Date(bleachStartPublicationDate + (i - 1) * bleachInterval), 200, i, bleachCollection);
             bleachBookList.add(book);
         }
 

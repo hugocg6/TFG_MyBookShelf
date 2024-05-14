@@ -12,7 +12,8 @@
     <link href="/css/collection.css" rel="stylesheet">
     <link href="/css/owl.carousel.min.css" rel="stylesheet">
     <link href="/fonts/icomoon/style.css" rel="stylesheet">
-
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <body>
     <div th:replace="header :: #tm-header"></div>  <!--Inyección del header-->
@@ -78,34 +79,31 @@
                         <table class="table custom-table">
                           <thead>
                             <tr>
-                              <th scope="col">
-                                <label th:if="${logged}" class="control control--checkbox">
-                                  <input type="checkbox"  class="js-check-all"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <th scope="col">READ</th>
-                              <th scope="col">TITLE</th>
-                              <th scope="col">DATE</th>
-                              <th scope="col">PAGES</th>
-                              <th scope="col">PUBLISHER</th>
+                                <th th:if="${(!logged && !added) || (logged && !added)}" scope="col"></th>
+                                <th th:if="${logged && added}" scope="col">READ</th>
+                                <th scope="col"></th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">DATE</th>
+                                <th scope="col">PAGES</th>
+                                <th scope="col">PUBLISHER</th>
                             </tr>
                           </thead>
                             <tbody>
-                            <tr th:each="book : ${collection.books}">
-                                <th scope="row">
-                                    <label th:if="${logged}" class="control control--checkbox">
-                                        <input type="checkbox"/>
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </th>
-                                <td th:text="${'#' + book.num}"></td>
-                                <td th:text="${collection.name +' '+ book.num}"></td>
-                                <td th:text="${book.publishDate}"></td>
-                                <td th:text="${book.pages}"></td>
-                                <td th:text="${collection.publisher}"></td>
-                            </tr>
+                            <div th:each="book, i : ${collection.books}">
+                                <tr th:class="${userBooks != null && !userBooks.isEmpty() && userBooks[i.index].getRead() ? 'active' : ''}">
+                                    <th scope="row">
+                                        <label th:if="${logged && added}" class="control control--checkbox">
+                                            <input type="checkbox" th:id="'read-checkbox-' + ${book.id}" th:checked="${userBooks[i.index].getRead()}" />
+                                            <div class="control__indicator"></div>
+                                        </label>
+                                    </th>
+                                    <td th:text="${'#' + book.num}"></td>
+                                    <td th:text="${collection.name +' '+ book.num}"></td>
+                                    <td th:text="${book.publishDate}"></td>
+                                    <td th:text="${book.pages}"></td>
+                                    <td th:text="${collection.publisher}"></td>
+                                </tr>
+                            </div>
                             </tbody>
                         </table>
                     </div>

@@ -1,11 +1,9 @@
 package com.example.backend.controller;
 
 import com.example.backend.dto.CollectionDTO;
-import com.example.backend.model.Collection;
-import com.example.backend.model.User;
-import com.example.backend.model.UserCollection;
-import com.example.backend.model.UserCollectionId;
+import com.example.backend.model.*;
 import com.example.backend.repository.UserCollectionRepository;
+import com.example.backend.service.BookService;
 import com.example.backend.service.CollectionService;
 import com.example.backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -22,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +34,8 @@ public class CollectionController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BookService bookService;
     @Autowired
     private UserCollectionRepository userCollectionRepository;
 
@@ -50,11 +51,13 @@ public class CollectionController {
 
     @GetMapping("/{id}")
     public String getCollection(HttpSession session, Model model, @PathVariable long id) {
-        if (session.getAttribute("user")!= null) {
-            boolean added = userService.isCollectionAdded((Long) session.getAttribute("user"), id);
-            model.addAttribute("added", added);
-        }
         CollectionDTO collection = collectionService.findCollectionById(id);
+        if (session.getAttribute("user")!= null && userService.isCollectionAdded((Long) session.getAttribute("user"), id)) {
+            model.addAttribute("added", true);
+            List<UserBook> userBookList = userService.findUserBooksByBooks(collection.getBooks(), (Long) session.getAttribute("user"));
+            model.addAttribute("userBooks", userBookList);
+        }else
+            model.addAttribute("added", false);
         List<Collection> similarCollection = collectionService.findSimilarCollection(id);
         model.addAttribute("collection", collection);
         model.addAttribute("similarCollection", similarCollection);
@@ -102,8 +105,17 @@ public class CollectionController {
         userCollection.setCollection(collection.get());
         userCollection.setAdded(true);
 
-        optionalUser.get().getCollections().add(userCollection);
+        List<UserBook> userBookList = new ArrayList<>();
+        for (Book book : collection.get().getBooks()) {
+            UserBookId userBookId = new UserBookId(optionalUser.get().getId(), book.getId());
+            UserBook userBook = new UserBook(book, optionalUser.get(), userBookId, id);
+            userBookList.add(userBook);
+        }
 
+        optionalUser.get().getCollections().add(userCollection);
+        optionalUser.get().getBooks().addAll(userBookList);
+
+        bookService.saveAll(userBookList);
         collectionService.save(userCollection);
         userService.save(optionalUser.get());
 

@@ -1,7 +1,6 @@
 package com.example.backend.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.NaturalId;
 
 import java.util.Date;
 
@@ -14,8 +13,6 @@ public class Book {
 
     private Date publishDate;
 
-    private boolean read;
-
     private int pages;
 
     private int numeration;
@@ -26,17 +23,15 @@ public class Book {
 
     public Book() {}
 
-    public Book(Date publishDate, boolean read, int pages, int numeration, Collection collection) {
+    public Book(Date publishDate, int pages, int numeration, Collection collection) {
         this.publishDate = publishDate;
-        this.read = read;
         this.pages = pages;
         this.numeration = numeration;
         this.collection = collection;
     }
 
-    public Book(Date publishDate, boolean read, int pages) {
+    public Book(Date publishDate, int pages) {
         this.publishDate = publishDate;
-        this.read = read;
         this.pages = pages;
     }
 
@@ -54,14 +49,6 @@ public class Book {
 
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
-    }
-
-    public boolean isRead() {
-        return read;
-    }
-
-    public void setRead(boolean read) {
-        this.read = read;
     }
 
     public int getPages() {

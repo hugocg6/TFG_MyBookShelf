@@ -25,15 +25,20 @@ public class User {
     @OneToMany (mappedBy = "user")
     private List<UserCollection> collections;
 
+    @OneToMany (mappedBy = "user")
+    private List<UserBook> books;
+
     public User() {}
 
-    public User(String mail, String name, String password, boolean admin, Blob profileImg, List<UserCollection> collections) {
+    public User(String mail, String name, String password, boolean admin, Blob profileImg,
+                List<UserCollection> collections, List<UserBook> books) {
         this.mail = mail;
         this.name = name;
         this.password = password;
         this.admin = admin;
         this.profileImg = profileImg;
         this.collections = collections;
+        this.books = books;
     }
 
     public void setId(Long id) {
@@ -91,4 +96,8 @@ public class User {
     public void setCollections(List<UserCollection> collections) {
         this.collections = collections;
     }
+
+    public List<UserBook> getBooks() {return books;}
+
+    public void setBooks(List<UserBook> books) {this.books = books;}
 }

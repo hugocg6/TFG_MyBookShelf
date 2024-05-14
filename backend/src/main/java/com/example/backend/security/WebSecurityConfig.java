@@ -30,6 +30,7 @@ public class WebSecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/profile/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/LogIn/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/search/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/book/**")).permitAll()
 
                 )
                 .formLogin((form) -> form

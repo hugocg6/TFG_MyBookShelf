@@ -45,7 +45,7 @@ public class UserController {
                                @RequestParam("email") String email, HttpSession session) {
 
         User user = new User(email, username, passwordEncoder.encode(password),
-                false, null, new ArrayList<>());
+                false, null, new ArrayList<>(), new ArrayList<>());
 
         userService.save(user);
         session.setAttribute("user", user.getId());
