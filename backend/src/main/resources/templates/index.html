@@ -34,18 +34,17 @@
                     </form>
                 </div>                
             </div>            
-            <div th:if="${logged}" class="row tm-row">
+            <div th:if="${logged && currentlyReading!= null && !currentlyReading.isEmpty()}" class="row tm-row">
                 <div class="col-12">
-                    <h4 class="pt-2 tm-color-primary tm-post-title">Reading</h4>
+                    <h4 class="pt-2 tm-color-primary tm-post-title">Currently reading</h4>
                     <hr class="tm-hr-primary tm-mb-55">
                     <div class="card-container-reading">
-                        <img style="height: 15rem; width: 10rem;" src="../Logos_y_demás/Datos_de_ejemplo/1.jpg" alt="" class="card-container-img-reading">
-                        <img style="height: 15rem; width: 10rem;" src="../Logos_y_demás/Datos_de_ejemplo/2.jpeg" alt="" class="card-container-img-reading">
-                        <a href="collection-example.html">
-                            <img style="height: 15rem; width: 10rem;" src="../Logos_y_demás/Datos_de_ejemplo/3.jpg" alt="" class="card-container-img-reading">
-                        </a>
+                        <div th:each="collection : ${currentlyReading}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img style="height: 16rem; width: 11rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img-reading">
+                            </a>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
             <div th:if="${logged}" class="row tm-row">

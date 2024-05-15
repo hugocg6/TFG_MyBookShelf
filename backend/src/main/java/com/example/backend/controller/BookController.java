@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.UserBook;
+import com.example.backend.model.UserCollection;
 import com.example.backend.repository.UserBookRepository;
 import com.example.backend.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -23,19 +24,44 @@ public class BookController {
 
     @PostMapping("/{bookId}/markRead")
     public String markRead(HttpSession session, @PathVariable("bookId") Long bookId) {
-        UserBook userBook = userService.findByUserIdAndBookId((Long) session.getAttribute("user"), bookId);
+
+        Long userId = (Long) session.getAttribute("user");
+
+        UserBook userBook = userService.findByUserIdAndBookId(userId, bookId);
         userBook.setRead(true);
         userBook.setReadingDate(new Date());
         userService.save(userBook);
+
+        Long collectionId = userBook.getCollectionId();
+
+        if(userService.countUnreadBooksInCollection(userId, collectionId) == 0) {
+            UserCollection userCollection = userService.findByUserIdAndCollectionId(userId, collectionId);
+            userCollection.setRead(true);
+            userCollection.setReadDate(new Date());
+            userService.save(userCollection);
+        }
     return "redirect:/collection/" + userBook.getCollectionId();
     }
 
     @PostMapping("/{bookId}/unmarkRead")
     public String unmarkRead(HttpSession session, @PathVariable("bookId") Long bookId) {
-        UserBook userBook = userService.findByUserIdAndBookId((Long) session.getAttribute("user"), bookId);
+
+        Long userId = (Long) session.getAttribute("user");
+
+        UserBook userBook = userService.findByUserIdAndBookId(userId, bookId);
         userBook.setRead(false);
         userBook.setReadingDate(null);
         userService.save(userBook);
+
+        Long collectionId = userBook.getCollectionId();
+
+        if(userService.countUnreadBooksInCollection(userId, collectionId) != 0) {
+            UserCollection userCollection = userService.findByUserIdAndCollectionId(userId, collectionId);
+            userCollection.setRead(false);
+            userCollection.setReadDate(null);
+            userService.save(userCollection);
+        }
+
         return "redirect:/collection/" + userBook.getCollectionId();
     }
 }

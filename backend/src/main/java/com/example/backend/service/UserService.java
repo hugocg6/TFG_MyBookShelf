@@ -1,9 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.BookDTO;
-import com.example.backend.model.Book;
-import com.example.backend.model.User;
-import com.example.backend.model.UserBook;
+import com.example.backend.model.*;
 import com.example.backend.repository.UserBookRepository;
 import com.example.backend.repository.UserCollectionRepository;
 import com.example.backend.repository.UserRepository;
@@ -46,5 +44,13 @@ public class UserService {
 
     public UserBook findByUserIdAndBookId(Long userId, Long bookId) {return userBookRepository.findByUserIdAndBookId(userId, bookId);}
 
+    public UserCollection findByUserIdAndCollectionId(Long userId, Long collectionId) {return userCollectionRepository.findByUserIdAndCollectionId(userId, collectionId);}
+
     public UserBook save(UserBook userBook) {return userBookRepository.save(userBook);}
+
+    public UserCollection save(UserCollection userCollection) {return userCollectionRepository.save(userCollection);}
+
+    public List<Collection> findPartiallyReadCollections(Long userId) {return userCollectionRepository.findPartiallyReadCollections(userId);}
+
+    public int countUnreadBooksInCollection(Long userId, Long collectionId) {return userBookRepository.countUnreadBooksInCollection(userId, collectionId);}
 }

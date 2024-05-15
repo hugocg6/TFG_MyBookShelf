@@ -4,6 +4,7 @@ import com.example.backend.model.Collection;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.CollectionService;
+import com.example.backend.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class WebController {
     @Autowired
     CollectionService collectionService;
 
+    @Autowired
+    UserService userService;
+
     @ModelAttribute
     public void addAttributes(Model model, HttpSession session) {
         if (session.getAttribute("logged")==null
@@ -34,6 +38,10 @@ public class WebController {
 
     @GetMapping("/home")
     public String init(Model model, HttpSession session) {
+        if (session.getAttribute("logged") != null && session.getAttribute("user")!=null) {
+            List<Collection> currentlyReading = userService.findPartiallyReadCollections((Long) session.getAttribute("user"));
+            model.addAttribute("currentlyReading", currentlyReading);
+        }
         List<Collection> recentlyAdded = collectionService.findLastAddedCollection();
         model.addAttribute("recentlyAdded", recentlyAdded);
         return "index";
