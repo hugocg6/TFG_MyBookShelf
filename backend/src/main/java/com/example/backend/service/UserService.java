@@ -53,4 +53,8 @@ public class UserService {
     public List<Collection> findPartiallyReadCollections(Long userId) {return userCollectionRepository.findPartiallyReadCollections(userId);}
 
     public int countUnreadBooksInCollection(Long userId, Long collectionId) {return userBookRepository.countUnreadBooksInCollection(userId, collectionId);}
+
+    public List<Collection> findUserReadCollections(Long userId) {return userCollectionRepository.findUserReadCollections(userId);}
+
+    public UserCollection findUserCollectionByUserAndCollection(Long userId, Long collectionId){ return userCollectionRepository.findByUserIdCollection(userId, collectionId);}
 }

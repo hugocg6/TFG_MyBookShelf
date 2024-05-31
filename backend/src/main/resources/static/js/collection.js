@@ -70,3 +70,23 @@ function markAsUnread(bookId) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const svgItem = document.querySelector('.svg-item');
+    const totalBooks = parseInt(svgItem.getAttribute('data-total-books'));
+    const readBooks = parseInt(svgItem.getAttribute('data-read-books'));
+
+    const percentage = totalBooks === 0 ? 0 : Math.round((readBooks / totalBooks) * 100);
+
+    const donutSegment = svgItem.querySelector('.donut-segment-2');
+    const circumference = 2 * Math.PI * 15.91549430918954;
+    const offset = circumference - (percentage / 100) * circumference;
+    donutSegment.style.strokeDasharray = `${circumference} ${circumference}`;
+    donutSegment.style.strokeDashoffset = offset;
+
+    const percentText = svgItem.querySelector('.donut-percent');
+    percentText.textContent = `${percentage}%`;
+
+    const dataText = svgItem.querySelector('.donut-data');
+    dataText.textContent = `${readBooks}/${totalBooks} read`;
+});

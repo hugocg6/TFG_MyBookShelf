@@ -158,6 +158,18 @@ hr {
   overflow: hidden;
 }
 
+.cta-stats {
+  --shadowColor: 187 60% 40%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
 .cta img {
   object-fit: fill;
   outline: 0.1rem solid;
@@ -220,4 +232,102 @@ hr {
   color: #0CC;
   background-color: white;
   border: 3px solid #0CC;
+}
+
+.svg-item {
+  width: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.stats-item {
+  margin-top: 20px;
+  text-align: center;
+  font-size: xx-large;
+}
+
+@keyframes donutfade {
+  /* this applies to the whole svg item wrapper */
+  0% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.donut-ring {
+  stroke: #EBEBEB;
+}
+
+.donut-segment {
+  transform-origin: center;
+  stroke: #FF6200;
+}
+
+.donut-segment-2 {
+  stroke: #0CC;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.segment-1{fill:#ccc;}
+.segment-2{fill:#0CC;}
+
+.donut-percent {
+  animation: donutfadelong 0s;
+}
+
+@keyframes donutfadelong {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes donut1 {
+  0% {
+    stroke-dasharray: 0, 100;
+  }
+  100% {
+    stroke-dasharray: 69, 31;
+  }
+}
+
+.donut-text {
+  font-family: Arial, Helvetica, sans-serif;
+  fill: #FF6200;
+}
+.donut-text-1 {
+  fill: #0CC;
+}
+
+.donut-label {
+  font-size: 0.28em;
+  font-weight: 700;
+  line-height: 1;
+  fill: #000;
+  transform: translateY(0.25em);
+}
+
+.donut-percent {
+  font-size: 0.5em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  font-weight: bold;
+}
+
+.donut-data {
+  font-size: 0.18em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  text-align: center;
+  text-anchor: middle;
+  color:#666;
+  fill: #666;
 }

@@ -55,13 +55,17 @@ public class UserController {
 
     @GetMapping("/profile")
     public String getProfile(Model model, HttpSession session){
-        Optional<User> user = userService.findById((Long) session.getAttribute("user"));
+        Long userId = (Long) session.getAttribute("user");
+        Optional<User> user = userService.findById(userId);
         List<Long> collectionIds = user.get().getCollections()
                         .stream()
                         .map(userCollection -> userCollection.getCollection().getId())
                         .toList();
         List<Collection> addedCollections = collectionService.findCollectionsByIds(collectionIds);
         model.addAttribute("addedCollections", addedCollections);
+
+        List<Collection> readCollections = userService.findUserReadCollections(userId);
+        model.addAttribute("readCollections", readCollections);
         return "profile";
     }
 }

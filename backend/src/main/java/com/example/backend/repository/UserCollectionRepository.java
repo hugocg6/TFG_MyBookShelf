@@ -35,4 +35,14 @@ public interface UserCollectionRepository extends JpaRepository<UserCollection, 
 
     @Query("SELECT uc FROM UserCollection uc WHERE uc.user.id = :userId AND uc.collection.id = :collectionId")
     UserCollection findByUserIdAndCollectionId(@Param("userId") Long userId, @Param("collectionId") Long collectionId);
+
+    @Query("SELECT c from Collection c " +
+            "join UserCollection uc on uc.collection.id = c.id " +
+            "where uc.read = true " +
+            "and uc.user.id = :userId " +
+            "order by uc.readDate desc ")
+    List<Collection> findUserReadCollections(@Param("userId") Long userId);
+
+    @Query("SELECT uc from UserCollection uc where uc.user.id = :userId and uc.collection.id = :collectionId")
+    UserCollection findByUserIdCollection(@Param("userId") Long userId, @Param("collectionId") Long collectionId);
 }

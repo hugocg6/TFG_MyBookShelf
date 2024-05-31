@@ -25,6 +25,8 @@ public class UserCollection {
 
     private boolean added;
 
+    private Date additionDate;
+
     public UserCollection() {
     }
 
@@ -80,5 +82,13 @@ public class UserCollection {
 
     public void setReadDate(Date readDate) {
         this.readDate = readDate;
+    }
+
+    public Date getAdditionDate() {
+        return additionDate;
+    }
+
+    public void setAdditionDate(Date additionDate) {
+        this.additionDate = additionDate;
     }
 }
