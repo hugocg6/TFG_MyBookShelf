@@ -49,4 +49,14 @@ public interface CollectionRepository extends JpaRepository<Collection, Long> {
 
     @Query("SELECT c from Collection c where c.id in :collectionIds order by c.name asc ")
     List<Collection> findCollectionsByIdIs(@Param("collectionIds") List<Long> collectionIds);
+
+    @Query("SELECT DISTINCT c FROM Collection c " +
+            "LEFT JOIN c.publisher p " +
+            "LEFT JOIN c.demography d " +
+            "LEFT JOIN c.author a " +
+            "WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "OR LOWER(a.author.name) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "OR LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "OR LOWER(d.name) LIKE LOWER(CONCAT('%', :query, '%'))")
+    List<Collection> searchCollections(@Param("query") String query);
 }

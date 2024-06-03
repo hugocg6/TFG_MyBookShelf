@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,6 +30,14 @@ public class SearchController {
     }
 
     @GetMapping("/search")
+    public String search(@RequestParam("query") String query, Model model) {
+        List<Collection> results = collectionService.searchCollections(query);
+        model.addAttribute("collections", results);
+        model.addAttribute("header", "'" + query + "'");
+        return "search";
+    }
+
+    @GetMapping("/search/collections")
     public String searchAll(Model model) {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);

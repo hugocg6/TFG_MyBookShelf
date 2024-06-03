@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/css/templatemo-xtra-blog.css" rel="stylesheet" type="text/css">
+    <link href="/css/profile.css" rel="stylesheet">
 
 </head>
 <body>
@@ -18,7 +19,7 @@
             <!-- Search form -->
             <div class="row tm-row">
                 <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form" action="/search">
                         <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
                         <button class="tm-search-button" type="submit">
                             <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
@@ -72,6 +73,93 @@
                     
                 </div>
             </div>
+            <div class="row tm-row">
+                <div class="col-12">
+                    <h4 class="pt-2 tm-color-primary tm-post-title">My stats</h4>
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <div class="main-container">
+                        <div class="year-stats">
+                            <div class="month-group">
+                                <div class="bar h-100"></div>
+                                <p class="month">Jan</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-50"></div>
+                                <p class="month">Feb</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-75"></div>
+                                <p class="month">Mar</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-25"></div>
+                                <p class="month">Apr</p>
+                            </div>
+                            <div class="month-group selected">
+                                <div class="bar h-100"></div>
+                                <p class="month">May</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-50"></div>
+                                <p class="month">Jun</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-75"></div>
+                                <p class="month">Jul</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-25"></div>
+                                <p class="month">Aug</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-50"></div>
+                                <p class="month">Sep</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-75"></div>
+                                <p class="month">Oct</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-25"></div>
+                                <p class="month">Nov</p>
+                            </div>
+                            <div class="month-group">
+                                <div class="bar h-100"></div>
+                                <p class="month">Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progressDiv">
+                        <div class="statChartHolder">
+                            <div class="progress-pie-chart" data-percent="78"><!--Pie Chart -->
+                                <div class="ppc-progress">
+                                    <div class="ppc-progress-fill"></div>
+                                </div>
+                                <div class="ppc-percents">
+                                    <div class="pcc-percents-wrapper">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div><!--End Chart -->
+                        </div>
+                        <div class="statRightHolder">
+                            <ul>
+                                <li> <h3 class="blue">39.4k</h3> <span>Collections added</span></li>
+                                <li> <h3 class="purple">1.8k</h3> <span>Collections read</span></li>
+                            </ul>
+
+                            <ul class="statsLeft">
+                                <li><h3 class="yellow">22%</h3> <span>Favourite author</span></li>
+                                <li><h3 class="red">37%</h3> <span>Of my collections by </span></li>
+                            </ul>
+                            <ul class="statsRight">
+                                <li><h3>18%</h3> <span>Favourite demography</span></li>
+                                <li><h3>23%</h3> <span>Of my collections are</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <footer class="row tm-row">
                 <hr class="col-12">
                 <div class="col-md-6 col-12 tm-color-gray">
@@ -85,5 +173,6 @@
     </div>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/templatemo-script.js}"></script>
+    <script th:src="@{/js/profile.js}"></script>
 </body>
 </html>
