@@ -47,21 +47,17 @@
                     </div>
                 </div>
             </div>
-            <div th:if="${logged}" class="row tm-row">
+            <div th:if="${logged && lastReadCollection!=null}" class="row tm-row">
                 <div class="col-12">
-                    <h4 class="pt-2 tm-color-primary tm-post-title">For you</h4>
+                    <h4 th:text="'Because you read ' + ${lastReadCollection}" class="pt-2 tm-color-primary tm-post-title"></h4>
                     <hr class="tm-hr-primary tm-mb-55">
-                    <div class="card-container">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/4.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/5.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/6.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/7.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/8.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/9.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/10.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/11.webp" alt="" class="card-container-img">
+                    <div class="card-container-reading">
+                        <div th:each="collection : ${forYouCollections}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img style="height: 16rem; width: 11rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
+                            </a>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
             <div class="row tm-row">
@@ -75,7 +71,6 @@
                             </a>
                         </div>
                     </div>
-                    
                 </div>
             </div>  
             <div class="row tm-row">
@@ -83,16 +78,12 @@
                     <h4 class="pt-2 tm-color-primary tm-post-title">Featured</h4>
                     <hr class="tm-hr-primary tm-mb-55">
                     <div class="card-container">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/12.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/13.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/14.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/15.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/16.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/17.webp" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/18.jpg" alt="" class="card-container-img">
-                        <img style="height: 11rem; width: 7rem;" src="../Logos_y_demás/Datos_de_ejemplo/19.webp" alt="" class="card-container-img">
+                        <div th:each="collection : ${topAddedCollections}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img style="height: 14rem; width: 9rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
+                            </a>
+                        </div>
                     </div>
-                    
                 </div>
             </div>       
             <footer class="row tm-row">

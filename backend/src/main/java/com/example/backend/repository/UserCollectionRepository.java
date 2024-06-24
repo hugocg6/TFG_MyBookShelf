@@ -1,7 +1,10 @@
 package com.example.backend.repository;
 
+import com.example.backend.model.Author;
 import com.example.backend.model.Collection;
+import com.example.backend.model.Demography;
 import com.example.backend.model.UserCollection;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -45,4 +48,27 @@ public interface UserCollectionRepository extends JpaRepository<UserCollection, 
 
     @Query("SELECT uc from UserCollection uc where uc.user.id = :userId and uc.collection.id = :collectionId")
     UserCollection findByUserIdCollection(@Param("userId") Long userId, @Param("collectionId") Long collectionId);
+
+    @Query("SELECT uc.collection " +
+                  "FROM UserCollection uc " +
+                  "WHERE uc.user.id = :userId AND uc.read = TRUE " +
+                  "ORDER BY uc.readDate DESC")
+    List<Collection> findLastReadCollectionByUserId(@Param("userId") Long userId, Pageable pageable);
+
+    @Query("SELECT a FROM UserCollection uc " +
+            "JOIN Collection c on uc.collection.id = c.id " +
+            "JOIN CollectionAuthor ca on ca.collection = c " +
+            "JOIN Author a on ca.author = a " +
+            "WHERE uc.user.id = :userId " +
+            "GROUP BY a.id, ca.author.name " +
+            "ORDER BY COUNT(a.id) DESC")
+    List<Author> findMostCommonAuthorByUserId(@Param("userId") Long userId, Pageable pageable);
+
+    @Query("SELECT d " +
+            "FROM UserCollection uc JOIN uc.collection c " +
+            "JOIN c.demography d " +
+            "WHERE uc.user.id = :userId " +
+            "GROUP BY d.id, d.name " +
+            "ORDER BY COUNT(d.id) DESC")
+    List<Demography> findMostCommonDemographyByUserId(@Param("userId") Long userId, Pageable pageable);
 }

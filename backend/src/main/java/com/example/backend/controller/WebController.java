@@ -38,9 +38,16 @@ public class WebController {
 
     @GetMapping("/home")
     public String init(Model model, HttpSession session) {
+        Long currentUserId = (Long) session.getAttribute("user");
         if (session.getAttribute("logged") != null && session.getAttribute("user")!=null) {
-            List<Collection> currentlyReading = userService.findPartiallyReadCollections((Long) session.getAttribute("user"));
+            List<Collection> currentlyReading = userService.findPartiallyReadCollections(currentUserId);
             model.addAttribute("currentlyReading", currentlyReading);
+            Collection lastReadCollection = userService.getLastReadCollectionByUserId(currentUserId);
+            if (lastReadCollection!=null) {
+                List<Collection> forYouCollections = collectionService.findSimilarCollection(lastReadCollection.getId());
+                model.addAttribute("lastReadCollection", lastReadCollection.getName());
+                model.addAttribute("forYouCollections", forYouCollections);
+            }
         }
         List<Collection> recentlyAdded = collectionService.findLastAddedCollection();
         List<Collection> topAddedCollections = collectionService.findTopAddedCollections();

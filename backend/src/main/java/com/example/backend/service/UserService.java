@@ -7,6 +7,7 @@ import com.example.backend.repository.UserCollectionRepository;
 import com.example.backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -57,4 +58,19 @@ public class UserService {
     public List<Collection> findUserReadCollections(Long userId) {return userCollectionRepository.findUserReadCollections(userId);}
 
     public UserCollection findUserCollectionByUserAndCollection(Long userId, Long collectionId){ return userCollectionRepository.findByUserIdCollection(userId, collectionId);}
+
+    public Collection getLastReadCollectionByUserId(Long userId){
+        List<Collection> result = userCollectionRepository.findLastReadCollectionByUserId(userId, PageRequest.of(0,1));
+        return result.isEmpty() ? null : result.get(0);
+    }
+
+    public Author getMostCommonAuthorByUserId(Long userId) {
+        List<Author> result = userCollectionRepository.findMostCommonAuthorByUserId(userId, PageRequest.of(0,1));
+        return result.isEmpty() ? null : result.get(0);
+    }
+
+    public Demography getMostCommonDemographyByUserId(Long userId) {
+        List<Demography> result = userCollectionRepository.findMostCommonDemographyByUserId(userId, PageRequest.of(0,1));
+        return result.isEmpty() ? null : result.get(0);
+    }
 }

@@ -70,6 +70,9 @@ public class UserController {
         model.addAttribute("readCollectionsCount", readCollections.size());
         int readPercentage = !addedCollections.isEmpty() ? (int)(((double)readCollections.size()/addedCollections.size()) * 100) : 0;
         model.addAttribute("readPercentage", Integer.toString(readPercentage));
+
+        model.addAttribute("mostCommonAuthor", userService.getMostCommonAuthorByUserId(userId).getName());
+        model.addAttribute("mostCommonDemography", userService.getMostCommonDemographyByUserId(userId).getName());
         return "profile";
     }
 }
