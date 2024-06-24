@@ -131,7 +131,7 @@
                     </div>
                     <div class="progressDiv">
                         <div class="statChartHolder">
-                            <div class="progress-pie-chart" data-percent="78"><!--Pie Chart -->
+                            <div class="progress-pie-chart" th:data-percent="${readPercentage}">
                                 <div class="ppc-progress">
                                     <div class="ppc-progress-fill"></div>
                                 </div>
@@ -144,8 +144,8 @@
                         </div>
                         <div class="statRightHolder">
                             <ul>
-                                <li> <h3 class="blue">39.4k</h3> <span>Collections added</span></li>
-                                <li> <h3 class="purple">1.8k</h3> <span>Collections read</span></li>
+                                <li> <h3 class="blue" th:text="${addedCollectionsCount}"></h3> <span>Collections added</span></li>
+                                <li> <h3 class="purple" th:text="${readCollectionsCount}"></h3> <span>Collections read</span></li>
                             </ul>
 
                             <ul class="statsLeft">

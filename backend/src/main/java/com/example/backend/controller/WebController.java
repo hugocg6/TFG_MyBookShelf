@@ -43,7 +43,9 @@ public class WebController {
             model.addAttribute("currentlyReading", currentlyReading);
         }
         List<Collection> recentlyAdded = collectionService.findLastAddedCollection();
+        List<Collection> topAddedCollections = collectionService.findTopAddedCollections();
         model.addAttribute("recentlyAdded", recentlyAdded);
+        model.addAttribute("topAddedCollections", topAddedCollections);
         return "index";
     }
 

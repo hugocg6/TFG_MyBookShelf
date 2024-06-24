@@ -8,6 +8,8 @@ import com.example.backend.model.UserCollection;
 import com.example.backend.repository.CollectionRepository;
 import com.example.backend.repository.UserCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -54,6 +56,8 @@ public class CollectionService {
         // Return the first 6 collections
         return combinedCollections.stream().limit(6).collect(Collectors.toList());
     }
+
+    public List<Collection> findTopAddedCollections() {return collectionRepository.findTopAddedCollections(PageRequest.of(0, 8));}
 
     public CollectionDTO findCollectionById(long id){
         return collectionRepository.findById(id)

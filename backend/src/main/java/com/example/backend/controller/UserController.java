@@ -63,9 +63,13 @@ public class UserController {
                         .toList();
         List<Collection> addedCollections = collectionService.findCollectionsByIds(collectionIds);
         model.addAttribute("addedCollections", addedCollections);
+        model.addAttribute("addedCollectionsCount", addedCollections.size());
 
         List<Collection> readCollections = userService.findUserReadCollections(userId);
         model.addAttribute("readCollections", readCollections);
+        model.addAttribute("readCollectionsCount", readCollections.size());
+        int readPercentage = !addedCollections.isEmpty() ? (int)(((double)readCollections.size()/addedCollections.size()) * 100) : 0;
+        model.addAttribute("readPercentage", Integer.toString(readPercentage));
         return "profile";
     }
 }

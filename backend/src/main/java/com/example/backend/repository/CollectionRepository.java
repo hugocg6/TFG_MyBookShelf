@@ -1,6 +1,7 @@
 package com.example.backend.repository;
 
 import com.example.backend.model.Collection;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -59,4 +60,11 @@ public interface CollectionRepository extends JpaRepository<Collection, Long> {
             "OR LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) " +
             "OR LOWER(d.name) LIKE LOWER(CONCAT('%', :query, '%'))")
     List<Collection> searchCollections(@Param("query") String query);
+
+    @Query("SELECT uc.collection FROM UserCollection uc " +
+            "GROUP BY uc.collection " +
+            "ORDER BY COUNT(uc.collection) DESC")
+    List<Collection> findTopAddedCollections(Pageable pageable);
+
+
 }
