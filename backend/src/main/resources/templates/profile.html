@@ -79,52 +79,66 @@
                     <hr class="tm-hr-primary tm-mb-55">
                     <div class="main-container">
                         <div class="year-stats">
-                            <div class="month-group">
-                                <div class="bar h-100"></div>
+                            <div class="month-group" data-month="0">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-01', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-01', 0)}) + '%;'"></div>
                                 <p class="month">Jan</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-50"></div>
+                            <div class="month-group" data-month="1">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-02', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-02', 0)}) + '%;'"></div>
                                 <p class="month">Feb</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-75"></div>
+                            <div class="month-group" data-month="2">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-03', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-03', 0)}) + '%;'"></div>
                                 <p class="month">Mar</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-25"></div>
+                            <div class="month-group" data-month="3">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-04', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-04', 0)}) + '%;'"></div>
                                 <p class="month">Apr</p>
                             </div>
-                            <div class="month-group selected">
-                                <div class="bar h-100"></div>
+                            <div class="month-group" data-month="4">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-05', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-05', 0)}) + '%;'"></div>
                                 <p class="month">May</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-50"></div>
+                            <div class="month-group" data-month="5">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-06', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-06', 0)}) + '%;'">                                </div>
                                 <p class="month">Jun</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-75"></div>
+                            <div class="month-group" data-month="6">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-07', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-07', 0)}) + '%;'"></div>
                                 <p class="month">Jul</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-25"></div>
+                            <div class="month-group" data-month="7">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-08', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-08', 0)} * 10) + '%;'">                                </div>
                                 <p class="month">Aug</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-50"></div>
+                            <div class="month-group" data-month="8">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-09', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-09', 0)}) + '%;'">
+                                </div>
                                 <p class="month">Sep</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-75"></div>
+                            <div class="month-group" data-month="9">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-10', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-10', 0)}) + '%;'"></div>
                                 <p class="month">Oct</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-25"></div>
+                            <div class="month-group" data-month="10">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-11', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-11', 0)}) + '%;'"></div>
                                 <p class="month">Nov</p>
                             </div>
-                            <div class="month-group">
-                                <div class="bar h-100"></div>
+                            <div class="month-group" data-month="11">
+                                <span th:text="${booksReadByMonth.getOrDefault('2024-12', 0)}"></span>
+                                <div class="bar" th:style="'height: ' + (${booksReadByMonth.getOrDefault('2024-12', 0)}) + '%;'">
+                                </div>
                                 <p class="month">Dec</p>
                             </div>
                         </div>

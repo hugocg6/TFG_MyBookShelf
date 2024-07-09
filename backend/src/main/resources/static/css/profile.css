@@ -206,6 +206,7 @@ hr {
     height: 110px;
     margin: 10px;
     display: inline-block;
+    text-align: center;
 }
 
 .bar {
@@ -213,6 +214,7 @@ hr {
     width: 35px;
     border-radius: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .month-group:hover .bar,

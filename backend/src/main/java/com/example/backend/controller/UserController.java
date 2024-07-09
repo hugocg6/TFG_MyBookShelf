@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.BookPerMonthDTO;
 import com.example.backend.model.Collection;
 import com.example.backend.model.User;
 import com.example.backend.model.UserCollection;
@@ -13,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -65,14 +64,25 @@ public class UserController {
         model.addAttribute("addedCollections", addedCollections);
         model.addAttribute("addedCollectionsCount", addedCollections.size());
 
+        List<BookPerMonthDTO> booksReadPerMonth = userService.getBooksReadPerMonth(userId);
+
+        Map<String, Integer> booksReadByMonth = new HashMap<>();
+        for (BookPerMonthDTO entry : booksReadPerMonth) {
+            booksReadByMonth.put(entry.getMonth(), entry.getCount().intValue());
+        }
+
+        model.addAttribute("booksReadByMonth", booksReadByMonth);
+
         List<Collection> readCollections = userService.findUserReadCollections(userId);
         model.addAttribute("readCollections", readCollections);
         model.addAttribute("readCollectionsCount", readCollections.size());
         int readPercentage = !addedCollections.isEmpty() ? (int)(((double)readCollections.size()/addedCollections.size()) * 100) : 0;
         model.addAttribute("readPercentage", Integer.toString(readPercentage));
 
-        model.addAttribute("mostCommonAuthor", userService.getMostCommonAuthorByUserId(userId).getName());
-        model.addAttribute("mostCommonDemography", userService.getMostCommonDemographyByUserId(userId).getName());
+        if(!readCollections.isEmpty()) {
+            model.addAttribute("mostCommonAuthor", userService.getMostCommonAuthorByUserId(userId).getName());
+            model.addAttribute("mostCommonDemography", userService.getMostCommonDemographyByUserId(userId).getName());
+        }
         return "profile";
     }
 }

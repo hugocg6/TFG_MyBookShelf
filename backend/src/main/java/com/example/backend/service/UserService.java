@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.BookDTO;
+import com.example.backend.dto.BookPerMonthDTO;
 import com.example.backend.model.*;
 import com.example.backend.repository.UserBookRepository;
 import com.example.backend.repository.UserCollectionRepository;
@@ -72,5 +73,9 @@ public class UserService {
     public Demography getMostCommonDemographyByUserId(Long userId) {
         List<Demography> result = userCollectionRepository.findMostCommonDemographyByUserId(userId, PageRequest.of(0,1));
         return result.isEmpty() ? null : result.get(0);
+    }
+
+    public List<BookPerMonthDTO> getBooksReadPerMonth(Long userId) {
+        return userBookRepository.countBooksReadPerMonth(userId);
     }
 }
