@@ -13,7 +13,7 @@ $(function() {
           $(this).closest('tr').removeClass('active');
             })
         }
-  
+        updateReadingProgress();
     });
   
     $('th[scope="row"] input[type="checkbox"]').on('click', function() {
@@ -26,6 +26,7 @@ $(function() {
           const bookId = $(this).attr('id').split('-')[2];
           markAsRead(bookId);
       }
+      updateReadingProgress();
     });
 });
 
@@ -43,6 +44,11 @@ function markAsRead(bookId) {
         data: {bookId: bookId},
         success: function (response) {
             console.log("Book marked as read successfully.");
+            updateReadingProgress();
+            if (response.readDate) {
+                const readDateElement = document.querySelector('.stats-item .read-date');
+                readDateElement.textContent = response.readDate;
+            }
         },
         error: function (xhr, status, error) {
             console.error("Error marking book as read:", error);
@@ -64,6 +70,10 @@ function markAsUnread(bookId) {
         data: {bookId: bookId},
         success: function (response) {
             console.log("Book marked as read successfully.");
+            updateReadingProgress();
+            if (response.readDate) {
+                document.querySelector('.stats-item .read-date').textContent = response.readDate;
+            }
         },
         error: function (xhr, status, error) {
             console.error("Error marking book as read:", error);
@@ -71,10 +81,16 @@ function markAsUnread(bookId) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function updateReadingProgress() {
     const svgItem = document.querySelector('.svg-item');
     const totalBooks = parseInt(svgItem.getAttribute('data-total-books'));
-    const readBooks = parseInt(svgItem.getAttribute('data-read-books'));
+    let readBooks = 0;
+
+    $('.read-checkbox').each(function() {
+        if ($(this).prop('checked')) {
+            readBooks++;
+        }
+    });
 
     const percentage = totalBooks === 0 ? 0 : Math.round((readBooks / totalBooks) * 100);
 
@@ -89,4 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const dataText = svgItem.querySelector('.donut-data');
     dataText.textContent = `${readBooks}/${totalBooks} read`;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    updateReadingProgress()
 });

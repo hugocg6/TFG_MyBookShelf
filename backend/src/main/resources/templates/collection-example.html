@@ -101,7 +101,7 @@
                         <div class="col-md-4">
                             <div class="stats-item">
                                 <h4>End reading date</h4>
-                                <p th:text="${readDate}"></p>
+                                <p class="read-date" th:text="${readDate}"></p>
                             </div>
                         </div>
                     </article>
@@ -130,7 +130,7 @@
                                 <tr th:class="${userBooks != null && !userBooks.isEmpty() && userBooks[i.index].getRead() ? 'active' : ''}">
                                     <th scope="row">
                                         <label th:if="${logged && added}" class="control control--checkbox">
-                                            <input type="checkbox" th:id="'read-checkbox-' + ${book.id}" th:checked="${userBooks[i.index].getRead()}" />
+                                            <input type="checkbox" th:id="'read-checkbox-' + ${book.id}" th:checked="${userBooks[i.index].getRead()}" data-book-id="${book.id}" class="read-checkbox" />
                                             <div class="control__indicator"></div>
                                         </label>
                                     </th>
