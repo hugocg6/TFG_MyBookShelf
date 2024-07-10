@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MyBookShelf</title>
+    <link rel="icon" href="/misc/favicon_io/favicon.ico">
+	<link rel="stylesheet" href="/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/templatemo-xtra-blog.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <div th:replace="header :: #tm-header"></div>  <!--Inyección del header-->
+    <div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            <div class="row tm-row">
+                <div class="col-12">
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form" action="/search">
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
+                        <button class="tm-search-button" type="submit">
+                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                        </button>
+                        <button class="signin-button">
+                            <a th:if="${!logged}" href="/LogIn" style="color: inherit;">
+                                Sign In / Sign Up
+                            </a>
+                            <a th:if="${logged}" href="/LogIn/processLogout" style="color: inherit;">
+                                Log Out
+                            </a>
+                        </button>
+                    </form>
+                </div>                
+            </div>
+
+            <div class="row tm-row">
+                <div class="col-12">
+                    <h4 class="pt-2 tm-color-primary tm-post-title"><span th:text="${header}"></span></h4>
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <div class="card-container-search">
+                        <div th:each="collection, i : ${collections}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-search-item">
+                            </a>
+                            <div th:if="${i.index % 6 == 5}" class="card-container-search-row-break"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <footer class="row tm-row">
+                <hr class="col-12">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    <a>Hugo Coto González</a>
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    TFG: MyBookShelf
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/templatemo-script.js}"></script>
+</body>
+</html>

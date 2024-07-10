@@ -38,6 +38,7 @@ justify-content:center;
 align-items:center;
 gap:20px;
 margin-bottom: 40px;
+margin-top: 30px;
 
 }
 .card-container-reading:hover img {
@@ -63,7 +64,8 @@ display:flex;
 justify-content:center;
 align-items:center;
 gap:5px;
-margin-bottom: 40px;
+margin-bottom: 30px;
+margin-top: 10px;
 
 }
 .card-container:hover img {
@@ -72,6 +74,33 @@ opacity:0.3;
 .card-container img:hover {
 transform:perspective(800px)       rotateY(0deg);
 opacity:1;
+}
+
+.card-container-search {
+    display: flex;
+    flex-wrap: wrap; /* Allows the content to wrap to the next line */
+    /*justify-content:left;*/
+    align-items:center;
+
+    margin-left: 70px;
+}
+
+.card-container-search-item{
+    width: 13rem;
+    height: 18rem;
+    object-fit:fill;
+    margin: 0.5rem; /* Adds some space between the items */
+}
+
+.card-container-search-row-break{
+    flex-basis: 100%; /* Forces a line break after every 6th item */
+}
+
+.card-container-search:hover img {
+    opacity:0.3;
+}
+.card-container-search img:hover {
+    opacity:1;
 }
 
 .img-about {
@@ -156,8 +185,8 @@ stroke-dashoffset: 100;
 transition: 0.6s ease-out;
 }
 
-.form-control::-webkit-input-placeholder { color: #999; }  
-.form-control:-ms-input-placeholder { color: #999; }  
+.form-control::-webkit-input-placeholder { color: #999; }
+.form-control:-ms-input-placeholder { color: #999; }
 .form-control::placeholder { color: #999; }
 
 .tm-header {
@@ -215,7 +244,7 @@ transition: 0.6s ease-out;
 .tm-post { max-width: 470px; }
 
 .tm-row {
-    max-width: 980px;
+    max-width: 100%;
     justify-content: space-between;
 }
 
@@ -310,6 +339,24 @@ ul {
     font-size: 1.2rem;
 }
 
+.signin-button {
+    font-size: 1.3rem;
+    color: white;
+    margin-left: 30px;
+    padding: 10px;
+    width: auto;
+    height: 60px;
+    border: transparent;
+    background-color: #0CC;
+    transition: all 0.3s ease;
+}
+
+.signin-button:hover{
+    background-color: white;
+    color: #0CC;
+    border: 2px solid #0CC;
+}
+
 .tm-search-button {
     width: 60px;
     height: 60px;
@@ -318,11 +365,18 @@ ul {
     transition: all 0.3s ease;
 }
 
-.tm-search-button:hover { background-color: #09b6b6; }
+.tm-search-button:hover {
+    background-color: white;
+    color: #0CC;
+    border: 2px solid #0CC; }
 
 .tm-search-icon {
     color: white;
     font-size: 1.3rem;
+}
+
+.tm-search-icon:hover{
+    color: #0CC;
 }
 
 .tm-post-link {
@@ -507,7 +561,7 @@ figcaption {
 .tm-pt-60 { padding-top: 60px; }
 .tm-mb-40 { margin-bottom: 40px; }
 .tm-mb-45 { margin-bottom: 45px; }
-.tm-mb-55 { margin-bottom: 55px; }
+.tm-mb-55 { margin-bottom: 10px; }
 .tm-mb-60 { margin-bottom: 60px; }
 .tm-mb-65 { margin-bottom: 65px; }
 .tm-mb-75 { margin-bottom: 75px; }

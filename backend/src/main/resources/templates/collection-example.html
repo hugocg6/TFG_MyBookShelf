@@ -4,76 +4,110 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MyBookShelf</title>
-    <link rel="icon" href="../Logos_y_demás/favicon_io/favicon.ico">
-	<link rel="stylesheet" href="../static/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link rel="icon" href="/misc/favicon_io/favicon.ico">
+	<link rel="stylesheet" href="/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/templatemo-xtra-blog.css" rel="stylesheet">
-    <link href="../static/css/collection.css" rel="stylesheet">
-    <link href="../static/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="../static/fonts/icomoon/style.css" rel="stylesheet">
-<!--
-    
-TemplateMo 553 Xtra Blog
-
-https://templatemo.com/tm-553-xtra-blog
-
--->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/templatemo-xtra-blog.css" rel="stylesheet">
+    <link href="/css/collection.css" rel="stylesheet">
+    <link href="/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/fonts/icomoon/style.css" rel="stylesheet">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <body>
-	<header class="tm-header" id="tm-header">
-        <div class="tm-header-wrapper">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="tm-site-header">
-                <a href="index.html">
-                    <img src="../Logos_y_demás/Logo-removebg-preview.png" alt="Image" class="img-fluid">
-                </a>
-            </div>
-            <nav class="tm-nav" id="tm-nav">            
-                <ul>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
-                        <i class="fas fa-home"></i>
-                        Home
-                    </a></li>
-                    <li class="tm-nav-item"><a href="login.html" class="tm-nav-link">
-                        <i class="fas fa-pen"></i>
-                        My Profile
-                    </a></li>
-                    <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
-                        <i class="fas fa-users"></i>
-                        About
-                    </a></li>
-                    <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
-                        <i class="far fa-comments"></i>
-                        FAQ
-                    </a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div th:replace="header :: #tm-header"></div>  <!--Inyección del header-->
     <div class="container-fluid">
         <main class="tm-main">
             <!-- Search form -->
             <div class="row tm-row">
                 <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form" action="/search">
                         <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
                         <button class="tm-search-button" type="submit">
                             <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-                        </button>                                
+                        </button>
+                        <button class="signin-button">
+                            <a th:if="${!logged}" href="/LogIn" style="color: inherit;">
+                                Sign In / Sign Up
+                            </a>
+                            <a th:if="${logged}" href="/LogIn/processLogout" style="color: inherit;">
+                                Log Out
+                            </a>
+                        </button>
                     </form>
-                </div>                
-            </div>            
-            
+                </div>
+            </div>
+            <!--Cover image-->
             <div class="row tm-row">
                 <div class="col-12">
-                    <figure class="tm-collection-figure">
-                        <img style="height: 18rem; width: 12rem" src="../Logos_y_demás/Datos_de_ejemplo/3.jpg" alt="Image" class="img-thumbnail center-img-about">
-                    </figure>
+                    <article class="cta">
+                        <img style="width: 14rem ; height: auto" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="cta">
+                        <div class="cta__text-column">
+                            <h1 th:text="${collection.name}"></h1>
+                            <a th:href="@{/search/author/{author}(author=${collection.author})}" style="color: inherit; text-decoration: none">
+                                <h5 th:text="${'Author: ' + #strings.listJoin(collection.author, ', ')}"></h5>
+                            </a>
+                            <a th:href="@{/search/demography/{demography}(demography=${collection.demography})}" style="color: inherit; text-decoration: none">
+                                <h5 th:text="${'Demography: ' + collection.demography}"></h5>
+                            </a>
+                            <h6 th:text="${collection.plot}"></h6>
+                            <form th:if="${logged and !added}" id="add-collection-form" method="post" th:action="@{${collection.id}+'/addCollection'}" style="display: inline;">
+                                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                                <input type="hidden" name="collectionId" th:value="${collection.id}">
+                                <button id="add-collection-button" class="c-button c-button--gooey" type="submit" style="margin-top:1.5rem">
+                                    + Add
+                                </button>
+                            </form>
+                            <form th:if="${logged and added}" id="remove-collection-form" method="post" th:action="@{${collection.id}+'/removeCollection'}" style="display: inline;">
+                                <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                                <input type="hidden" name="collectionId" th:value="${collection.id}">
+                                <button id="remove-collection-button" class="c-button c-button--gooey-remove" type="submit" style="margin-top:1.5rem">
+                                    - Remove
+                                </button>
+                            </form>
+                        </div>
+                    </article>
                 </div>
-            </div>       
+            </div>
+            <div th:if="${logged && added}" class="row tm-row">
+                <div class="col-12">
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <article class="cta-stats">
+                        <div class="col-md-4 d-flex justify-content-center align-items-center">
+                            <div class="svg-item" th:data-total-books="${totalBooks}" th:data-read-books="${readBooks}">
+                                <svg viewBox="0 0 40 40" class="donut">
+                                    <circle class="donut-hole" cx="20" cy="20" r="15.91549430918954" fill="#fff"></circle>
+                                    <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954" fill="transparent" stroke-width="3.5"></circle>
+                                    <circle class="donut-segment donut-segment-2" cx="20" cy="20" r="15.91549430918954" fill="transparent" stroke-width="3.5"></circle>
+                                    <g class="donut-text donut-text-1">
+                                        <text y="47%" transform="translate(0, 2)">
+                                            <tspan x="50%" text-anchor="middle" class="donut-percent">0%</tspan>
+                                        </text>
+                                        <text y="63%" transform="translate(0, 2)">
+                                            <tspan x="50%" text-anchor="middle" class="donut-data">0/0 read</tspan>
+                                        </text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Registration Date Section -->
+                        <div class="col-md-4">
+                            <div class="stats-item">
+                                <h4>Registration date</h4>
+                                <p th:text="${additionDate}"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-item">
+                                <h4>End reading date</h4>
+                                <p class="read-date" th:text="${readDate}"></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <!--Book list-->       
             <div class="row tm-row">
                 <div class="col-12">
                     <hr class="tm-hr-primary tm-mb-55">
@@ -81,135 +115,49 @@ https://templatemo.com/tm-553-xtra-blog
 
                         <table class="table custom-table">
                           <thead>
-                            <tr>  
-                
-                              <th scope="col">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"  class="js-check-all"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <th scope="col">LEIDO</th>
-                              <th scope="col">TITULO</th>
-                              <th scope="col">FECHA</th>
-                              <th scope="col">PAGINAS</th>
-                              <th scope="col">EDITORIAL</th>
+                            <tr>
+                                <th th:if="${(!logged && !added) || (logged && !added)}" scope="col"></th>
+                                <th th:if="${logged && added}" scope="col">READ</th>
+                                <th scope="col"></th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">DATE</th>
+                                <th scope="col">PAGES</th>
+                                <th scope="col">PUBLISHER</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr scope="row">
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              <td>
-                                #1
-                              </td>
-                              <td>BLAME! (Master Edition) 1</td>
-                              <td>
-                                JUNIO 2017
-                              </td>
-                              <td>416 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox" />
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#2</td>
-                              <td>BLAME! (Master Edition) 2</td>
-                              <td>
-                                JULIO 2017
-                              </td>
-                              <td>383 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#3</td>
-                              <td>BLAME! (Master Edition) 3</a></td>
-                              <td>
-                                SEPTIEMBRE 2017
-                              </td>
-                              <td>360 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#4</td>
-                              <td>BLAME! (Master Edition) 4</td>
-                              <td>
-                                NOVIEMBRE 2017
-                              </td>
-                              <td>370 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#5</td>
-                              <td>BLAME! (Master Edition) 5</td>
-                              <td>
-                                FEBRERO 2018
-                              </td>
-                              <td>352 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-
-                            <tr class="spacer"><td colspan="100"></td></tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="control control--checkbox">
-                                  <input type="checkbox"/>
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </th>
-                              
-                              <td>#6</td>
-                              <td>BLAME! (Master Edition) 6</td>
-                              <td>
-                                ABRIL 2018
-                              </td>
-                              <td>338 páginas en B/N</td>
-                              <td>Panini Manga Seinen</td>
-                            </tr>
-                            
-                          </tbody>
+                            <tbody>
+                            <div th:each="book, i : ${collection.books}">
+                                <tr th:class="${userBooks != null && !userBooks.isEmpty() && userBooks[i.index].getRead() ? 'active' : ''}">
+                                    <th scope="row">
+                                        <label th:if="${logged && added}" class="control control--checkbox">
+                                            <input type="checkbox" th:id="'read-checkbox-' + ${book.id}" th:checked="${userBooks[i.index].getRead()}" data-book-id="${book.id}" class="read-checkbox" />
+                                            <div class="control__indicator"></div>
+                                        </label>
+                                    </th>
+                                    <td th:text="${'#' + book.num}"></td>
+                                    <td th:text="${collection.name +' '+ book.num}"></td>
+                                    <td th:text="${book.publishDate}"></td>
+                                    <td th:text="${book.pages}"></td>
+                                    <td th:text="${collection.publisher}"></td>
+                                </tr>
+                            </div>
+                            </tbody>
                         </table>
                     </div>
                                 
+                </div>
+            </div>
+            <div class="row tm-row">
+                <div class="col-12">
+                    <h4 class="pt-2 tm-color-primary tm-post-title">More like this</h4>
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <div class="card-container">
+                        <div th:each="collection : ${similarCollection}">
+                            <a th:href="@{/collection/{id}(id=${collection.id})}">
+                                <img style="height: 16rem; width: 11rem;" th:src="@{'/collection/' + ${collection.id} + '/image'}" alt="Image" class="card-container-img">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <footer class="row tm-row">
@@ -223,10 +171,10 @@ https://templatemo.com/tm-553-xtra-blog
             </footer>
         </main>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/collection.js"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/templatemo-script.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/collection.js}"></script>
 </body>
 </html>
