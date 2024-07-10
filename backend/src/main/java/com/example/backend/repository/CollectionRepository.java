@@ -65,6 +65,4 @@ public interface CollectionRepository extends JpaRepository<Collection, Long> {
             "GROUP BY uc.collection " +
             "ORDER BY COUNT(uc.collection) DESC")
     List<Collection> findTopAddedCollections(Pageable pageable);
-
-
 }

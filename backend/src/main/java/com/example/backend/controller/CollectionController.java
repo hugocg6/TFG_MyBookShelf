@@ -36,8 +36,6 @@ public class CollectionController {
 
     @Autowired
     private BookService bookService;
-    @Autowired
-    private UserCollectionRepository userCollectionRepository;
 
     @ModelAttribute
     public void addAttributes(Model model, HttpSession session) {
@@ -81,7 +79,6 @@ public class CollectionController {
             Collection collection = optionalCollection.get();
             InputStream imageStream = collection.getBookImage().getBinaryStream();
 
-            // Convert InputStream to byte array
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
@@ -90,7 +87,7 @@ public class CollectionController {
             }
 
             HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.IMAGE_JPEG); // Adjust content type if needed
+            headers.setContentType(MediaType.IMAGE_JPEG);
 
             return ResponseEntity.ok().headers(headers).body(byteArrayOutputStream.toByteArray());
         } else {
